@@ -1,0 +1,173 @@
+# Project information
+site_name: Alex The Creator
+site_description: >-
+  All the meaningless python, rhino, grasshopper
+site_url: https://al666ex.gitee.io/
+
+# Coyright
+copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
+
+# Repository
+repo_name: al666ex/al666ex
+repo_url: https://gitee.com/al666ex/al666ex
+
+# Conifguration
+theme:
+  name: material
+  custom_dir: overrides 
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/lightbulb
+      name: 关灯
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/lightbulb-outline
+      name: 开灯
+  features:
+  - search.suggest
+  # - navigation.footer
+  - search.highlight
+  - content.tabs.link
+  - navigation.indexes
+  - content.footnote.tooltips
+  - content.tooltips
+  - navigation.path
+  - content.code.annotate
+  - content.code.copy
+  - navigation.tabs
+  logo: img/favicon.ico
+  favicon: img/favicon.ico
+  icon:
+    annotation: material/arrow-right-circle 
+  language: zh
+edit_uri: ''
+plugins:
+  - blog:
+      blog_toc: true
+      categories_toc: true
+      archive_toc: true
+  - search: null
+  - termynal:
+      title: cmd
+      buttons: macos
+      prompt_literal_start:
+      - '$'
+  
+  # - mkdocstrings:
+  #   handlers:
+  #     python:
+  #       options:
+  #         extensions:
+  #           - griffe_typingdoc
+  #         show_root_heading: true
+  #         show_if_no_docstring: true
+  #         preload_modules:
+  #           - httpx
+  #           - starlette
+  #         inherited_members: true
+  #         members_order: source
+  #         separate_signature: true
+  #         unwrap_annotated: true
+  #         filters:
+  #           - '!^_'
+  #         merge_init_into_class: true
+  #         docstring_section_style: spacy
+  #         signature_crossrefs: true
+  #         show_symbol_type_heading: true
+  #         show_symbol_type_toc: true
+
+# nav:
+#   - Blog:
+#       - blog/index.md
+#   - Rhino:
+#       - Rhino/index.md
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format ''
+  - pymdownx.betterem:
+  - pymdownx.blocks.details:
+  - pymdownx.blocks.admonition:
+      types:
+      - note
+      - info
+      - tip
+      - warning
+      - danger
+      - bug
+      - success
+      - question
+      - failure
+  - pymdownx.blocks.tab:
+      alternate_style: True
+  - pymdownx.highlight:
+      pygments_lang_class: true
+      anchor_linenums: True
+  - pymdownx.inlinehilite:
+  - pymdownx.snippets:
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tilde: null
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.keys:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - mdx_include:
+      base_path: docs
+
+extra:
+  generator: false
+  analytics:
+    provider: google
+    property: G-T7FY07K96R
+    feedback:
+      title: 写得还行吗？
+      ratings:
+        - icon: material/heart
+          name: 本页还行
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/heart-broken
+          name: 本页不行
+          data: 0
+          note: >- 
+            Thanks for your feedback! 你开心就好！
+  social:
+    - icon: fontawesome/brands/pied-piper-alt
+      link: https://al666ex.gitee.io/
+      name: Alex The Creator
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:chinabiue@aliyun.com
+      name: 42
+
+extra_javascript:
+- js/katex.js
+- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+- js/custom.js
+
+extra_css:
+- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+- css/custom.css
+- css/extra.css

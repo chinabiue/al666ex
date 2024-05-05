@@ -1,0 +1,391 @@
+---
+title: Rhino-Python-Primer-101-第8章9节
+tags: Rhino-Python-Primer-101
+categories: book
+authors:
+    - Alex
+date: 2022-03-06 20:38:53
+---
+## 8.9 曲面
+
+此时你应该对基于网格的曲面强大和灵活性有了充分认识。所以很多工业领域把网格做为其主要曲面处理手就不足为奇了。然而，网格也有它的缺陷，这就是其他曲面技术的舞台了。
+
+事实上，网格(和NURBS一样)是相当新的发现，其崛起在很大程度上取决于计算行业的需求。几个世纪以来，数学家一直在研究不同类型的曲面技术，他们已经提出了很多技术：由显式函数定义的曲面、由隐式方程定义的曲面、最小面积曲面、演进曲面、分形曲面等等。这些类型中的大多数对于日常建模工作来说都太抽象了，这就是为什么大多数CAD软件没有实现它们的原因。
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-schwarz-d-surface.jpg" width="50%"></div>
+
+<figure>
+    <figcaption width="60%">Schwarz D曲面，三重周期性的最小曲面，它将内部和外部边缘之间的所有空间划分为两个相等的块。数学上易于定义，但难以手动建模。</figcaption>
+</figure>
+<!--more-->
+除了一些原始曲面类型(如球体、圆锥体、平面和圆柱体)之外，Rhino 还支持三种自由曲面类型(Sub-D/网格/NURBS?)，其中最有用的是 Nurbs 曲面。与曲线类似，所有可能的曲面形状都可以由 Nurbs 曲面表示，这是 Rhino 中的默认曲面。它是迄今为止最有用的曲面定义，也是我们重点关注的对象。
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-primitives.png" width="90%"></div>
+
+<div STYLE="page-break-after: always;"></div>
+
+### 8.9.1 NURBS曲面
+
+<div style="float: left; clear: both;" align="left">
+<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-normals.png" width=250 align=right hspace="5" vspace="5"/>
+Nurbs 曲面与 Nurbs 曲线非常相似。相同的算法用于计算形状、法线、切线、曲率和其他属性，但存在一些明显的差异。例如，曲线具有切向量和法向平面，而曲面具有法向量和切线平面。这意味着曲线缺乏朝向，而曲面缺乏方向。当然，对于所有曲线和曲面类型都是如此，你必须要学会适应这一点。通常，在编写涉及曲线或曲面的代码时，您必须对朝向和方向做出假设，这些假设有时是错误的。<BR><BR>
+
+对于 NURBS 曲面，几何图形实际上隐含了两个方向，因为 NURBS 曲面是 {u} 和 {v} 曲线的矩形网格。尽管这些方向通常是任意的，但我们最终还是会使用它们，因为它们让事情变得简单了一些。
+</div>
+
+让我们从一些简单的事情开始，实际上并不涉及NURBS曲面数学。我们即将要写的程序用到的算法称为"曲面拟合"，解决方案称为"误差扩散"。你以前肯定听到过这个术语，但可能不是在曲面几何领域。通常，"误差扩散"一词仅适用于"颜色"，"像素"和"抖动"等对象，但在图像处理中的广泛应用并不限制误差扩散算法到3D领域。
+
+我们面临的问题是给定曲面与应该在曲面上的点之间的不匹配。我们不得不改变曲面，以便它和点之间的距离最小化。由于存在大量的点(并且由于表面控制点的数量是有限且固定的)，因此我们必须找出一种以非线性方式使表面变形的方法(即仅靠平移和旋转不会得到想要的结果)。请看下图，即问题的示意图：
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-pointonplane.png" width="100%"></div>
+
+为了澄清问题，我展开了一个非常扭曲的nurbs方块，以便将其简化为控制点的矩形网格。上图是在 {uvw} 空间中绘制的，而不是世界 {xyz} 空间。实际的曲面可能会以各种方式扭曲，但我们只对简化的{uvw}空间感兴趣。
+
+曲面必须经过{S}点，但目前这两个实体没有相交。{S}在曲面上的投影{S'}离{S}有一定距离，这个距离就是我们要扩散的误差。你可以看到，{S'}比其他控制点更接近一些控制点。尤其是{F}和{G}很近，但{B；C；J；K}也可以被认为是相邻的控制点。我们不是挑选固定数量的邻近控制点并移动这些控制点，以减少{S}和{S'}之间的距离，而是要移动所有的点，但不是等量移动。右边的图片显示了我们根据每个控制点与{S'}的距离分配给它的移动量。
+
+你可能已经注意到算法描述中的一个问题。如果一个Nurbs曲面是平坦的，控制点就位于曲面上，但当曲面开始弯曲时，控制点就有离开曲面的趋势。这意味着控制点{uvw}坐标与{S'}之间的距离意义不大。因此，我们将使用Greville点来代替控制点。nurbs曲线和nurbs曲面都有一组Greville点(或者在Rhino中称为 "编辑点")，但在Rhino中只有曲线向用户开放了编辑点。作为程序员，我们也可以使用曲面的Greville点，这很有用，因为控制点和Greville点之间有1:1的映射，但是后者保证位于曲面上。因此，Greville点可以只用{uv}坐标来表示，这意味着我们也可以在这些确切的位置评估曲面的属性(如切线、法线和曲率)。
+
+到现在为止，唯一没有决定的问题是，根据某个控制点与{S'}的距离，我们要用什么方程式来确定这个控制点的移动量。显而易见，所有 "接近 "的控制点应该比那些较远的控制点受到更大的影响。空间中两点之间的最小距离是零(负距离只在某些情况下有意义，我们很快就会提到)，最大距离是无穷大。这意味着我们需要一个在X轴上从零到无穷大的曲线，并且{x}每增加一个值，{y}的值就会减少。如果曲线低于零，就意味着我们在对曲面进行负误差变形。这本身并不是一件坏事，请让我们暂时保持现状。
+
+由于这些限制，我们的选择已经相当有限，但在数学上这里仍有优化空间。如果这是一本关于数学的入门读物，我可能会选择高斯分布来消除误差，但这里将使用一个极其简单的方程式，即双曲线。如果我们把Greville点的扩散系数定义为它与{S'}的距离的倒数，我们就得到这个双曲线函数。
+
+$$f(y)=\frac{1}{x}$$
+
+<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-distanceweightfactor.png" width="80%"></div>
+
+如图所示，曲线的域从零到无穷大，对于{x}的每一个较高的值，我们得到{y}的一个较低的值，而{y}永远不会变成零。只有一个问题，这个问题在编程时就会表现出来。对于非常小的{x}值，即Greville点非常接近{S'}时，产生的{y}会非常大。当这个距离变成0时，扩散系数就会变成无限大，我们甚至永远到达不了那个程度。即使电脑的处理器在理论上能够代表大到1.8 × 10<sup>308</sup>的数字(无论如何也不可能接近无穷大)，当开始用接近极端的数字进行计算时，你有可能会越过二进制的无人区，使电脑崩溃。这还不算，在这种规模的水平上，数学的准确性也无法保证。很明显，你需要避开非常大和非常小的数字。
+
+在我们的案例中，这是一个很容易解决的问题，我们可以简单地将{x}值限制在{+0.01; +∞}域内，也就是说，{y}永远不能大于100。甚至可以让这个阈值变得更小，而不会遇到问题。即使我们把{x}限制在十亿分之一的单位(0.00000001)，我们仍然可以很好的进行计算。
+
+<div style="float: left; clear: both;" align="left">
+<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-surface-uvw-to-xyz.png" width=300 align=right hspace="5" vspace="5"/>
+
+第一件事是写一个函数，接收一个曲面和一个{xyz}坐标的点，然后把点坐标转换到{uvw}空间。我们可以使用 *rs.SurfaceClosestPoint()* 方法来获得{u}和{v}分量，但{w}要花些心思。<BR><BR>
+
+首先，曲面是一个二维实体，意味着它没有厚度，因此没有"真正的"{z}或{w}分量。但曲面有指向点的法向量，可以用来模拟 "深度 "。在右图中，可以看到{uvw}坐标点，其中{w}的值是点和线的起点之间的距离。在这种情况下，负距离是有意义的，因为负距离表示{w}坐标在曲面的另一侧。
+</div>
+
+虽然这是一种有效的描述曲面空间坐标的方法，但你时刻不要忘记，{u}和{v}分量是用表面参数空间表示，而{w}分量则用世界空间单位表示的。我们使用的是混合坐标系，这意味着我们不能盲目地使用点与点之间的距离或角度，因为这些属性现在毫无意义。
+
+为了找到点{P}在曲面{S}空间的坐标，我们需要找到{P}在{S}上的投影{P'}。然后计算出{P}和{P'}之间的距离，这样我们就知道了{w}分量的大小，接下来我们需要弄清楚{P}在曲面的哪一边，以便弄清楚{w}的符号(正或负)。既然我们的脚本能够将一个曲面拟合到多个点上，那就让函数能接收点列表：
+
+```Python linenums='1'
+def ConvertToUVW(idSrf, pXYZ):
+    pUVW = []
+    for point in pXYZ:
+        u, v = rs.SurfaceClosestPoint(idSrf, point)
+        surface_xyz = rs.EvaluateSurface(idSrf, u, v)
+        surface_normal = rs.SurfaceNormal(idSrf, (u,v))
+
+        dirPos = rs.PointAdd(surface_xyz, surface_normal)
+        dirNeg = rs.PointSubtract(surface_xyz, surface_normal)
+        dist = rs.Distance(surface_xyz, point)
+
+        if (rs.Distance(point, dirPos) > rs.Distance(point, dirNeg)): dist *= -1
+        pUVW.append((u, v, dist)) 	
+    return pUVW
+```
+
+|行 |描述|
+|------|------|
+|1| *pXYZ()* 是一个用世界坐标表示的点列表。|
+|4...6|找到{P'}的{uv}坐标，{P'}的{xyz}坐标和{P'}的曲面法向量。|
+|8...10|对{P'}的{xyz}坐标与法向量进行加减法，得到{P'}两侧的两个点。|
+|12...13|如果{P}离dirNeg点更近，我们知道{P}在曲面的 "下边"，我们需要让{w}变成负数。|
+
+还需要一些其他的功能函数(这些函数在后面的大计划中会用上)，所以让我们快速地完成它：
+
+```Python 
+def GrevilleNormals(idSrf):
+    uvGreville = rs.SurfaceEditPoints(idSrf, True, True)
+    srfNormals = [rs.SurfaceNormal(idSrf, grev) for grev in uvGreville]
+
+    return srfNormals
+```
+
+这个函数接收一个曲面并返回每个Greville点的法向量列表。基本操作，学习到了这个阶段，你应该不需要查阅帮助文档就能读懂这个函数。下一个函数也是一样，它接收一个向量列表和一个数字列表，并将每个向量除以匹配的数字。这个函数假定*Vectors*和*Factors*是大小相等的列表。
+
+```Python 
+def DivideVectorList(Vectors, Factors):
+    for i in range(0,len(Vectors)):
+        Vectors[i] = rs.VectorDivide(Vectors[i], Factors[i])
+        return Vectors
+```
+
+我们最终的算法将跟踪曲面上每个控制点的移动向量和扩散系数(原因我还没有解释)，我们需要用默认值初始化这两个列表。尽管过程很简单，但我还是决定将代码移到单独的子函数里，以保持单个程序的简练。这个函数的返回值是两个列表：Forces 和Factors
+
+```Python  linenums='1'
+def InstantiateForceLists(Bound):
+    Forces = []
+    Factors = []
+
+    for i in range(Bound):
+        Forces.append((0,0,0))
+        Factors.append(0)
+
+    return Forces, Factors
+```
+
+|行 |描述|
+|------|------|
+|2...3|创建保存 *Forces* 和 *Factors* 的列表。|
+|5...7|遍历两个列表并分配默认值( *Forces* 都为0长向量， *Factors* 都为0)|
+|9|注意函数返回了两个值。调用该函数的行中的赋值将包含两个值。这种赋值方法将在后面会说。|
+
+我们现在已经完成所有的功能子函数。我知道写还没有明显意义的代码是有点郁闷，但是冒着更坏的风险，我打算再得个寸进个尺，谈一谈这个偏差扩散算法。首先，为了让你能真正理解它背后的逻辑，还需要解决最后一个问题......
+
+如果我们真的直接根据每个控制点与{P'}距离的倒数来移动，那么拟合点的双曲扩散衰减在最终的曲面上会非常明显。看一个简单的例子，一个平面{Base}，需要与四个点{A；B；C；D}进行拟合。其中3个点在曲面之上（正距离），1个在曲面之下（负距离）：
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-hyperbolas.png" width="90%"></div>
+
+左图可以看到四个单独的双曲线（每个拟合点一个），右图可以看到拟合操作的结果，它直接使用双曲线值来决定控制点的移动量。双曲线并不是按比例绘制的，实际上它们要细得多得多，但是按比例绘制会导致几乎看不见它们，因为它们会紧紧贴着水平线和垂直线。
+
+可以看到，靠近{A；B；C；D}在{Base}上投影的控制点将被大范围移动(如{S})，而在两者之间的点(如{T})几乎不会被移动。有时这是很有用的行为，特别是当我们假设原始面已经非常接近拟合点的时候。如果不是这样的话(如上图)，那么我们最终会得到一个四处伸出尖锐触角的平面。
+
+假设输入曲面还没有达到最终效果。这意味着我们的算法不能依赖于曲面的初始形状，而这又意味着少量移动控制点是不可行的。我们需要将所有控制点尽可能的移动到必要的距离。这听起来很困难，但数学上的技巧很简单。我不会为你提供它为什么有效的证明，只会告诉你我们需要做什么：用移动矢量的长度除以所有双曲线之和。
+
+仔细看一下上图中的控制点{S}和{T}。{S}的扩散系数很高(上面有很多黄色)，而{T}的扩散系数很低(两边都是各种颜色的薄片)。但如果想大量移动{S}和{T}，我们需要以某种方式提高{T}移动向量的长度。如果把移动向量的长度除以所有双曲线之和，你就有点类似把所有的运动向量'单位化'了，结果如下图：
+
+<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-multisamplefitter-algorithm2.png" width="50%"></div>
+
+这是个更平滑的拟合。在{B}和{C}之间的下陷并不是因为原始曲面的形状，而是因为在{B}和{C}之间，其他拟合点开始获得更多的相对影响，并将曲面向它们拖下去。让我们看一下代码：
+
+```Python  linenums='1'
+def FitSurface(idSrf, Samples, dTranslation, dProximity):
+    P = rs.SurfacePoints(idSrf)
+    G = rs.SurfaceEditPoints(idSrf, True, True)
+    N = GrevilleNormals(idSrf)
+    S = ConvertToUVW(idSrf, Samples)
+    [Forces, Factors] = InstantiateForceLists(len(P))
+
+    dProximity = 0.0
+    dTranslation = 0.0
+
+    for i in range(len(S)):
+        dProximity = dProximity + abs(S[i][2])
+        for j in range(len(P)):
+            LocalDist = math.sqrt(math.pow((S[i][0] - G[j][0]),2) +  math.pow((S[i][1] - G[j][1]),2))
+            if (LocalDist < 0.01): LocalDist = 0.01
+            LocalFactor = 1 / LocalDist
+            LocalForce = rs.VectorScale(N[j], LocalFactor * S[i][2])
+            Forces[j] = rs.VectorAdd(Forces[j], LocalForce)
+            Factors[j] = Factors[j] + LocalFactor
+    Forces = DivideVectorList(Forces, Factors)
+
+    for i in range(len(P)):
+        P[i] = rs.PointAdd(P[i], Forces[i])
+        dTranslation = dTranslation + rs.VectorLength(Forces[i])
+
+    srf_N = rs.SurfacePointCount(idSrf)
+    srf_K = rs.SurfaceKnots(idSrf)
+    srf_W = rs.SurfaceWeights(idSrf)
+    srf_D = []
+    srf_D.append(rs.SurfaceDegree(idSrf, 0))
+    srf_D.append(rs.SurfaceDegree(idSrf, 1))
+
+    FS = rs.AddNurbsSurface(srf_N, P, srf_K[0], srf_K[1], srf_D, srf_W)
+    return (FS, Samples, dTranslation, dProximity)
+```
+
+|行 |描述|
+|------|------|
+|1|这又是一个返回多个数值的函数的例子。当这个函数完成后， *dTranslation* 将包含一个数字，代表所有控制点的总移动量， *dProximity* 将包含总误差(曲面和样本点之间的所有距离之和)。由于算法不太可能马上产生一个完美的拟合，我们需要以某种方式跟踪某个迭代的效果。如果发现函数移动控制点的和很小就可以终止程序了，因为我们知道已经达到了很高的精度。|
+|2...5| *P、G、N* 和 *S* 分别包含表面控制点(在{xyz}空间)、Greville点(在{uv}空间)、每个Greville点的法向量和所有拟合点坐标(在{uvw}空间)的列表。这些变量名可能很难记住，但它们短。|
+|6|这个函数在第104页已经讲过了。|
+|11|首先，对所有拟合点进行迭代。|
+|13|然后，对所有控制点进行迭代。|
+|14| *LocalDist* 是当前拟合点的投影与当前Greville点之间在{uv}空间的距离。|
+|15|这里限制距离为0.01，以防止一些极小的数字进入算法导致程序卡死。|
+|16|代入 *LocalDist* 到双曲线方程计算当前控制点和拟合点的扩散系数。|
+|17|*LocalForce* 是一个向量，它暂存由当前拟合点引起的移动量。这个向量与法向量指向相同，但是向量大小(长度)=偏差大小X扩散系数(上一行计算结果)。|
+|18|每个控制点都会受到所有拟合点的影响，意味着每个控制点都会在许多不同方向上受到索引。我们需要把所有的移动结合起来，得到一个最终的移动量。因为只有最终移动向量有用，所以在计算向量时就简单的把它们加在一起。|
+|19|我们还需要记录下沿每个向量的扩散系数，后面需要分割它，并单位化(105页讨论过)。|
+|20|向量除以系数(104页有函数解释)。|
+|22...24|将计算出的移动量应用于曲面控制点{xyx}坐标。|
+|26...33|我们不在原地改变原曲面，而是新建一个曲面。为了做到这一点，需要收集原来所有的NURBS数据，比如节点向量、阶数、权重等等。|
+
+上面的程序没有接口代码，因此它交不是顶层程序。我们需要用户选择一个曲面，一些点，然后多次运行FitSurface()函数，直到拟合效果让人满意：
+
+```Python  linenums='1'
+def DistributedSurfaceFitter():
+    idSrf = rs.GetObject("Surface to fit", 8, True, True)
+    if idSrf is None: return
+
+    pts = rs.GetPointCoordinates("Points to fit to", False)
+    if pts is None: return
+
+    dTrans = 0
+    dProx = 0
+
+    for N in range(1, 1000):
+        rs.EnableRedraw(False)
+        nSrf, pts, dTrans, dProx = FitSurface(idSrf, pts, dTrans, dProx)
+        rs.DeleteObject(idSrf)
+        rs.EnableRedraw(True)
+        rs.Prompt("Translation =" + str(round(dTrans, 2)) + "Deviation =" + str(round(dProx, 2)))
+        if dTrans < 0.1 or dProx < 0.01: break
+        idSrf = nSrf
+
+    print("Final deviation = " + str(round(dProx, 4)))
+```
+
+|行 |描述|
+|------|------|
+|11|这里没有使用无限循环( *while* )，而是将拟合迭代次数限制在1000次。这应该是绰绰有余了，如果到那时还没有找到一个好的解决方案，那么也就不太可能找到。变量N在编程俚语中被称为 "Chicken int"。"Int "是 "Integer "的缩写，"Chicken "是因为你害怕循环会一直持续下去。|
+|12...15|禁用视窗绘制，创建新曲面，删除旧曲面，并重新开启视窗绘制。|
+|16|告知用户当前迭代的效率。|
+|17|如果总的转换量可以忽略不计，我们不妨放弃，因为继续运行程序不会使它更好。如果总偏差小于0.01，拟合效果就很好了，我们应该退出程序。|
+
+到目前为止，所有用来说明这个算法的图和曲线都是2维的，而且只显示了简化的情况。本页用3维空间图显示一个程序运行的进展情况。从一个包含30 × 30个控制点的矩形、平面开始，在它上方和下方总共有36个拟合点。算法持续运行，直到总偏差小于0.01单位。
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-iterations.png" width="100%"></div>
+
+<div STYLE="page-break-after: always;"></div>
+
+<!-- !!!BOOKMARK!!! -->
+
+### 8.9.2 曲面的曲率
+
+<div style="float: left; clear: both;" align="left">
+<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-curvecurvaturelogic2.png" width=255 align=right hspace="5" vspace="5"/> 
+我们很容易感受到曲线的曲率。只需将一个圆尽可能地套在一条短的曲线上(这叫作密切圆)，这个圆的半径和圆心就是你需要的局部曲率。前面已经讨论过这个问题。<BR><BR>
+
+点{A; B; C; D; E}都存在特定的曲率。各个圆的半径是曲率的度量标准(事实上，曲率是半径的倒数)，而向量的方向是曲线平面的指示。
+</div>
+
+如果把曲线缩放到原来的50%，曲率圆也会变成一半大，曲率值增加一倍。点{C}的特殊之处在于它的曲率为零(即密切圆的半径为无穷大)。曲率值由负变正的点被称为拐点。如果我们有多个相邻的拐点，我们遇到了曲线中的一个线性段。
+
+曲面曲率不是那么简单的。首先，在曲面和实体的情况下，有多种曲率的定义，哪一种最适合我们，取决于特定算法。在许多制造和设计项目中，曲率是一个相当重要的概念，这就是为什么我们要深入的了解它的原因。在下一节之前，我不会涉及任何编程代码，所以如果你已经熟悉了曲率理论，可以跳到第111页。
+
+评估曲面曲率最明显的方法是用直线切开，穿过我们感兴趣的{P}点，然后简单地继续使用曲线曲率的算法。但是，如前所述，曲面缺乏方向性，因此我们根本不清楚应该从哪个角度来切开曲面(我们可以使用{u}和{v}方向，但这些不一定会给你有意义的答案)。不过，这种方法还是时常有用，它的名字叫法线曲率。正如你在下面的插图中所看到的，通过{P}点的截面有无数个，因此"{P}点的法线曲率是多少？"这个问题的答案也有无数个。
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-curvatures.png" width="90%"></div>
+
+但是在特定情况下，这个问题只有一个答案。"{P}处最高的法线曲率是多少？"。当观察所有可能的法线曲率的完整集合时，你会发现曲面在一个方向上大部分是平的，在另一个方向上大部分是弯曲的。因此这两个方向是特殊的，它们构成了曲面的主曲率。这两个主曲率方向总是互相垂直的，因此它们完全与{u}和{v}方向无关，即便({u}和{v}也不需要总是垂直)。
+
+事实上情况更复杂，因为可能有多个方向产生最低或最高的法线曲率，所以在某些情况下需要一些额外的魔法才能得到结果。例如，球体在所有方向上都有相同的曲率，所以我们根本无法定义主曲率方向。
+
+事情并没有结束。从所有法线曲率的集合开始，我们提取了主曲率的定义。主曲率总是成对出现(最小和最大)，它们既是数值也是方向。我们往往只对一个曲面的弯曲程度感兴趣，而不是特别关注哪个方向。其中一个原因是，主曲率方向在整个曲面上的演进并不是平滑的：
+
+<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-surfacek-tensor-field.png" width="80%"></div>
+
+左图显示了最大主曲率的方向。可以看到的，表面上有一些阈值线，在这些阈值线上，主方向突然发生了90º的转折。整个画面是混乱的，过于复杂。可以使用标准的**张量平滑算法**来平均每个方向和它相邻的方向，从而得到右图，它提供的分布信息更加有用(例如用于纹理或图案的目的)，但在图中矢量已经失去了意义。这就是为什么主曲率方向在日常使用中并不是一个非常有用的曲面属性的原因。
+
+前面提到的其他曲面曲率定义不涉及方向，只涉及曲率的标量值：密切圆半径。在曲面曲率的定义中，最有名的是高斯曲率和平均曲率。这两种定义在_CurvatureAnalysis指令和RhinoScriptSyntax模块中都可以找到。
+
+伟大的德国数学家卡尔-弗里德里希-高斯(Carl Friedrich Gauss)发现，将主曲率半径相乘，可以得到另一个对某些目的来说更有用的曲率指标：
+
+$$K_{Gauss}=K_{min} \cdot K_{max}$$
+
+其中K<sub>Gauss</sub>是高斯曲率，K<sub>min</sub>和K<sub>max</sub>是主曲率。假设你完全理解乘法的行为，我们来确定一些具体的情况
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-curvature-directions.png" width="90%"></div>
+
+由此我们可以得出结论，高斯曲率处处为0的曲面可以展开成一个平面，高斯曲率处处为负的表面都可以通过拉伸弹性布而制成。
+
+另一个重要的曲率定义是平均曲率，本质上是主曲率之和的平均值：
+
+$$K_{Mean}=\frac{K_{min} + K_{max}}{2}$$
+
+如你所知，求和的结果与乘法截然不同，平均曲率可以用来分析曲面的不同性质，因为它有不同的特殊情况。如果最小主曲率和最大主曲率的幅值相等，但符号相反，则两者的平均值为0。一个平均曲率为零的曲面不仅仅是一面凹一面凸，它是一种非常特殊的曲面，被称为 *最小* 或 *零能量* 曲面。它是两边大气压力相等的肥皂膜的自然形状。这种曲面在拉伸结构领域非常重要，因为它们在整个曲面上平均分散应力，是有坚固结构的几何体。
+
+### 8.9.3 向量和张量空间
+
+在上一页，我一口气提到了 "张量"、"平滑 "和 "算法 "这3个词。尽管你很可能知道后两个词的意思，但它们3组合起来就不太能理解了。张量平滑是一个有用的工具，所以我将详细讨论这个具体的案例。请记住，接下来的大部分脚本是通用的，可以很容易地针对不同类别的张量进行调整。首先讲一些背景信息...
+
+想象一个没有奇点的曲面，比如一个环形或一个平面，没有堆积的控制点。这个曲面上的每个点都有一个与之相关的法向量。所有这些法向量的集合就是一个向量空间的例子。向量空间是某个区间上的连续的向量集合。所有表面法向量的集合是一个二维向量空间(有时被称为向量场)，就像所有曲线切线的集合是一个一维向量空间，湍流体积中所有空气压力成分随时间变化的集合是一个四维向量空间，等等。
+
+当说到"向量"时，我们通常是指小箭头：在某种空间背景下表示方向和大小的数字列表。当情况更复杂时，我们开始使用 "张量 "来代替向量。张量是一个更通用的术语，它的隐含意义更少，因此在许多科学文章表述中更受欢迎。
+
+<div style="float: left; clear: both;" align="left">
+<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-tensorspace2.png" width=375 align=right hspace="5" vspace="5"/> 
+例如，你身体表面是一个二维张量空间(嵌入四维时空)，它有许多从一处到另一处平衡变化的属性，比如:毛发、肤色、湿润度、敏感度、雀斑度和气味等等。如果在一组采样点测量所有这些属性，我们就可以使用内推和外推算法根据结果数据，对你身体上的所有其他点进行有根据的猜测。我们甚至可以通过使用一些专用的符号集对这样的张量空间进行图形化表示。 <BR><BR>
+
+我们可以通过将皮肤的湿润度与盒子颜色中的蓝色量联系起来，将雀斑度与绿色联系起来，或与盒子的宽度联系起来，或与旋转角度联系起来，从而实现可视化。
+</div>
+
+所有这些属性共同构成了张量类。由于我们可以选择包含和不包含的属性，所以张量本质上是你想要的任何东西。让我们更详细地分析一下上一页提到的张量类，它是一个相当简单的张量类...
+
+我创建了一个表面上最大主曲率方向的向量场(以一定的自定义分辨率采样)，然后我把它们平滑化，以摆脱方向上的突然跳跃。对两个向量进行平均化很容易，但在保持结果与曲面相切的情况下对它们进行平均化就有点难了。
+
+在这种特殊情况下，我们最终得到一个二维张量空间，其中张量类T由一个向量和一个切面组成：
+
+<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-tensormatrixes.png" width="75%"></div>
+
+由于在{u}和{v}方向上以规则的参数间隔对曲面进行采样，我们最终得到了一个张量矩阵(一个行和列的表格)。可以用一个二维列表来表示它。程序中需要两个这样的列表，因为我们需要存储两个独立的数据实体：向量和平面。
+
+<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-smoothing.png" width="90%"></div>
+
+平滑迭代程序的逐步演算，清楚地表明了张量平滑算法的有用性：它可以消除任何连续张量空间中的奇点和折痕。
+
+这里我不打算写出完整的程序，只突出了关键的功能。可以在程序文件夹中找到完整的程序(包括注释)。
+
+```Python  linenums='1'
+def SurfaceTensorField(Nu, Nv):
+    idSrf = rs.GetSurfaceObject()[0]
+    uDomain = rs.SurfaceDomain(idSrf, 0)
+    vDomain = rs.SurfaceDomain(idSrf, 1)
+
+    T = []
+    K = []
+    for i in range(Nu):
+        T.append([])
+        K.append([])
+        u = uDomain[0] + (i/Nu)*(uDomain[1] - uDomain[0])
+        for j in  range(Nv):
+            v = vDomain[0] + (j/Nv)*(vDomain[1] - vDomain[0])
+            T[i].append(rs.SurfaceFrame(idSrf,(u,v)))
+            localCurvature = rs.SurfaceCurvature(idSrf,(u,v))
+            if localCurvature is None:
+                K[i].append(T[i][j][1])
+            else:
+                K[i].append(rs.SurfaceCurvature(idSrf,(u,v))[3])
+    return SmoothTensorField(T,K)
+```
+
+|行 |描述|
+|------|------|
+|1|这个子函数需要创建定义张量类的2个列表。一个向量列表，一个平面列表。|
+|9...10|在进行每一次$N_u$迭代的开始，给T和K分别嵌套一个子列表，用于保存$N_v$范围内所有的迭代值。|
+|11|这条等式看起来很吓人，但这是一个非常标准的逻辑片段。这是一个常见的问题：如何将一个数字从一个尺度映射到另一个。我们知道用户想要多少个样本(某个整数)，我们知道曲面域的极限(两个双精度实数)。我们需要弄清楚曲面域的哪个参数与第N个样本数相匹配。观察下图以了解问题的示意图：<br><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-remapnumberscales.png" width="80%" float="right"><br>我们的样本数(最上面的一条)从{A}到{B}，而面的参数域值包括{C}和{D}之间的所有数值。我们需要弄清楚如何将{A\~B}范围内的数字映射到{C\~D}范围。在我们的例子中，需要一个线性映射函数，意味着{A}和{B}之间的数值会被重新映射到{C}和{D}之间的另一个数值。<br>第11行(和第13行)包含了这样一个映射算法的实现。我不打算详细说明它是如何工作的，如果想完全理解这个程序，你就必须自己去研究。|
+|14|获取{u,v}处的曲面框架。这是我们张量类的一部分。|
+|15|获取{u,v}处的所有曲面曲率信息。这包括主曲率、平均曲率和高斯曲率的值和向量。|
+|17|如果曲面在{u,v}处没有曲率，则使用框架的X轴向量代替。|
+|19|如果曲面在{u,v}处有一个有效的曲率，我们可以使用主曲率方向，该曲率方向存储在曲率数据阵列的第4个元素中。|
+
+下面的函数接收两个列表，原地修改原始列表。返回值(两个列表)只是表面上的装饰性的。这个函数是一个典型的均值滤波算法。它使用一个3×3的模糊矩阵将每个张量的值与所有相邻的张量进行平均。
+
+
+```Python  linenums='1'
+def SmoothTensorField(T, K):
+    SmoothTensorField = False
+    Ub1 = len(T[1])
+    Ub2 = len(T[2])
+    for i in range(Ub1):
+        for j in range(Ub2):
+            k_tot = (0,0,0)
+            for x in range(i-1,i+1):
+                xm = (x+Ub1) % Ub1
+                for y in range(j-1, j+1):
+                    ym = (y+Ub2) % Ub2
+                    k_tot = rs.VectorAdd(k_tot, K[xm][ym])
+            k_dir = rs.PlaneClosestPoint(T[i][j], rs.VectorAdd(T[i][j][0], k_tot))
+            k_tot = rs.VectorSubtract(k_dir, T[i][j][0])
+            k_tot = rs.VectorUnitize(k_tot)
+            K[i].append(k_tot)
+            line = rs.AddLine(T[i][j][0],T[i][j][0]+K[i][j])
+    return T, K
+```
+
+|行 |描述|
+|------|------|
+|5...6|由于我们的张量空间是二维的，我们需要两个嵌套循环来迭代整个集合。|
+|8...11|现在我们正在单独处理每个张量(前两个循环)，我们也需要处理每个张量的邻居(第二组嵌套循环)。我们可以用一个简单的表格来形象地说明手头的问题。<br>绿色区域是整个二维张量空间的一角，深绿色的线划定了每个单独的张量。深灰色的正方形是我们目前正在处理的张量。它位于{u,v}。它周围的八个白色方块是相邻的张量，它们将被用来模糊{u,v}处的张量。<br>我们需要再做两个嵌套循环，在这个3×3矩阵的9个坐标上进行迭代。我们还需要确保这9个坐标实际上都在二维张量空间上，而不是在边缘上摇摆不定。我们可以使用Mod运算符来确保一个数字被 "重新映射 "为属于某个数字域。<br><DIV><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-boxblurmatrix3x3.png" width="30%" align=center></DIV>|
+|12|一旦我们有了张量的 *mx* 和 *my* 坐标，我们就可以把它加到 *k_tot* 的求和向量中。|
+|13...16|确保向量被投射回切平面并被单位化。|
+
+------
+
+## 下一步
+
+恭喜，你完成了Python 101入门.
