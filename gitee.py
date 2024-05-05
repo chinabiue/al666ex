@@ -3,7 +3,7 @@ import time
 
 # 请输入你的用户名/密码/及gitee pages网址
 USERNAME = 'chinabiue@aliyun.com'
-PASSWORD = '19217560911q@c'
+PASSWORD = 'xxxxxxxxxxxxxx'
 GITEE_PAGES_URL = 'https://gitee.com/al666ex/al666ex/pages'
 
 
