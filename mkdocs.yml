@@ -2,7 +2,7 @@
 site_name: Alex The Creator
 site_description: >-
   All the meaningless python, rhino, grasshopper
-site_url: https://al666ex.gitee.io/
+site_url: https://al666ex.pages.dev/
 
 # Coyright
 copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
@@ -46,7 +46,7 @@ theme:
   favicon: img/favicon.ico
   icon:
     annotation: material/arrow-right-circle 
-  language: zh
+  language: en
 edit_uri: ''
 plugins:
   - blog:
@@ -155,7 +155,7 @@ extra:
             Thanks for your feedback! 你开心就好！
   social:
     - icon: fontawesome/brands/pied-piper-alt
-      link: https://al666ex.gitee.io/
+      link: https://al666ex.pages.dev/
       name: Alex The Creator
     - icon: fontawesome/solid/paper-plane
       link: mailto:chinabiue@aliyun.com
