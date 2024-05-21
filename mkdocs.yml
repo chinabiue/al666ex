@@ -3,7 +3,6 @@ site_name: Alex The Creator
 site_description: >-
   All the meaningless python, rhino, grasshopper
 site_url: https://al666ex.pages.dev/
-
 # Coyright
 copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
 
@@ -14,40 +13,40 @@ repo_url: https://gitee.com/al666ex/al666ex
 # Conifguration
 theme:
   name: material
-  custom_dir: overrides 
+  custom_dir: overrides
   palette:
-  - media: '(prefers-color-scheme: light)'
-    scheme: default
-    primary: teal
-    accent: amber
-    toggle:
-      icon: material/lightbulb
-      name: 关灯
-  - media: '(prefers-color-scheme: dark)'
-    scheme: slate
-    primary: teal
-    accent: amber
-    toggle:
-      icon: material/lightbulb-outline
-      name: 开灯
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/lightbulb
+        name: 关灯
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/lightbulb-outline
+        name: 开灯
   features:
-  - search.suggest
-  # - navigation.footer
-  - search.highlight
-  - content.tabs.link
-  - navigation.indexes
-  - content.footnote.tooltips
-  - content.tooltips
-  - navigation.path
-  - content.code.annotate
-  - content.code.copy
-  - navigation.tabs
+    - search.suggest
+    # - navigation.footer
+    - search.highlight
+    - content.tabs.link
+    - navigation.indexes
+    - content.footnote.tooltips
+    - content.tooltips
+    - navigation.path
+    - content.code.annotate
+    - content.code.copy
+    - navigation.tabs
   logo: img/favicon.ico
   favicon: img/favicon.ico
   icon:
-    annotation: material/arrow-right-circle 
+    annotation: material/arrow-right-circle
   language: en
-edit_uri: ''
+edit_uri: ""
 plugins:
   - blog:
       blog_toc: true
@@ -58,8 +57,8 @@ plugins:
       title: cmd
       buttons: macos
       prompt_literal_start:
-      - '$'
-  
+        - "$"
+
   # - mkdocstrings:
   #   handlers:
   #     python:
@@ -100,22 +99,22 @@ markdown_extensions:
       permalink: true
   - pymdownx.superfences:
       custom_fences:
-      - name: mermaid
-        class: mermaid
-        format: !!python/name:pymdownx.superfences.fence_code_format ''
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format ""
   - pymdownx.betterem:
   - pymdownx.blocks.details:
   - pymdownx.blocks.admonition:
       types:
-      - note
-      - info
-      - tip
-      - warning
-      - danger
-      - bug
-      - success
-      - question
-      - failure
+        - note
+        - info
+        - tip
+        - warning
+        - danger
+        - bug
+        - success
+        - question
+        - failure
   - pymdownx.blocks.tab:
       alternate_style: True
   - pymdownx.highlight:
@@ -139,7 +138,7 @@ extra:
   generator: false
   analytics:
     provider: google
-    property: G-T7FY07K96R
+    property: G-VQRYHY3Y8P
     feedback:
       title: 写得还行吗？
       ratings:
@@ -151,7 +150,7 @@ extra:
         - icon: material/heart-broken
           name: 本页不行
           data: 0
-          note: >- 
+          note: >-
             Thanks for your feedback! 你开心就好！
   social:
     - icon: fontawesome/brands/pied-piper-alt
@@ -162,12 +161,12 @@ extra:
       name: 42
 
 extra_javascript:
-- js/katex.js
-- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
-- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
-- js/custom.js
+  - js/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+  - js/custom.js
 
 extra_css:
-- https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
-- css/custom.css
-- css/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+  - css/custom.css
+  - css/extra.css
