@@ -1,5 +1,5 @@
 ---
-title: 第一章 介绍 
+title: 第四章 管理、模型和数据库 
 date: 2024-05-04 10:57:42
 categories: 
     - django

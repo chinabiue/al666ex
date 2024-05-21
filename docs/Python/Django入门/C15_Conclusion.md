@@ -1,5 +1,5 @@
 ---
-title: 第五章 静态文件
+title: 第十五章 总结
 date: 2024-05-04 10:57:42
 categories: 
     - django

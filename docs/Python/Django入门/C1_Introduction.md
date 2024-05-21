@@ -25,7 +25,7 @@ categories:
 - [第七章 用户账户](C7_User_account.md)
 - [第八章 自定义用户模型](C8_Custom_user_model.md)
 - [第九章 用户认证](C9_User_authentication.md)
-- [第十章 Bootstrap](C10_BootStrap.md)
+- [第十章 Bootstrap](C10_Bootstrap.md)
 - [第十一章 密码更改与重置](C11_Password_change_and_reset.md)
 - [第十二章 邮件](C12_Email.md)
 - [第十三章 工作列表应用](C13_The_job_listing_app.md)

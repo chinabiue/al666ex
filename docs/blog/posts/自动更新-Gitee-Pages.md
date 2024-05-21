@@ -4,7 +4,9 @@ tags: python
 categories: [coding]
 authors:
     - Alex
-date: 2022-01-09 10:40:26
+date: 
+    created: 2022-01-09 10:40:26
+    updated: 2024-05-05 17:03:42
 ---
 [原文地址](https://kaffa.im/update-gitee-pages-with-playwright.html)
 /// info
@@ -42,3 +44,11 @@ page.wait_for_selector() 这一句始终没有找到一个好的条件来结束�
 {!py/gitee.py!}
 ```
 
+/// warning | Update
+ 2024.05.01 在国际劳动节这天，所有gitee pages访问下线。
+///
+转至Cloudflare部署，不需要自己再写程序自动部署至gitee。
+
+直接推送至github, 然后由Cloudflare自动部署至xxx.pages.dev。比以前更方便了。
+
+部署很简单，参考[Cloudflare Pages](https://pages.cloudflare.com/)。
