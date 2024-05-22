@@ -51,7 +51,7 @@ plugins:
   - blog:
       blog_toc: true
       categories_toc: true
-      archive_toc: true
+      # archive_toc: true
   - search: null
   - termynal:
       title: cmd

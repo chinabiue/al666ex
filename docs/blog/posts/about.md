@@ -16,7 +16,7 @@ $ Southernplayalisticadillacfunkymuzik
 :simple-mailgun: __[Mail](mailto:chinabiue@aliyun.com)__
 { .card }
 
-:fontawesome-brands-internet-explorer: __[Website](https://al666ex.gitee.io/)__
+:fontawesome-brands-internet-explorer: __[Website](https://al666ex.pages.dev/)__
 { .card }
 
 :simple-materialformkdocs: __[Material for MKDocs](https://squidfunk.github.io/mkdocs-material/)__

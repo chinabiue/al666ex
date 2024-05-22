@@ -6,15 +6,15 @@ hide:
 ---
 There are lots of interesting things that I want to learn.
 === "✨✨Blog✨✨"
-    [**This is mainly a blog site with some documentation.**](https://al666ex.gitee.io/blog/)<br>
+    [**This is mainly a blog site with some documentation.**](https://al666ex.pages.dev/blog/)<br>
     <img align=center  width="90%" src="\img\dddmw.jpg"></img>
 
 === "🐍Python"
-    [Python](https://al666ex.gitee.io/Python/) is very interesting!<br>
+    [Python](https://al666ex.pages.dev/Python/) is very interesting!<br>
     <img align=center  width="39%" src="\img\python.jpg"></img>
 
 === "🦏Rhino"
-    [Rhino](https://al666ex.gitee.io/Rhino/) is fantasticly interesting!<br>
+    [Rhino](https://al666ex.pages.dev/Rhino/) is fantasticly interesting!<br>
     <img align=center  width="29%" src="\img\rhino.jpg"></img>
 
 === "🕷Data Structure"
