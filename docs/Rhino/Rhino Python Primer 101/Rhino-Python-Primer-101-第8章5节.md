@@ -10,7 +10,7 @@ authors:
 
 在Rhino中平面并不是真正的物体，它的功能主要是用来在3D世界空间定义坐标系。实际上，最好把平面想象成向量，它们只是数学结构而已。虽然在Rhino内部平面是用参数等式定义的，我发现把它当成一组轴来理解更好:
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-planedefinition.png" width="45%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-planedefinition.png" width="45%"></div>
 
 平面由包含1个点和3个向量的数组组成，点构成平面的原点，3个向量代表3个轴。平面的定义有一些规则。因此，不是所有由1个点和3个向量的组合都是平面。如果使用RhinoScriptSyntax平面方法创建平面，你不会担心这一点，因为程序会处理好所有一切。平面的规则如下：
 
@@ -36,7 +36,7 @@ rs.AddPlaneSurface(arrPlane, dX, dY)
 ```
 <!--more-->
 <div style="float: left; clear: both;" align="left">
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-planecreation.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-planecreation.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
 你会发现所有rhinoscriptsyntax模块中需要平面定义的方法都要确保平面规则得到满足，不管你定义的输入有多不充分。
 
 右边图片展示了11行rs.AddPlaneSurface()调用生成的红色平面，而12行rs.AddPlaneSurface()的调用生成的黄色平面，它的尺寸等于你选择的原点到轴点的距离。
@@ -67,7 +67,7 @@ rs.EnableRedraw(True)
 ```
 框架就是用来指示几何方向的平面。曲线、曲面和有浮凸结构的网格都有框架指示其方向，对曲线来说是切线和曲率，对曲面和网络来说是[u]和[v]方向。上面的例子简单的在给定曲面的[u]和[v]方向迭代，在所有经过的uv方向添加平面框架。
 
-<div align=right><img width=325 src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primersurfaceframes.png"></div>
+<div align=right><img width=325 src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primersurfaceframes.png"></div>
 
 第5行和第6行用于确定平面在u和v方向的域，从域的值里我们得到步进值。
 

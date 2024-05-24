@@ -83,7 +83,7 @@ npp_close $(add)
 npp_open $(add)
 ```
 然后，依次点击菜单`插件(P)` -  `NppExec` - `Advanced Options...`按以下步骤设置：
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/nppexec.png)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/nppexec.png)
 最后依次点击菜单 `宏(M)` -  `管理快捷键...` - `插件命令`，找到刚才设置的命令，给它设置一个快捷键，比如ALT+F
 #### 2.3 使用
 写好python代码，按下快捷键ALT+F，就可以格式化代码了，至少比自己排版的代码强很多，好看，快速。

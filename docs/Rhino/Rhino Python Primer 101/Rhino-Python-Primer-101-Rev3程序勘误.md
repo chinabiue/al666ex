@@ -44,7 +44,7 @@ _SelNone
 -_Sweep1 _SelName RailPolygon _SelName ProfilePolygon _Enter _Enter _Closed=Yes Enter
 ```
 直接运行会弹出个窗口，然后要你选择，无论你怎么选最后都生成不了书上这玩意。对新手极不友好，很多人就放弃了。书的作者可能，就完全没运行过自己写的这段宏，还不如不贴呢，打击了多少人的积极性。
-<div align=center><img width="50%" src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/hexagonaltorus.png"></div>
+<div align=center><img width="50%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/hexagonaltorus.png"></div>
 问题在哪呢？我来给出答案：问题在最后一行命令有巨大问题。
 
 `-_Sweep1 _SelName RailPolygon _SelName ProfilePolygon _Enter _Enter _Closed=Yes Enter`
@@ -171,7 +171,7 @@ def myfavoritethings():
 ```
 
 第35页，左边的程序并不会产生右图的结果。下面这个程序能生成比较像右边图。
-<div align=center><img width="60%" src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/sin_cos.png"></div>
+<div align=center><img width="60%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/sin_cos.png"></div>
 
 ```python
 import rhinoscriptsyntax as rs

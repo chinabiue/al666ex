@@ -12,7 +12,7 @@ date: 2022-02-19 13:33:40
 本章要说的不是 Nurbs 曲面(这应该是 nurbs 曲线之后的下一个逻辑步骤)，而是网格。我将借这个机会向你介绍一个完全不同类别的几何体，官方名称是多边形网格，它代表了一种完全不同的造型方法。
 
 网格不像NURB把曲面当做矩形NURBS方块的变形来处理，而是使用局部定义，这意味着一个单独的网格曲面可以有任何它想要的拓扑结构。网格面甚至可以是不相连的浮动面的复合体，这在Rhino的NURBS曲面上是绝对不可能的。因为网格是局部定义的，也可以直接在网格格式中存储更多的信息，如颜色、纹理坐标和法线。下面这个诱人的图片显示了我们可以通过RhinoScriptSyntax访问的本地属性。这些属性大多是可选或有默认值的。唯一必要的只有顶点和面。
-<div align="center"><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshtopology.png" width="80%"/></div>
+<div align="center"><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshtopology.png" width="80%"/></div>
 
 了解网格相对于其他曲面范式的优缺点很重要，这样你就可以对某项任务使用哪一种曲面做出明智的决定。网格和NURBS之间的大多数区别是不言而喻的，这是从它们的定义方式自然而形成的区别。例如，你可以从网格中删除任何数量的多边形，剩下的对象仍然有效，但是你却不能在不破坏NURBS几何形状的情况下删除结点。不过，有些需要思考的点直接从理论是看不出来的。
 <!--more-->
@@ -26,13 +26,13 @@ date: 2022-02-19 13:33:40
 
 根据MathWorld.com的说法，拓扑学是 " *对通过物体的变形、扭曲和拉伸而保留下来的属性的数学研究* "。换句话说，拓扑学不关心大小、形状或气味，它只关心物体规则的几何属性，例如 "它有多少个洞？"、"有多少条裸边？"以及 "我如何从巴黎到里昂而不经过任何收费站？"。拓扑学领域的知识部分是常识性的（每个人都直观地了解基本知识），部分是抽象而难以理解的。幸运的是，我们在这里只需要面对直觉的部分。
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-topology.png" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-topology.png" width="80%"></div>
 
 如果看一下上面的图片，你会看到一些在拓扑上相同（除了{E}）但在几何上不同的面。你可以弯曲{A}，然后得到{B}的形状：你所要做的就是调整一些顶点的位置。然后，如果进一步弯曲它，你会得到{C}和最终的{D}，在图D，右边的边缘已经被弯曲到触及曲面另一侧的边缘。直到你把这些边合并起来，才会得到形状{E}，这个形状突然改变了它的几何本质，也就是说，它从一个有四条边的形状变成了一个只有两条边的形状（而且这两条剩余的边现在也是闭合的环）。请注意，形状{D}和{E}在几何上是相同的，这也许有点令人惊讶。
 
 网格对象的顶点是一个三维点的坐标列表。它们可以位于空间的任何位置，并控制网格的大小和形状。另一方面，面不包含任何坐标数据，它们只指示顶点的连接方式：
 
-<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-connected.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-connected.png" width="100%"></div>
 
 上面是一个非常简单的网格，有十六个顶点和九个面。像 *_Scale* 、 *_Move* 和 *_Bend* 这样的命令只影响顶点列表，像 *_TriangulateMesh* 和 *_SwapMeshEdge* 这样的命令只影响面列表，像 *_ReduceMesh* 和 *_MeshTrim* 这样的命令同时影响两个列表。请注意，最后一个面{*I*}的角是以顺时针方式定义的，而其他所有的面都是逆时针定义的。虽然这不会造成几何上的差异，但它确实会影响到网格法线的计算，一般来说，我们应该避免创建顺时针/逆时针不一致的网格。
 
@@ -41,7 +41,7 @@ date: 2022-02-19 13:33:40
 $$f(x, y, \Theta, \Delta) = z$$
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshgraph_xy.png" width=375 align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshgraph_xy.png" width=375 align=right hspace="5" vspace="5"/>
 
 其中，用户可以使用变量 *x* 、 *y* 、 *Θ* 和 *Δ* 指定任何有效的数学函数。网格平面中的每个顶点都有一个唯一的 *x* 和 *y* 值的组合，可以通过自定义的函数来确定该顶点的 *z* 值（ *Θ* 和 *Δ* 是 *x* 和 *y* 的极坐标）。这意味着平面上的每个点{A}都有一个与之相关的坐标{B}，它与A的 *x* 和 *y* 分量相同，但不包括 *z* 分量。B点就是我们网格的顶点。<BR><BR>
 
@@ -62,17 +62,17 @@ def createmeshvertices(function, fdomain, resolution):
     return v
 ```
 
-|行 |描述|
-|------|------|
-|1|这个函数将成为最终程序的一部分。这是一个非常特殊的函数，它只是将嵌套循环的逻辑与同一程序中的其他函数(我们还没有写出这些函数，但由于我们知道它的工作流程，所以我们可以假装它已经可用)相结合。这个函数需要三个参数：<BR>1.一个字符串变量，包含函数{f(x,y,Θ,Δ)}的格式<BR>2.一个由四个双精度实数组成的数组，表示函数在x和y方向的域<BR>3.一个整数，告诉我们在每个方向要取多少个样本。|
-|2...3| *fDomain()* 参数有四个双精度实数，排列方式如下:<BR>(0) 最小x值&emsp;&emsp;&emsp;&emsp;(1) 最大x值<BR>(2) 最小y值&emsp;&emsp;&emsp;&emsp;(3) 最大y值<BR>我们可以很容易地访问这些值，但是由于x和y方向的步长涉及到很多数学计算，最好保存结算结果，这样我们就不用反复进行同样的计算。|
-|5|从x域的下限值开始，逐步穿过整个域，直到达到最大值。我们可以把这个循环称为行循环。|
-|6|从y域的下限值开始，逐步穿过整个域，直到达到最大值。我们可以把这个循环称为列循环。|
-|7|这里调用一个尚不存在的函数。不过，我认为这个函数名很直接，现在不需要进一步解释。|
-|8|将新顶点添加到 *V* 列表中。请注意，顶点是以一维列表的形式存储的，这使得在一个特定的( *行，列* )坐标上访问项目变得稍微麻烦了。|
+| 行    | 描述                                                                                                                                                                                                                                                                                                                                                                             |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1     | 这个函数将成为最终程序的一部分。这是一个非常特殊的函数，它只是将嵌套循环的逻辑与同一程序中的其他函数(我们还没有写出这些函数，但由于我们知道它的工作流程，所以我们可以假装它已经可用)相结合。这个函数需要三个参数：<BR>1.一个字符串变量，包含函数{f(x,y,Θ,Δ)}的格式<BR>2.一个由四个双精度实数组成的数组，表示函数在x和y方向的域<BR>3.一个整数，告诉我们在每个方向要取多少个样本。 |
+| 2...3 | *fDomain()* 参数有四个双精度实数，排列方式如下:<BR>(0) 最小x值&emsp;&emsp;&emsp;&emsp;(1) 最大x值<BR>(2) 最小y值&emsp;&emsp;&emsp;&emsp;(3) 最大y值<BR>我们可以很容易地访问这些值，但是由于x和y方向的步长涉及到很多数学计算，最好保存结算结果，这样我们就不用反复进行同样的计算。                                                                                                |
+| 5     | 从x域的下限值开始，逐步穿过整个域，直到达到最大值。我们可以把这个循环称为行循环。                                                                                                                                                                                                                                                                                                |
+| 6     | 从y域的下限值开始，逐步穿过整个域，直到达到最大值。我们可以把这个循环称为列循环。                                                                                                                                                                                                                                                                                                |
+| 7     | 这里调用一个尚不存在的函数。不过，我认为这个函数名很直接，现在不需要进一步解释。                                                                                                                                                                                                                                                                                                 |
+| 8     | 将新顶点添加到 *V* 列表中。请注意，顶点是以一维列表的形式存储的，这使得在一个特定的( *行，列* )坐标上访问项目变得稍微麻烦了。                                                                                                                                                                                                                                                    |
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshfacelogic.png" width=325 align=right hspace="5" vspace="5"/> 
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshfacelogic.png" width=325 align=right hspace="5" vspace="5"/> 
 一旦我们有了顶点，我们就可以创建连接它们的面列表。由于面列表是拓扑结构，我们的顶点在空间中的位置并不重要，重要的是它们的组织方式。右边的图片是我每次遇到网格面逻辑时都会画的网格示意图。该图显示了一个有12个顶点和6个四边形面的网格，它的顶点序列逻辑与上一页函数所创建的顶点列表相同。X和Y方向的顶点数量分别为4和3（N<sub>x</sub>=4，N<sub>y</sub>=3）。
 </div>
 
@@ -98,17 +98,17 @@ def createmeshfaces(resolution):
     return f
 ```
 
-|行 |描述|
-|------|------|
-|2...3|缓存{N<sub>x</sub>} 和 {N<sub>y</sub>} 值，程序里我们不允许在{X}和{y}方向有不同的值，所以它们是一样的。|
-|4|声明一个空列表以保存生成的面角点。|
-|5...6|两个嵌套循环用于遍历网格并为每一行/每一列组合定义一个面。也就是说，两个值*i*和*j*被用来定义每个面的A角的值。|
-|7|使用变量名称baseindex来代替没有意义的 "A"。这个值取决于*i*和*j*的值。*i*值决定了当前列的索引，*j*值表示当前的偏移量(行索引)。|
-|8|使用上述逻辑定义新的四边形面角点(以左下角为起点的逆时针4点)。|
+| 行    | 描述                                                                                                                          |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 2...3 | 缓存{N<sub>x</sub>} 和 {N<sub>y</sub>} 值，程序里我们不允许在{X}和{y}方向有不同的值，所以它们是一样的。                       |
+| 4     | 声明一个空列表以保存生成的面角点。                                                                                            |
+| 5...6 | 两个嵌套循环用于遍历网格并为每一行/每一列组合定义一个面。也就是说，两个值*i*和*j*被用来定义每个面的A角的值。                  |
+| 7     | 使用变量名称baseindex来代替没有意义的 "A"。这个值取决于*i*和*j*的值。*i*值决定了当前列的索引，*j*值表示当前的偏移量(行索引)。 |
+| 8     | 使用上述逻辑定义新的四边形面角点(以左下角为起点的逆时针4点)。                                                                 |
 
 当你为别人写工具时，写一个能用的工具通常是不够的。除了工作之外，一个程序还应该方便使用。它不应该让你输入会导致它崩溃的值（想想看，它根本就不应该崩溃），不应该花很长时间运行，应该提供合理的默认值。在这个程序中，用户必须输入一个可能非常复杂的函数，以及四个数值来定义{x}和{y}方向的数字域。这是一个相当大的输入量，而且有可能在程序的连续运行过程中需要做微小的调整。因此，记住最后一次使用的设置是很有意义的，这样它们就会成为下一次的默认值。在使用程序时，有许多存储持久性数据的方法，每一种都有自己的优势：
 
-<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-settings.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-settings.png" width="100%"></div>
 
 我们将使用 \*.txt 文件来存储数据，因为它只涉及很少的代码，而且在Rhino重启后仍然有效。 \*.txt 文件是文本文件，它以单一的格式存储字符串。
 
@@ -124,15 +124,15 @@ def SaveFunctionData(strFunction, fDomain, Resolution):
     file.close()
 ```
 
-|行 |描述|
-|------|------|
-|2|这是为这个程序编写的专用函数。参数包括它要存储的数据。open关键字创建将要修改的文件流。第一个参数指定一个没有路径的文件名，会把文件保存到程序所在的目录。第二个参数表示该文件流将执行写操作。|
-|3...8|将所有的设置依次写到文件中。我们将按照特定的顺序写入它们， *-strFunction，fDomain* 值0到3，以及 *Resolution* 。后面程序读取时使用同样的顺序。|
-|9|这个调用最终确定了对文件的修改，并关闭文件以进行其他操作。|
+| 行    | 描述                                                                                                                                                                                         |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2     | 这是为这个程序编写的专用函数。参数包括它要存储的数据。open关键字创建将要修改的文件流。第一个参数指定一个没有路径的文件名，会把文件保存到程序所在的目录。第二个参数表示该文件流将执行写操作。 |
+| 3...8 | 将所有的设置依次写到文件中。我们将按照特定的顺序写入它们， *-strFunction，fDomain* 值0到3，以及 *Resolution* 。后面程序读取时使用同样的顺序。                                                |
+| 9     | 这个调用最终确定了对文件的修改，并关闭文件以进行其他操作。                                                                                                                                   |
 
 \*.txt文件的内容应该看起来像这样：
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-inifile.png" width="90%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-inifile.png" width="90%"></div>
 
 从 \*.txt 文件中读取数据要稍微复杂一些，因为不能保证文件总是存在。事实上，在第一次运行这个程序时，设置文件还不存在，我们需要确保提供合理的默认值：
 
@@ -153,16 +153,16 @@ def loadfunctiondata():
     return function, domain, resolution
 ```
 
-|行 |描述|
-|------|------|
-|2...10|这个函数需要处理两种可能的情况，第一种是第一次被调用，第二种是所有后续的调用。如果是第一次调用， *"MeshSettings_XY.txt"* 文件并不存在，所以我们需要返回默认值，并在之后创建这个设置文件。在第3到第5行程序尝试访问 *"MeshSettings_XY.txt"* 文件，一旦失败， *try...except* 语句会把程序执行移到第11到第13行。|
-|3|显然，我们需要完全相同的文件名。如果该文件不存在，程序将抛出一个异常。不过不用担心。 *try...except* 语句将捕捉异常，并返回设定的默认值。|
-|4|从 \*.txt 文件中读取数据字符串。|
-|6...9|从 \*.txt 文件读取设置，按设置写入文件的顺序分配回各变量。|
-|11...13|如果抛出了一个异常，我们要返回一组默认值。默认值定义在这里。|
+| 行      | 描述                                                                                                                                                                                                                                                                                                         |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 2...10  | 这个函数需要处理两种可能的情况，第一种是第一次被调用，第二种是所有后续的调用。如果是第一次调用， *"MeshSettings_XY.txt"* 文件并不存在，所以我们需要返回默认值，并在之后创建这个设置文件。在第3到第5行程序尝试访问 *"MeshSettings_XY.txt"* 文件，一旦失败， *try...except* 语句会把程序执行移到第11到第13行。 |
+| 3       | 显然，我们需要完全相同的文件名。如果该文件不存在，程序将抛出一个异常。不过不用担心。 *try...except* 语句将捕捉异常，并返回设定的默认值。                                                                                                                                                                     |
+| 4       | 从 \*.txt 文件中读取数据字符串。                                                                                                                                                                                                                                                                             |
+| 6...9   | 从 \*.txt 文件读取设置，按设置写入文件的顺序分配回各变量。                                                                                                                                                                                                                                                   |
+| 11...13 | 如果抛出了一个异常，我们要返回一组默认值。默认值定义在这里。                                                                                                                                                                                                                                                 |
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-xyphidelta.png" width=280 align=right hspace="5" vspace="5"/> 
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-xyphidelta.png" width=280 align=right hspace="5" vspace="5"/> 
 
 现在已经处理了四个问题中的两个（网格拓扑结构，保存和加载持久性设置），是处理大问题的时候了。在 *CreateMeshVertices()* 运行过程中，我们调用了一个叫 *SolveEquation()* 的函数，尽管它还不存在。 *SolveEquation()* 必须对特定的{x,y}坐标用自定义的函数计算出一个{z}值，这我们以前没有做过。但要找到问题的答案非常容易。
 
@@ -177,7 +177,7 @@ def loadfunctiondata():
 
 例如，如果你试图计算 $\sqrt{-4.0}$ 的值，程序会以"无效的过程调用或参数"错误信息崩溃。 $\log\left(-4.0\right)$ 也是相同的情况。这些函数崩溃的原因是不存在请求值的答案。其他类型的数学问题也会存在，比如大数字。例如，计算 $10^{1000}$ 得到 "溢出 "错误，因为结果超出了双精度值的范围。另一个最普遍犯的错误是 "除以0 "。下表列出了在Python中发生的最常见的错误：
 
-<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-errorchart.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-errorchart.png" width="100%"></div>
 
 参见 [Python 的内置异常列表](http://docs.Python.org/release/3.1.3/library/exceptions.html#bltin-exceptions) 以获得完整的异常列表和对每个异常的描述。
 
@@ -249,22 +249,22 @@ def meshfunction_xy():
 
 默认的函数$\cos\left(\sqrt{x^2 + y^2}\right)$已经相当漂亮了，但这里还有一些其他函数可以玩玩：
 
-|数学公式 |Python公式|结果|
-|------|------|------|
-|$\cos\left(\sqrt{x^2 + y^2}\right)$|math.cos(math.sqrt(x * x + y * y))|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-b.png" width="100%">|
-|$\sin(x) + \sin(y)$|math.sin(x) + math.sin(y)|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-a.png" width="100%">|
-|$\sin(D + A)$|math.sin(D+A)|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-l.png" width="100%">|
-|$Atn\left(\sqrt{x^2 + y^2}\right)$|math.atan(x*x + y*y)<br>-or-<br>math.atan(D)|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-d.png" width="100%">|
-|$\sqrt{\|x\|} + \sin(y)^{16}$|math.sqrt(math.fabs(x))<BR>+math.pow(math.sin(y),16)|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-e.png" width="100%">|
-|$\sin\left(\sqrt{\min(x^2, y^2)}\right)$|math.sin(min(math.pow([x*x, y*y]),0.5))|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-f.png" width="100%">|
-|$\left[\sin(x) + \sin(y) + x + y\right]$|int(math.sin(x) + math.sin(y) + x + y)|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-g.png" width="100%">|
-|$\log\left(\sin(x) + \sin(y) + 2.01\right)$|math.log(math.sin(x)<BR>+math.sin(y)+2.01)|<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshxy-h.png" width="100%">|
+| 数学公式                                    | Python公式                                           | 结果                                                                                                   |
+| ------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| $\cos\left(\sqrt{x^2 + y^2}\right)$         | math.cos(math.sqrt(x * x + y * y))                   | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-b.png" width="100%"> |
+| $\sin(x) + \sin(y)$                         | math.sin(x) + math.sin(y)                            | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-a.png" width="100%"> |
+| $\sin(D + A)$                               | math.sin(D+A)                                        | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-l.png" width="100%"> |
+| $Atn\left(\sqrt{x^2 + y^2}\right)$          | math.atan(x*x + y*y)<br>-or-<br>math.atan(D)         | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-d.png" width="100%"> |
+| $\sqrt{\|x\|} + \sin(y)^{16}$               | math.sqrt(math.fabs(x))<BR>+math.pow(math.sin(y),16) | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-e.png" width="100%"> |
+| $\sin\left(\sqrt{\min(x^2, y^2)}\right)$    | math.sin(min(math.pow([x*x, y*y]),0.5))              | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-f.png" width="100%"> |
+| $\left[\sin(x) + \sin(y) + x + y\right]$    | int(math.sin(x) + math.sin(y) + x + y)               | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-g.png" width="100%"> |
+| $\log\left(\sin(x) + \sin(y) + 2.01\right)$ | math.log(math.sin(x)<BR>+math.sin(y)+2.01)           | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-h.png" width="100%"> |
 
 ### 8.8.2 形状 vs. 图像
 
 网格对象的顶点和面列表定义了它的形式（几何和拓扑结构），但网格也可以有局部显示属性。颜色和纹理坐标是其中的两个属性，我们可以通过RhinoScriptSyntax来控制。  颜色列表（通常被称为 "假色"）是一个可选的网格属性，它为网格中的每个顶点定义了单独的颜色。我所知道的Rhino指令中，唯一能产生网格假色数据的有分析指令 *(_DraftAngleAnalysis, _ThicknessAnalysis, _CurvatureAnalysis等等)* ，但不幸的是这些命令不允许输出分析网格的结果。在我们对假色网格做一些有用的事情之前，让我们先做一些简单的事情，比如给网格对象分配随机颜色：
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-meshfalsecolours.png" width="75%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshfalsecolours.png" width="75%"></div>
 
 ```Python linenums='1'
 import rhinoscriptsyntax as rs
@@ -286,18 +286,18 @@ def randommeshcolors():
 randommeshcolors()
 ```
 
-|行 |描述|
-|------|------|
-|7...11|False-Color数组是可选的，但如果要使用它，是有规则的。如果指定一个假色数组，必须确保它与顶点数组的元素数量相等。每个顶点都需要有一个颜色。还必须确保假色数组中的每个元素都代表一个有效颜色。在Rhino中，颜色被定义为整数，用于存储红色、绿色和蓝色通道。这些通道被定义为{0; 255}范围内的数字，它们被混合成一个更大的数字，每个通道都被分配了自己的位置。这样做的好处是，所有的颜色都只是数字，而不是更复杂的数据类型，但缺点是这些数字对人来说通常没有意义：<br><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-colortable.png" width="60%" float="right"><br><sup>1</sup> 最低的可能值<br><sup>2</sup> 最高的可能值。|
+| 行     | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 7...11 | False-Color数组是可选的，但如果要使用它，是有规则的。如果指定一个假色数组，必须确保它与顶点数组的元素数量相等。每个顶点都需要有一个颜色。还必须确保假色数组中的每个元素都代表一个有效颜色。在Rhino中，颜色被定义为整数，用于存储红色、绿色和蓝色通道。这些通道被定义为{0; 255}范围内的数字，它们被混合成一个更大的数字，每个通道都被分配了自己的位置。这样做的好处是，所有的颜色都只是数字，而不是更复杂的数据类型，但缺点是这些数字对人来说通常没有意义：<br><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-colortable.png" width="60%" float="right"><br><sup>1</sup> 最低的可能值<br><sup>2</sup> 最高的可能值。 |
 
 随机颜色很漂亮，但没什么用处。所有的Rhino分析指令都会评估某个几何局部属性(曲率、垂直度、相交距离等)，但没有一个会考虑到周围环境。假设我们要写一个程序来检查网格和(多边)曲面的接近程度。Rhino中没有任何工具可以做到这一点。所以这实际上将是一个有用的程序，另外我们将确保这个程序是完全模块化的，以便可以很容易地调整它来分析其他属性。
 
 我们需要一个函数，它的目的是生成一个数字数组(每个顶点一个)，以定义某种属性。这些数字会被转换为渐变颜色(最低的数字为红色，最高的数字为白色)，并作为假色数据应用到一个新的网格对象上。在我们的例子中，这个属性是指从某个顶点到(多边)曲面上最接近该顶点的点的距离:
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-boxcp.png" width="60%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-boxcp.png" width="60%"></div>
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-loggraph.png" width=260 align=right hspace="5" vspace="5"/> 
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-loggraph.png" width=260 align=right hspace="5" vspace="5"/> 
 
 网格上的顶点{A}在曲面上有一个与之相关的点{$A_{cp}$}，这两者之间的距离{$D_A$}是接近度的衡量标准。这个度量是线性的，也就是说，一个两倍远的顶点得到的接近度值是一倍远的两倍。线性分布由右图中的红线表示。实际上，使用对数尺度(绿线)更有直观意义，因为它在处理大范围数值时要好得多。想象一下，我们有一个网格，其排序后的接近值集合是这样的：
 
@@ -306,7 +306,7 @@ randommeshcolors()
 正如你所看到的，几乎所有的变化都在{0.0; 10.0}的范围内，只有一个值是超大的。现在，如果我们使用线性方法，除了最后一个会解析为白色，其他所有的接近值都会解析为红色。这不是一个有用的梯度。当用对数来计算所有的接近值时，会得到一个更自然的分布：
 </div>
 
-<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-gradienttable.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-gradienttable.png" width="100%"></div>
 
 只有一个问题，对数函数对0和1之间的输入返回负数。事实上，零的对数是负无穷大，这对接下来的所有数学计算都造成了破坏，因为无穷大远远超出了双精度实数的数字范围。而且，由于空间中两点之间的最小距离是零，我们不能只是直接计算对数而期望程序能正常运行。解决办法很简单，在计算对数之前，所有的距离值上加1.0，这样所有的结果都是漂亮的正数。
 
@@ -321,10 +321,10 @@ def DistanceTo(pt, id):
         return math.log10(d+1)
 ```
 
-|行 |描述|
-|------|------|
-|1...2| *VertexValueArray()* 函数为每个顶点创建一个数字，然后组成列表。我们给它的是网格顶点(一个三维点的数组)和用于接近分析的(多重)曲面的对象ID。这个函数没有大动作，它只是用 *DistanceTo()* 函数对点的列表进行迭代，并返回一个结果的列表。|
-|4...8| *DistanceTo()* 计算从点pt到点pt在曲面id上的投影间的距离。其中pt是点的三维坐标，id是一个(多重)曲面对象的标识符。它还进行了对数转换，所以返回值不是实际距离。|
+| 行    | 描述                                                                                                                                                                                                                                |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1...2 | *VertexValueArray()* 函数为每个顶点创建一个数字，然后组成列表。我们给它的是网格顶点(一个三维点的数组)和用于接近分析的(多重)曲面的对象ID。这个函数没有大动作，它只是用 *DistanceTo()* 函数对点的列表进行迭代，并返回一个结果的列表。 |
+| 4...8 | *DistanceTo()* 计算从点pt到点pt在曲面id上的投影间的距离。其中pt是点的三维坐标，id是一个(多重)曲面对象的标识符。它还进行了对数转换，所以返回值不是实际距离。                                                                         |
 
 下面是包含所有前端和色彩魔法的主函数：
 
@@ -353,10 +353,10 @@ def ProximityAnalysis():
     rs.DeleteObject(mesh_id)
 ```
 
-|行 |描述|
-|------|------|
-|1...3|原文import sys，实际并没有必要。因为后面给出的逻辑条件置换最大最小值根本不可能发生。|
-|15...16|找到列表中最大和最小的值。|
-|17|创建颜色列表。|
-|19|计算当前值在{红~白}梯度上的位置。|
-|20|根据 *proxFactor* 得出一个颜色。|
+| 行      | 描述                                                                                 |
+| ------- | ------------------------------------------------------------------------------------ |
+| 1...3   | 原文import sys，实际并没有必要。因为后面给出的逻辑条件置换最大最小值根本不可能发生。 |
+| 15...16 | 找到列表中最大和最小的值。                                                           |
+| 17      | 创建颜色列表。                                                                       |
+| 19      | 计算当前值在{红~白}梯度上的位置。                                                    |
+| 20      | 根据 *proxFactor* 得出一个颜色。                                                     |

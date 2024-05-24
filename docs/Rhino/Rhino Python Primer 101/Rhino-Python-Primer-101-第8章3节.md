@@ -13,7 +13,7 @@ categories: book
 
 3D空间，或者说$R^3$空间里的点，自然就有3个坐标，通常称为[x,y,z]。$R^2$空间里的点只有2个坐标，叫 [x,y]或者 [u,v]，取决于我们谈论的是什么样的2维空间。$R^1$空间里的点用1个单值表示。虽然我们倾向于认为1维点不算'点'，但是并没有数学上的差别；所有的点都适用同样的规则。1维点通常称为'参数'，用[t]或[p]表示。
 
-<div align=center><img width="90%" src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-rhinospaces.png"></div>
+<div align=center><img width="90%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-rhinospaces.png"></div>
 
 左边的图片展示的是$R^3$世界空间，连续并且无限。在这个空间，点的X坐标值是点向X轴(红实线)的投影(红点线)。在Rhino中，点始终以世界坐标指定。
 <!--more-->
@@ -59,7 +59,7 @@ if __name__=="__main__":
     main()
 ```
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-curveparameterspace.png" width="45%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curveparameterspace.png" width="45%"></div>
 
 虽然没有什么好理由，但是我们从最下面一个函数说起：
 
@@ -92,18 +92,18 @@ if __name__=="__main__":
 
 基于我们调用此函数次数非常多(添加每个点调用一次)，实际上把所有重型运算写在函数里并不明智。实际上我们只需要执行一次‘单位参数 + 实际参数’的开销，所以把它放到更高层的函数里去更有意义。但是这里程序执行得仍然很快，暂时没有必要去搞优化。
 
-|行     | 描述 |
-|------- | ----- |
-|14     |函数声明。|
-|15...16|获取曲线域并检查是否为*Null*。如果ID并不代表一条合适的曲线物体，获得的曲线域将会是*Null*。 *rs.CurveDomain()* 方法会返回一个2个double型的数组，代表曲线上的最小和最大的t参数。|
-|18     |把R1坐标的单位参数转换成实际域坐标。|
-|19     |在指定参数处评估曲线。rs.EvaluateCurve()接收一个$R^1$坐标，返回一个$R^3$坐标。|
-|21     |添加默认参数点。|
-|22     |设置自定颜色。 这会自动改变物体颜色源属性。|
+| 行      | 描述                                                                                                                                                                           |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 14      | 函数声明。                                                                                                                                                                     |
+| 15...16 | 获取曲线域并检查是否为*Null*。如果ID并不代表一条合适的曲线物体，获得的曲线域将会是*Null*。 *rs.CurveDomain()* 方法会返回一个2个double型的数组，代表曲线上的最小和最大的t参数。 |
+| 18      | 把R1坐标的单位参数转换成实际域坐标。                                                                                                                                           |
+| 19      | 在指定参数处评估曲线。rs.EvaluateCurve()接收一个$R^1$坐标，返回一个$R^3$坐标。                                                                                                 |
+| 21      | 添加默认参数点。                                                                                                                                                               |
+| 22      | 设置自定颜色。 这会自动改变物体颜色源属性。                                                                                                                                    |
 
 本例中螺旋线上$R^1$点的分布不是特别直观，因为在$R^3$空间看来它大约是按等长等分了曲线。但是如果在一些并不那么规则的曲线上运行这个程序，就会更容易看出曲线参数空间到底是什么东西：
 
-<div align=center ><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-curvestructure.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvestructure.png" width="100%"></div>
 
 让我们来看一个使用到所有参数空间的例子:
 
@@ -140,7 +140,7 @@ if __name__=="__main__":
 ```
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-surfaceparameterspace.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfaceparameterspace.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
 这个程序比较曲线上的一系列点到它们平面投影之间的距离。如果距离大于1个单位，就添加一个点和一条直线。
 
 首先，$R^1$点被转换至$R^3$空间坐标，这样才能投影到曲面之上，然后返回$R^2$空间坐标[u,v]。
@@ -150,13 +150,13 @@ $R^2$点同样也需要转换至$R^3$空间，因为需要计算曲线上$R^1$�
 
 告诉你这是小菜一碟...
 
-|行     | 描述 |
-|------- | ----- |
-|10     |使用*rs.DivideCurve()* 方法一次性取得曲线上所有点的$R^3$坐标。此操作节省了大量时间。|
-|24     |*rs.SurfaceClosestPoint()* 返回一个双精度实数数组，代表在曲面上({u,v}坐标)离样点最近的R2点|
-|27     |*rs.EvaluateSurface()* 返回R2参数坐标转换后的R3坐标|
-|30...38|计算两点之间的距离并按条件添加几何体。此函数在距离小于1时返回值为True,在大于1时返回值为False, 如果程序出现问题，返回值则为Null。|
+| 行      | 描述                                                                                                                             |
+| ------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 10      | 使用*rs.DivideCurve()* 方法一次性取得曲线上所有点的$R^3$坐标。此操作节省了大量时间。                                             |
+| 24      | *rs.SurfaceClosestPoint()* 返回一个双精度实数数组，代表在曲面上({u,v}坐标)离样点最近的R2点                                       |
+| 27      | *rs.EvaluateSurface()* 返回R2参数坐标转换后的R3坐标                                                                              |
+| 30...38 | 计算两点之间的距离并按条件添加几何体。此函数在距离小于1时返回值为True,在大于1时返回值为False, 如果程序出现问题，返回值则为Null。 |
 
 再强调一次。我们把曲线上$R^1$参数坐标投影至3D空间(步骤A)，然后把$R^3$坐标投影至曲面，以获得最近点的$R^2$坐标(步骤B)。我们在$R^2$空间计算曲面，得到3D世界空间的$R^3$坐标(步骤C)，最后我们计算两个$R^3$点的距离，以确定最终偏差：
 
-<div align=center><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/primer-surfaceparameterspacediagram.png" width="60%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfaceparameterspacediagram.png" width="60%"></div>
