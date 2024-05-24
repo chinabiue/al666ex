@@ -32,3 +32,4 @@ six==1.16.0
 termynal==0.12.1
 urllib3==2.2.1
 watchdog==4.0.0
+mkdocs-minify-plugin==0.8.0

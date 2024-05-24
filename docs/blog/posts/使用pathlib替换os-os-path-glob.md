@@ -6,11 +6,11 @@ authors:
     - Alex
 date: 2022-06-21 20:19:06
 ---
-///tip | 总结
-从Python3.6开始，pathlib.Path 对象几乎可以在任何已经使用路径字符串的地方工作。因此，如果你使用的是Python3.6（或更高版本），我认为没有理由不使用 pathlib。
+!!! tip "总结"
+    从Python3.6开始，pathlib.Path 对象几乎可以在任何已经使用路径字符串的地方工作。因此，如果你使用的是Python3.6（或更高版本），我认为没有理由不使用 pathlib。
 
-pathlib可以把以前比较繁复的路径工作处理得更简洁一点，请好好使用。
-///
+    pathlib可以把以前比较繁复的路径工作处理得更简洁一点，请好好使用。
+
 
 如果需要操作路径，在python3.6以前会经常使用os模块(mkdir、getcwd、chmod、stat、remove、rename 、rmdir、 chdir......)。现在比较推荐使用pathlib。pathlib模块用 path 对象上的方法替换了许多这些与文件系统相关的 os功能。
 

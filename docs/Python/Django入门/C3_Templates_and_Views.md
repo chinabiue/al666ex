@@ -51,7 +51,7 @@ Quit the server with CONTROL-C.
 ```
 
 现在使用浏览器打开http://127.0.0.1:8000/，如果一切没错的话，可以看到一个欢迎页面。
-![](../../../img/django/3.1.png)
+![](../../img/django/3.1.png)
 
 ## 理解Django的项目结构 
 

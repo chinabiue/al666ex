@@ -1,8 +1,9 @@
 # Project information
 site_name: Alex The Creator
+site_url: https://al666ex.pages.dev/
+site_author: Alex The Creator
 site_description: >-
   All the meaningless python, rhino, grasshopper
-site_url: https://al666ex.pages.dev/
 # Coyright
 copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
 
@@ -34,67 +35,55 @@ theme:
     # - navigation.footer
     - search.highlight
     - content.tabs.link
-    - navigation.indexes
     - content.footnote.tooltips
     - content.tooltips
-    - navigation.path
     - content.code.annotate
     - content.code.copy
     - navigation.tabs
+    - navigation.top
+    - navigation.expand
+    # - navigation.sections
+    - navigation.indexes
+    # - toc.integrate
+    - toc.fellow
+
   logo: img/favicon.ico
   favicon: img/favicon.ico
   icon:
     annotation: material/arrow-right-circle
   language: en
 edit_uri: ""
+
+# Plugins
 plugins:
   - blog:
       blog_toc: true
       categories_toc: true
-      # archive_toc: true
-  - search: null
+      archive_toc: true
+  - search:
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
   - termynal:
       title: cmd
       buttons: macos
       prompt_literal_start:
         - "$"
 
-  # - mkdocstrings:
-  #   handlers:
-  #     python:
-  #       options:
-  #         extensions:
-  #           - griffe_typingdoc
-  #         show_root_heading: true
-  #         show_if_no_docstring: true
-  #         preload_modules:
-  #           - httpx
-  #           - starlette
-  #         inherited_members: true
-  #         members_order: source
-  #         separate_signature: true
-  #         unwrap_annotated: true
-  #         filters:
-  #           - '!^_'
-  #         merge_init_into_class: true
-  #         docstring_section_style: spacy
-  #         signature_crossrefs: true
-  #         show_symbol_type_heading: true
-  #         show_symbol_type_toc: true
-
-# nav:
-#   - Blog:
-#       - blog/index.md
-#   - Rhino:
-#       - Rhino/index.md
+# Extensions
 markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
-  - attr_list
-  - md_in_html
   - tables
+  - attr_list
   - footnotes
+  - admonition
+  - md_in_html
+  - pymdownx.keys
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.betterem
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
   - toc:
       permalink: true
   - pymdownx.superfences:
@@ -102,38 +91,22 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format ""
-  - pymdownx.betterem:
-  - pymdownx.blocks.details:
-  - pymdownx.blocks.admonition:
-      types:
-        - note
-        - info
-        - tip
-        - warning
-        - danger
-        - bug
-        - success
-        - question
-        - failure
-  - pymdownx.blocks.tab:
+  - pymdownx.tabbed:
       alternate_style: True
   - pymdownx.highlight:
       pygments_lang_class: true
       anchor_linenums: True
-  - pymdownx.inlinehilite:
-  - pymdownx.snippets:
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.tilde: null
   - pymdownx.arithmatex:
       generic: true
-  - pymdownx.keys:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - mdx_include:
       base_path: docs
 
+# Additional configuration
 extra:
   generator: false
   analytics:
@@ -158,7 +131,7 @@ extra:
       name: Alex The Creator
     - icon: fontawesome/solid/paper-plane
       link: mailto:chinabiue@aliyun.com
-      name: 42
+      name: "42"
 
 extra_javascript:
   - js/katex.js

@@ -16,10 +16,5 @@ categories:
 ### 文章内容
 通过系统性的
 
-- [第一章 介绍](C1_Environments_Setup.md)
-- [第二章 创建项目](C2_Creating_Project.md)
-- [第三章 创建应用](C3_Creating_App.md)
-- [第四章 创建模型](C4_Creating_Model.md)
-- [第五章 创建视图](C5_Creating_View.md)
-- [第六章 创建模板](C6_Creating_Template.md)
+
 

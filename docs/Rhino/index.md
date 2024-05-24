@@ -16,11 +16,13 @@ title: Rhino学习兴趣小组!
   
 * [Rhino Python Primer 101-第8章 中文兴趣版](Rhino Python Primer 101\Rhino-Python-Primer-101-第8章1-2节.md)
 
-/// info | **About Rhino**
-Rhino 是最功能强大的 3D 建模软件之一，被广泛用于许多不同的行业中…
-///
+!!! info "**About Rhino**"
 
-/// info |**Grasshopper**
-Grasshopper 是与 Rhino 的 3D 建模工具紧密集成的可视化编程环境。Grasshopper 无需编程或脚本知识，但仍可以让设计师以简单到令人惊叹的方式构建生成形式。Grasshopper 还具有丰富的附加库，可扩展其功能。
-///
+    Rhino 是最功能强大的 3D 建模软件之一，被广泛用于许多不同的行业中…
+
+
+!!! info "**Grasshopper**"
+
+    Grasshopper 是与 Rhino 的 3D 建模工具紧密集成的可视化编程环境。Grasshopper 无需编程或脚本知识，但仍可以让设计师以简单到令人惊叹的方式构建生成形式。Grasshopper 还具有丰富的附加库，可扩展其功能。
+
        

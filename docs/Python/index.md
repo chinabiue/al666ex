@@ -28,10 +28,10 @@ New to this edition: This third edition is completely revised to reflect the lat
 
 If you’ve been thinking about digging into programming, Python Crash Course will provide you with the skills to write real programs fast. Why wait any longer? Start your engines and code!
 
-/// info | **Author Bio** 
+!!! info "**Author Bio** "
 
-Eric Matthes was a high school science, math, and programming teacher, now full-time author, living in Alaska. He has been writing programs since he was five years old and is the author of the Python Flash Cards, also from No Starch Press.
-///
+    Eric Matthes was a high school science, math, and programming teacher, now full-time author, living in Alaska. He has been writing programs since he was five years old and is the author of the Python Flash Cards, also from No Starch Press.
+
 
 ---
 
@@ -57,10 +57,10 @@ Step-by-step instructions walk you through each program, and practice projects a
 
 Don't spend your time doing work a well-trained monkey could do. Even if you've never written a line of code, you can make your computer do the grunt work. Learn how in Automate the Boring Stuff with Python.
 
-/// info | **About the Author**
+!!! info "**About the Author**"
 
- Al Sweigart is a software developer and teaches programming to kids and adults. He has written several books for beginners and makes them freely available at InventWithPython.com. His personal website is AlSweigart.com.
-///
+    Al Sweigart is a software developer and teaches programming to kids and adults. He has written several books for beginners and makes them freely available at InventWithPython.com. His personal website is AlSweigart.com.
+
 
 ## 进阶
 
