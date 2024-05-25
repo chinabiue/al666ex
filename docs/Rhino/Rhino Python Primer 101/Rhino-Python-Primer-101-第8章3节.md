@@ -13,7 +13,7 @@ categories: book
 
 3D空间，或者说$R^3$空间里的点，自然就有3个坐标，通常称为[x,y,z]。$R^2$空间里的点只有2个坐标，叫 [x,y]或者 [u,v]，取决于我们谈论的是什么样的2维空间。$R^1$空间里的点用1个单值表示。虽然我们倾向于认为1维点不算'点'，但是并没有数学上的差别；所有的点都适用同样的规则。1维点通常称为'参数'，用[t]或[p]表示。
 
-<div align=center><img width="90%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-rhinospaces.png"></div>
+<div align=center><img width="90%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-rhinospaces.svg"></div>
 
 左边的图片展示的是$R^3$世界空间，连续并且无限。在这个空间，点的X坐标值是点向X轴(红实线)的投影(红点线)。在Rhino中，点始终以世界坐标指定。
 <!--more-->
@@ -59,7 +59,7 @@ if __name__=="__main__":
     main()
 ```
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curveparameterspace.png" width="45%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curveparameterspace.svg" width="45%"></div>
 
 虽然没有什么好理由，但是我们从最下面一个函数说起：
 
@@ -103,7 +103,7 @@ if __name__=="__main__":
 
 本例中螺旋线上$R^1$点的分布不是特别直观，因为在$R^3$空间看来它大约是按等长等分了曲线。但是如果在一些并不那么规则的曲线上运行这个程序，就会更容易看出曲线参数空间到底是什么东西：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvestructure.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvestructure.svg" width="100%"></div>
 
 让我们来看一个使用到所有参数空间的例子:
 
@@ -140,7 +140,7 @@ if __name__=="__main__":
 ```
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfaceparameterspace.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfaceparameterspace.svg" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
 这个程序比较曲线上的一系列点到它们平面投影之间的距离。如果距离大于1个单位，就添加一个点和一条直线。
 
 首先，$R^1$点被转换至$R^3$空间坐标，这样才能投影到曲面之上，然后返回$R^2$空间坐标[u,v]。
@@ -159,4 +159,4 @@ $R^2$点同样也需要转换至$R^3$空间，因为需要计算曲线上$R^1$�
 
 再强调一次。我们把曲线上$R^1$参数坐标投影至3D空间(步骤A)，然后把$R^3$坐标投影至曲面，以获得最近点的$R^2$坐标(步骤B)。我们在$R^2$空间计算曲面，得到3D世界空间的$R^3$坐标(步骤C)，最后我们计算两个$R^3$点的距离，以确定最终偏差：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfaceparameterspacediagram.png" width="60%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfaceparameterspacediagram.svg" width="60%"></div>

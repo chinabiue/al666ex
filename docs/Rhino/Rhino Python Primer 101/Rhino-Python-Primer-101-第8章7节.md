@@ -4,7 +4,6 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-abbrlink: '5e27'
 date: 2022-02-03 21:48:14
 ---
 
@@ -14,7 +13,7 @@ date: 2022-02-03 21:48:14
 
 在开始讲Nurbs曲线之前(它的数学基础对一个编程入门者来说略复杂)，先给大家一个印象：样条曲线通常是如何工作的，特别是贝塞尔曲线。我会解释Casteljau算法，它是一种很直接的计算简单样条曲线特性的方法。在实际应用中，这个算法很少使用，因为它比其他替代方法表现差，但是由于它的视觉过程很直观，比较容易从它身上‘找到感觉’。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-nurbsalgorithm.png" width="85%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-nurbsalgorithm.svg" width="85%"></div>
 <!--more-->
 限于4个控制点的样条曲线当然不是这项科学的最终演变。很快就有更先进的样条曲线定义出现了，NURBS曲线就是其中一个。(先澄清事实:NURBS代表Non-Uniform Rational [Basic/Basis] Spline，而不是像有些人想的那样是Bézier-Spline。实际上Rhino的帮助文件正确的指出了这一点，但是我怀疑有没有去阅读词汇表那一部分，我也是刚刚发现的。)贝塞尔曲线是NURBS曲线的子集，也就是说所有贝塞尔曲线都可以用NURBS曲线来表示，但是反之不亦然。其他现在还在使用的曲线(Rhinoi不支持)有：Hermite, Cardinal, Catmull-Rom, Beta 和 Akima 样条曲线，提到的曲线只是所有曲线的一部分。比如Bongo动画插件就使用的Hermite曲线，通过一组关键帧来平滑变形物体。
 
@@ -24,7 +23,7 @@ NURBS曲线都有一个代表其阶数的数字与其相关。曲线的阶数总
 
 回想一下本节的开始，一条2次贝塞尔曲线由4个控制点定义。与之不同的是，一条2次NURBS曲线可以由任意控制点定义(实际上是任意大于3的数字)，也就是说整条曲线是由许多线段连接而组成的。下图展示了一条有10个控制点的$D^3$曲线。所有不同的分段用颜色区分开来。你可以看到所有单独分段的形状都很简单：可以用传统的4点贝塞尔曲线方法去近似得到。现在你应该知道为什么NURBS和其他样条曲线被叫做“分段曲线”的原因了。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-piecewisecurve.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-piecewisecurve.svg" width="100%"></div>
 
 红色分段的外形完全由前4个控制点决定。实际上，因为这是一条$D^3$曲线，曲线的每一分段形状都由4个控制点决定。所以第2段(桔段)由{A; B; C; D}点决定。这些分段和传统贝塞尔曲线最大的不同是：这些分段在局部控制多边形附近终止。桔色段不会一直延伸到{D}点，而是会在{C}点附近终止，给接下来的绿色段让路。因为样条曲线的数学特性，桔色段和绿色段完美连接，在连接点4片它们有完全相同的位置、切线和曲率。
 
@@ -36,7 +35,7 @@ ${K_N}$是节点数量，${P_N}$是控制点数量，${D}$是阶数。
 
 上一页的图片中，在开始和结束的红色段和紫色段实际上已经接触了控制多边形顶点，因为我们为了让曲线延伸到顶点做了额外的努力。这种努力叫‘钳位’，通过在特定位置堆积很多节点就叫钳位。你可以看到，要让线段达到控制点需要堆积的点的数量等于曲线的阶数：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curveknot.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curveknot.svg" width="100%"></div>
 
 一条钳位曲线在开始和结束总是有节点的聚集(周期性曲线没有，这个后面再说)。如果曲线在中间部分有节点簇集，这会导致曲线和其中一个控制点重合，这样我们就有了一条锐角曲线。关于节点还有很多需要了解的，但是我建议继续探讨一些简单的NURBS曲线，从现在开始让Rhino来操心节点向量的事。
 <div STYLE="page-break-after: always;"></div>
@@ -44,7 +43,7 @@ ${K_N}$是节点数量，${P_N}$是控制点数量，${D}$是阶数。
 ### 8.7.1 控制点曲线
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-filletcorners.png" width="190" align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-filletcorners.svg" width="190" align=right hspace="5" vspace="5"/>
 
 Rhino里的 *_FilletCorners* 命令能在多重直线锐角处放置倒角。因为倒角是切线弧，所以要求角是平面角。因此所有平面曲线总是可以像右图那样进行倒角。
 
@@ -52,19 +51,20 @@ Rhino里的 *_FilletCorners* 命令能在多重直线锐角处放置倒角。因
 
 因为混合曲线是自由形体，允许任意扭曲和弯曲。有非平面的组成部分对它们来说并不是问题。我们今天的任务编写程序把多重直线倒角。我们不并准备处理多重曲线(带自由曲线分段)，因为那涉及了太多数学和逻辑问题，超过这个简单的曲线介绍内容。所以很不幸我们的程序不能处理非平面倒角问题。
 
-我们倒角程序的逻辑很简单：
+我们倒角程序的逻辑很简单：<br>
 </div>
 
-<br>
-- **对多重直接的所有分段依次迭代。**<br>
-- **对分段起点{A}，在距离A点长度{R}处放置一个额外的控制点${W_1}$。**<br>
+我们倒角程序的逻辑很简单：
+
+- **对多重直接的所有分段依次迭代。**
+- **对分段起点{A}，在距离A点长度{R}处放置一个额外的控制点${W_1}$。**
 - **对分段终点{B}，在距离B点长度{R}处放置一个额外的控制点${W_2}$。**<br>
 - **在${A; W_1; W_2; B}$中间，放置一个额外的控制点。**<br>
 - **使用所有的新控制点插入一条$D^5$NURBS曲线。**<br>
 
 或者，请看如下图示过程：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-blendcurved5.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-blendcurved5.svg" width="100%"></div>
 
 图1是输入曲线，锁定格点放置。最短边长度为1.0，最长边长度为6.0。如果我们要按0.75长度倒角(图2圆圈)，可能看到其中一个边的倒角半径重叠了。
 
@@ -131,35 +131,37 @@ def blendcorners():
 
 我们算法的描述非常直接，但是我敢保证实际的代码绝对是迄今为止最难搞的。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-isocurves.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-isocurves.svg" width="100%"></div>
 
 我们的程序，对于任意基平面(图A)，抽取一定数量的结构线(图B)。然后，修剪每一条结构线至指定长度(图C)，连接所有终点，就生成了等距结构线(图D中的红线)。请注意，我们使用v方向的结构线生成u方向的等距结构线。用这个方法，结构线的分布并不均匀并不影响最终结果。另外请注意，此方法只适用于偏移曲面边，不像 *_OffsetCrvOnSrf* 可以偏移任意曲线。
 
 对于步骤B和D，我们可以使用RhinoScriptSytnax模块的 *rs.ExtractIsoCurve()* 和 *rs.AddInterpCrvOnSrf()* 方法，但是步骤C需要更多的思考。其中一种可能性是，把抽取的结构线按一个指定长度分割，就可以得到一个点的列表，这个列表的第2个值就是我们需要的解决方案：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/python-dividecurvesearching.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/python-dividecurvesearching.svg" width="100%"></div>
 
 如上图示，曲线按5个单位长度分割。红点(集合的第2个数据)就是我们要找的答案。其他所有的点对这个程序来说没用，所以你可以想象得到，分割长度越短，就会产生越多没用的点。通常情况下我会毫不犹豫的使用 *rs.DivideCurveLength()* 这个方法。但是在这里，我要用这个机会向大家介绍一个在编程领域无所不在的、最流行和广泛的算法：二分查找法。
 
 想象一个有10,000个整数的列表，你想找一个离16最近的数。如果列表是无序的(与之对应的是有序)，像这样：
 
-///note |
- {-2, -10, 12, -400, 80, 2048, 1, 10, 11, -369, 4, -500, 1548, 8, … , 13, -344}
-///
+!!! note ""
+
+    {-2, -10, 12, -400, 80, 2048, 1, 10, 11, -369, 4, -500, 1548, 8, … , 13, -344}
+
 
 你别无选择，开始一个一个比较，并保持一个记录点，记录迄今为止离16最近的数。如果16不在列表内，在你知道哪个数离16最近之前，你要比较10,000次。这就是大家所说的：最坏情况；最好情况就是只需要进行一次比较，如果你足够幸运， 16在列表第1位的话。
 
 上面描述的方法叫列表搜索，对大量的数据集来说这是一个很低效的方法，因为在计算科学里，搜索大数据集是一个很常见的操作，所以有很多研究如何加快这个操作。现在搜索算法层出不穷，我们不得不把它们分类以理清状况。但是，基本上所有的高效搜索算法都依赖于输入列表的有序性，比如：
 
-///note |
- {-500, -400, -369, -344, -10, -2, 1, 4, 8, 10, 11, 12, 13, 80, … , 1548, 2048}
-///
+!!! note ""
+
+    {-500, -400, -369, -344, -10, -2, 1, 4, 8, 10, 11, 12, 13, 80, … , 1548, 2048}
+
 
 一旦有了有序列表，就有可能把最坏情况的表现提升几个数量级。比如，考虑一个稍微先进一点的列表搜索算法：一旦情况变坏，就立即终止搜索。和原来一样，从列表第1个元素{-500}开始比较，然后继续到第2个元素{-400}。因为{-400}比{-500}更靠近16，所以有理由相信列表下一个元素仍旧会更靠近16。这一机制会一直执行到列表元素{13}。13已经很靠近16，但是还有挣扎空间，我们仍然不能100%保证这就是最终结果({14; 15; 16; 17; 18}都比13更靠近，{19}和13一样靠近)。然而，列表下一个元素是{80}，这比13差得太多了。因为列表是按顺序排列的，我们可以确定{80}以后的每一个数字都会比{80}更差，所以我们可以安全的退出搜索，并得到13是最靠近的16的数字。如果最终结果在列表前端，搜索过程会特别高效；如果在末端，搜索过程会仅仅有一点点提升而已。但是平均上来说，有序列表搜索比无序列表搜索快2倍。
 
 二分查找法表现得更好。让我们回到实际的问题上来看二分查找法是如何工作的：在曲线上找1个离曲线的起点定长的点。如下图，我们要找的点是黄标点，当然在开始查找的时候我们并不知道这个点在哪里。我们不从曲线的起点开始查找，而是从{tmin} 和 {tmax}的一半(曲线域的一半)开始。因为Rhino能提供某个特定子域的长度，我们可以计算出{tmin}到{1}的长度。结果是太长了，我们要找的结果在{tmin}和{1}之间。然后我们又把{tmin}和{1}对半分，得到点{2}。我们又计算{tmin}和{2}的长度，又一次得到结果还是太长了，这是最后一次太长了。我们继续对半剩下的域，直到我们找到点{6}，对我们的目的来说这个点已经够近了：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primerbinarycurvesearching.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primerbinarycurvesearching.svg" width="100%"></div>
 
 这是二分查找算法最简单的实现例子，它的算法复杂度为O(log n)，可以说是非常的快了，真的很快。更妙的是，当增大搜索的范围时，查找结果的时间并不会以同样的速率增大(列表查找就会增大)。相反，当集合越来越大的，查找结果的时间相对来说会越来越快。比如，如果把要搜索的列表增大2倍到20,000个元素，列表搜索算法会花2倍的时间查找结果，但是二分查找法的时间只增大了约1.075倍。
 
@@ -204,7 +206,7 @@ def BSearchCurve(idCrv, Length, Tolerance):
 
 我把相邻2步子域不变的情况用灰色标示出来。可以看到有时在同一方向多次调整是可能发生的。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-subdivisionchart.png" width="90%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-subdivisionchart.svg" width="90%"></div>
 
 现在请欣赏程序的其他部分：
 
@@ -236,7 +238,7 @@ def equidistanceoffset():
 ```
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-equidistantoffset-result.png" width=305 align=right hspace="5" vspace="5"/> 
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-equidistantoffset-result.svg" width=305 align=right hspace="5" vspace="5"/> 
 如果前面我已经解释得比较清楚了，上面的程序不需要过多解释。所有的代码都比较直白。<BR><BR>
 
 右图展示的程序运行的结果，所有偏移值都乘以10。绿带区域(偏移80.0和90.0之间)的墨绿色线条长度都为10。
@@ -246,17 +248,17 @@ def equidistanceoffset():
 
 因为曲线是几何物体，它就拥有一些属性或特性，可以用来描述和分析它们。例如，曲线都有起点和终点坐标。当这两点的距离为0时，曲线是封闭的。同时，曲线都有控制点，如果所有的控制点都处于同一平面，那么这条曲线就是平面曲线。有些属性对曲线来说是全局属性，有些则属于局部属性。例如，平面性是全局属性，而切线向量就是局部属性。另外，基于曲线类型有类型专属的属性。现在为止我们学习过的曲线类型有：直线、多重直线、圆、椭圆、圆弧和Nurbs曲线：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvetypes.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvetypes.svg" width="100%"></div>
 
 Rhino里最后一种曲线类型是多重曲线，就是所有其他曲线的混合类型。比如，多重曲线可以由一系列直线组成，这样的话多重曲线的表现就和多重直线相似。但是多重曲线也可以是直线、圆弧和不同阶数NURBS曲线的组合。因为多重曲线内分段要互相衔接(G0连接是多重曲线分段的连接要求)，它内部就不能包含封闭的分段。但是不管多重曲线有多复杂，它都可以用NURBS曲线来表示。所有以上类型曲线都可以用NURBS曲线来表示。
 
 真正的圆和看起来像圆的NURBS圆之间的区别在于存储方式。比如，NURBS曲线没有半径属性，也没有其定义于之上的平面。可以通过计算导数和切向量和帧等来重建这些属性，但是无法直接简单的直接取得这些数据。简而言之，NURBS曲线缺少一些其他曲线类型有的全局属性。这不是个大问题，记住NURBS曲线有或没有某些属性不难。比较难搞的是处理那些不连续的局部属性。比如，想象有一条包含长度为0的线段的多重曲线。曲线开始的t参数空间和和结束的t参数空间值不一样，意味着基中一段子域长度为0。在这个域内是无法计算法线向量的：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-polycurvecompound.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-polycurvecompound.svg" width="100%"></div>
 
 这条多重曲线包含5个子曲线段(分别是1条NURBS曲线，1条0长度直线，1条正常直线，1条90°圆弧和另1条NURBS曲线)，它们在t参数空间处互相衔接。它们没有互相正切连接，意味着如果要取得$t_3$处切线，你要么得到的是紫色段终点的切线，要么得到绿色段起点的切线。然而，如果要取得$t_1$和$t_2$中间的切线向量，很抱歉并没有。曲率数据域有更大的空白区，因为两段直线并不存在曲率：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-polycurvelocalevaluation.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-polycurvelocalevaluation.svg" width="100%"></div>
 
 当使用曲线属性比如切线向量、曲率或垂直框架时，我们必须始终小心，不要盲目地继续前进，而不检查属性的不连续性。Rhino中的 *_CurvatureGraph* 命令正确处理了这个情况。它适用于所有曲线，意味着它必须有能力检测并忽略那些没有曲率的线性和0长度线段。
 
@@ -264,7 +266,7 @@ Rhino里最后一种曲线类型是多重曲线，就是所有其他曲线的混
 
 为了避免 *G* 连续性的问题，我们一小段一小段的分别画曲率图。如果你左脑还好使的话应该记得：每一段节点跨度的外形是由某个数学函数(就是多项式)决定的，在大多数情况下是完全平滑的。一小段一小段分别处理的方法就需要把曲线打断至基本元素段，如左图示：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-polycurvecurvaturegraph.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-polycurvecurvaturegraph.svg" width="100%"></div>
 
 这是一条有7个部分的多重曲线：直线{A; C; E}，圆弧{B; D}和NURBS曲线{F; G}。当把多重曲线转换成NURBS曲线时，得到一个包含62个子线段(节点跨度)的5阶NURBS曲线。因为这条曲线是由其他曲线连接而成，所以在每个单独连接处会有锐角点。如果在曲线内部有一组节点聚集在一起，那一点就定义为锐角点，意味着在那一点曲线实际上穿过了它的控制点。因此，锐角点有可能成为原本平滑曲线中的尖锐转折，但是在上图的曲线中所有锐角点都是G1连接，所以没有很大转折点出现。右图用白圈标示出所有锐角点。你可以看到锐角点也出现在了曲线{B,D}的中部，这些锐角点在组合曲线之前就已经存在了。这条曲线总共有10个锐角点，每个锐角点是5个节点域的聚集(这是1条$D^5$曲线)。因此我们有总共40个0长度节点分段。请不要担心数学方面的问题，这里的重点是我们要针对0长度分段做些准备，以便在遇到它们的时候略过它。
 
@@ -274,7 +276,7 @@ Rhino里最后一种曲线类型是多重曲线，就是所有其他曲线的混
 
 既然已经了解模仿 *_CurvatureGraph* 命令需要的基础了，我们不妨从最基本的开始。首先我们需要写一个函数，这个函数能在曲线分段上创建曲率图，然后我们通过节点参数子域不断调用函数，以生成整个曲线的曲率图：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-spancurvaturegraph.png" width="90%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-spancurvaturegraph.svg" width="90%"></div>
 
 我们的函数需要知道曲线的ID，子域{$t_0$; $t_1$},在子域上的采样点数，以及曲率图的比例。返回值应该是插入到文件中建立曲率图的一系列物体ID。就是如上图示中的所有垂直于曲线的红色线段与连接它们的黑色虚线。
 

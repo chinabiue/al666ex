@@ -68,16 +68,17 @@ def SubDividePolyline(arrV):
 # for p in points:
 #     rs.AddPoint(p)
 ```
-/// bug | 原文勘误
-第3行：函数声明后没有冒号:
+!!! bug "原文勘误"
+    
+    第3行：函数声明后没有冒号:
 
-第15行：最后一点的索引是[len(arrV)-1]
+    第15行：最后一点的索引是[len(arrV)-1]
 
-第10行: 计算平均点括号使用混乱，本文已更正并运行通过
-///
+    第10行: 计算平均点括号使用混乱，本文已更正并运行通过
+
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-r2shortpath.png" width="325" align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-r2shortpath.svg" width="325" align=right hspace="5" vspace="5"/>
 
 如您所知，两点之间的最短路径是一条直线。对于我们所有的空间定义，从$R^1$到$R^N$都是如此。但是，$R^2$空间中的最短路径不一定是$R^3$空间中的最短路径。如果我们想用$R^2$中的直线连接曲面上的两个点，我们需要做的就是通过曲面[u，v]空间绘制一条线性路线。(由于我们只能向 Rhino 添加使用 3D 世界坐标的曲线，因此我们需要相当数量的样点来给人以平滑度的印象。)上图中的红色粗曲线是连接 [A] 和 [B] 的$R^2$参数空间中的最短路径。我们可以清楚地看到，这绝对不是$R^3$空间中最短的路径。
 </div>
@@ -152,7 +153,7 @@ def getr2pathonsurface(surface_id, segments, prompt1, prompt2):
 
 为了模拟橡胶带我们需要两个步骤：平滑和投影。首先我们允许橡胶带收缩(在[A]和[B]点间它总是倾向于收缩为直线)。在$R^3$空间的收缩意味着多重直线的顶点有可能脱离曲面。必须重新施加影响让顶点重回曲面。这两个操作由函数#2和#3完成。
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-geodesiccurvediagram.png" width="65%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-geodesiccurvediagram.svg" width="65%"></div>
 
 上图描述了构成最短路径程序的单个迭代的两个步骤。黑色多重直线投影到曲面形成红色多重直线。红色曲线然后平滑化成绿色曲线。请注意实际算法中，这两个步骤是反向进行的：先平滑化，再投影。
 
@@ -245,9 +246,10 @@ def geodesiccurve():
     print "Geodesic curve added with length: ", newlength
 ```
 
-/// bug | 原文勘误
-原程序无法运行，原因是变量名混乱。vertices这个变量，有两个不同意义的值使用了这一个变量名。最后可运行的程序在末尾有下载。
-///
+!!! bug "原文勘误"
+
+    原程序无法运行，原因是变量名混乱。vertices这个变量，有两个不同意义的值使用了这一个变量名。最后可运行的程序在末尾有下载。
+
 
 | 行      | 描述                                                                                                                                                                                                                        |
 | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -263,5 +265,5 @@ def geodesiccurve():
 | 22...23 | 添加曲线并打印一条曲线长度信息                                                                                                                                                                                              |
 
 > 提供验证过的可运行程序下载
->
+> 原来用hexo部署在gitee的文件都挂掉了。需要程序重新写。
 > [8.4.py](https://al666ex.gitee.io/downloads/code/8.4.py)

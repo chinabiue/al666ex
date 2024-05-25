@@ -14,25 +14,25 @@ date: 2022-05-15 19:12:47
 > 代尔夫特理工大学的学生可以通过@Hok学生ICT支持: [@Hok 安装指南](https://adhok.bk.tudelft.nl/manuals/windows-manuals/)安装最新版本的Rhino，从而获得Grasshopper的使用权。
 
 ### 1. Grasshopper是什么?
-![grasshopper设计参数化曲面模型示例](https://gitee.com/al666ex/RhinoPython101/raw/master/images/ghp/Grasshopper_FrontPage_Parametric_surface.png)
+![grasshopper设计参数化曲面模型示例](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/ghp/Grasshopper_FrontPage_Parametric_surface.png)
 
 Grasshopper （GH） 是面向设计人员的编程接口。它不使用编程语言，而使用类似乐高的界面。但是，可以实现与编程代码类似的结果。使用简单的模块，设计人员可以轻松创建参数化设计。Grasshopper不仅仅是一个工具或软件，它代表了一种设计问题的思维方式，一种称为参数化或关联化的“方法”。更简单地说：Grasshopper的易用性使建筑师能够使用参数化或关联化设计的概念，而无需成为脚本/编程方面的专家。因此，建筑师可以专注于“为什么”而不是“如何”。Grasshopper由McNeel开发，内置于Rhinoceros中。
 <!--more-->
 ### 2. Grasshopper基础知识
-![在Z方向移动点5个单位(基于Rhino文件设置)的电池组](https://gitee.com/al666ex/RhinoPython101/raw/master/images/ghp/Grasshopper_FrontPage_Component.png)
+![在Z方向移动点5个单位(基于Rhino文件设置)的电池组](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/ghp/Grasshopper_FrontPage_Component.png)
 grasshopper的核心在于它的电池。电池是程序的积木。每个电池包含2或3个组成部分：
 * 1个或多个输入
 * 操作：电池对输入进行处理的过程
 * 1个或多个输出
 
 
-![电池组件的标签列表](https://gitee.com/al666ex/RhinoPython101/raw/master/images/ghp/FrontPage_ModulesBar.png)
+![电池组件的标签列表](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/ghp/FrontPage_ModulesBar.png)
 在Grasshopper面板或电池组件菜单有各种不同类型的电池组件可以选择。它们分布于10个不同的标签列表之下：Params, Maths, Set, Vector, Curve, Surface, Mesh, Intersect, Transform 和 Display。每个标签之下有多个面板和不同的电池组件，并且电池组件以命令组的不同已经分好类。在面板里有画几何图形比如直线和圆的电池组件，也有移动、缩放、分割和变形这些几何体的电池组件。所以有的电池功能是画几何体和生成数据，有的电池功能是操作已经存在的几何体或数据。*参数*是代表数据，比如1个点或1条直线，的对象。*电池组件* 是执行操作，比如移动、复制和添加，的对象。可以通过安装grasshopper插件获得更多各种功能的电池。
 
 通过输入和输出，电池组件可以链接而形成巨大的网络。Grasshopper的画布(Canvas)是所有使用的电池组件以及它们之间内部关系的视觉呈现。它可以类比为编写脚本，但是使用的是已经定义好的代码块。这称之为可视化编程。这种方式对设计师来说更加有意义和实用。网络的运行模式是至上而下流动。
 
 #### 2.1 入门
-![大型网络的一部分](https://gitee.com/al666ex/RhinoPython101/raw/master/images/ghp/Front_page_A_part_of_a_large_network.png)
+![大型网络的一部分](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/ghp/Front_page_A_part_of_a_large_network.png)
 
 以下链接展示grasshopper的工作方式：
 
@@ -136,4 +136,4 @@ TU Delft图书馆 [可借阅](https://tudelft.on.worldcat.org/oclc/903993172 )
 ---
 原文来源于代尔夫特理工大学[设计信息学维基百科](http://wiki.bk.tudelft.nl/toi-pedia/TOI-Pedia:About) 之[Grasshopper分页面](http://wiki.bk.tudelft.nl/toi-pedia/Grasshopper)。
 除非特殊说明，所有内容符合[Attribution-Noncommercial-Share Alike 3.0 Unported](http://creativecommons.org/licenses/by-nc-sa/3.0/)。
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/ghp/By-nc-sa_30.png)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/ghp/By-nc-sa_30.png)

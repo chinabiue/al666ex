@@ -50,7 +50,7 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 在Rhino中，可以注意观察一下，几乎所有的标准几何曲线，都是有理曲线。比如：圆，椭圆，抛物线，双曲线等等，都属于二次曲线范畴，这些只能是用有理曲线才可以精确描述。
 
 下面就以圆为代表来详细解释下有理的含义：
-![图1](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic1.jpg)
+![图1](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic1.jpg)
 
 >如图１，最左边的圆才是有理的圆，其他两个都是非有理的。
 
@@ -64,19 +64,19 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 
 1. 我们可以通过曲率检测工具  (Curvaturegraph)来检测曲线曲率的变化：<BR>
    白色曲线和黑色曲线的距离都一样，那就表明这条曲线的曲率都是一样的。
-![图2](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic2.jpg)
+![图2](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic2.jpg)
     > 见图２，中间的那个圆，白色曲线看起来像一个多边形，所以它的曲率是不一样的，右边的曲线看起来和左边的曲线一样都很圆，其实还是一个多边形，因为右边曲线的cv比中间的那个圆要多的多，所以只是更类似标准的圆而已，并未达到标准圆的要求。<BR><BR>
 
     想知道图２中右边圆和标准圆之间的曲别，可以把曲率梳的检测结果“放大”，如图３。
 <center class='half'>
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic3.jpg" height=200> &#x2003 <img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic4.jpg" height=200>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic3.jpg" height=200> &#x2003 <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic4.jpg" height=200>
 </center>
 
 > 当我们把它放大的时候，就可以很清楚看到它的曲率检测结果其实还是一个多边形；而真正的圆不论放大多大，结果都是圆的，如图４。
 
 2. 另外也可以用半径检测工具  来看：<BR>
 <center class='half'>
-<img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic5.jpg" height=160>  <img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic6.jpg" height=160>  <img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic7.jpg" height=160>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic5.jpg" height=160>  <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic6.jpg" height=160>  <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic7.jpg" height=160>
 </center>
 
 > 检测左边第一个圆得到的结果如图５，每个半径都相等，说明是真正的圆。<BR>
@@ -84,11 +84,11 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 图７是右边的圆的检测结果，虽然误差要小很多，但是在不同位置的半径也不一样。
 
 证明第一个圆才是真正的圆以后，我们就可以从中取出1/4个圆来说明有理在模型中是如何表现的，如图８。<BR>
-<div align=left><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic8.jpg" width="30%"></div>
+<div align=left><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic8.jpg" width="30%"></div>
 1/4圆曲线只有3个cp点。使用  (Weight)这个工具来查看每个cp点的权重，先不用管权重是什么。等下解释。
 
 比较后可以看出，中间的cp的权重和两头的值不一样，如图9：
-<div align=left><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic9.jpg" width="50%"></div>
+<div align=left><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic9.jpg" width="50%"></div>
 
 所以，在Nurbs中，所谓的有理，在模型中的表现就是 cp点的权重不一样。
 
@@ -96,7 +96,7 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 
 在前面讲到了权重的概念，那么什么是权重呢?
 
-![图10](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic10.jpg)
+![图10](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic10.jpg)
 
 > 如图10，一共有四条封闭曲线，它们都是非有理曲线。<BR>
 第1条曲线是标准圆重建设置6个cp点后的结果。第2、3、4条曲线是第1条曲线改变权重后的结果。<BR>
@@ -109,7 +109,7 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 我们知道权重后对作图有什么作用吗?
 
 利用这个特性，可以做很多特殊造型。它能够保证用较少的控制点来绘制造型复杂的曲线。提高曲线的质量。如图11：
-<div align=left><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic11.jpg" width="40%"></div>
+<div align=left><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic11.jpg" width="40%"></div>
 
 >左边是有理曲线，所以cp点可以比较少，而曲线质量可以比较高。因为每个点都可以控制作用力的强度，所以他的造型能力也会比较强。
 
@@ -132,7 +132,7 @@ Rhino中有两个绘制曲线工具，分别是控制点曲线和内插点曲线
 
 另外节点还有两种不同方式，如图12。分别是：均匀和弦长平方根。弦长平方根和弦长类似，也是一种不均匀的绘制方式。
 
-![图12](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic12.jpg)
+![图12](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic12.jpg)
 
 那么均匀与否，对曲线的影响是什么呢？
 
@@ -142,12 +142,12 @@ Rhino中有两个绘制曲线工具，分别是控制点曲线和内插点曲线
 
 其实这也是一种可以在复杂造型情况下减少曲线复杂度的方式。
 
-![图13](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic13.jpg)
+![图13](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic13.jpg)
 
 #### 犀牛我自己来
 **例1.** 打开non uniform.3dm文件，如图14使黑色曲线去贴合红色曲线，并使之重合。
 
-<div align=left><img src="https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic14.jpg" width="65%"></div>
+<div align=left><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic14.jpg" width="65%"></div>
 可能会出现的情况及建议：
 
 因为黑色曲线是通过编辑点曲线工具绘制出来的，所以通过拖动黑色曲线cp点去贴合红色的曲线，会很难控制。试了以后，是不是发现两边的第二个cp调节起来很奇怪？
@@ -160,24 +160,24 @@ Rebuild黑色曲线后，就成了：非有理的、均匀的曲线，这时用�
 
 **例2.** 绘制一条曲线，如图15：
  
-![图15](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic15.jpg)               ![图16](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic16.jpg)
+![图15](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic15.jpg)               ![图16](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic16.jpg)
 
 我们打开  节点捕捉，然后使用Split命令按节点把曲线断开。结果如图16所示。
 
 注意是在节点位置把曲线分隔开，直接使用split的p参数捕捉Knot点来分割曲线。选择第一段曲线，查看它的属性：0~1，见图17。
 
- ![图17](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic17.jpg)<BR>
+ ![图17](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic17.jpg)<BR>
 再看第二段，见图18：<BR>
- ![图19](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic19.jpg)<BR>
+ ![图19](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic19.jpg)<BR>
 第三段～第六段依次如下：<BR>
- ![图20](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic20.jpg)<BR>
- ![图21](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic21.jpg)<BR>
- ![图22](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic22.jpg)<BR>
+ ![图20](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic20.jpg)<BR>
+ ![图21](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic21.jpg)<BR>
+ ![图22](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic22.jpg)<BR>
 
 图中这些定义域数值就是Knot的赋值。它是均匀赋值的，所以曲线是均匀曲线。
 
 如果一条曲线定义域是1~7，那么所有的Knot的赋值都是在1~7之间。虽然画线时候这个关系是反过来的，不过不妨这样理解：定义域可以任何值，只是程序默认按照0~1~2～…这样的整数来赋值而已，差异值(delta)都是1。如果是非均匀曲线，就不会有这个差异值。如图24，是非均匀曲线的属性，并没有显示差异值。<BR>
- ![图24](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic24.jpg)
+ ![图24](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic24.jpg)
 
 例2证明：Knot点的赋值，如果是均匀赋值，曲线就是均匀的，反之就是不均匀的。
 
@@ -209,7 +209,7 @@ Rhino中，我们最常用到的曲线阶数是哪几种？
 
 主要区别就是：曲线的光顺程度不同。可以用实验说明这个问题。
 
- ![图25](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic25.jpg)
+ ![图25](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic25.jpg)
 
 绘制一条Polyline，如图25所示，黑色曲线为一阶曲线。通过ployline的几个定义点，绘制一条Curve，输入D改变阶数为2，如图红色曲线。同样绘制默认的3阶紫色曲线和4阶的蓝色曲线。
 
@@ -224,9 +224,9 @@ Rhino目前是可以制作最高为11阶的曲线和曲面。rhino的核心可�
 ### 阶数的改变
 - 先设置Degree，然后绘制曲线：<br>
 在Rhino中，我们使用Control Point Curve工具画线时候是可以设置所需要曲线的degree的，如图26 Start of curve后面括号内的Degree=3，默认为3阶。<BR>
- ![图26](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic26.jpg)<BR><BR>
+ ![图26](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic26.jpg)<BR><BR>
 输入d，回车。见图27。<BR>
- ![图27](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic27.jpg)<BR>
+ ![图27](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic27.jpg)<BR>
 然后就可以输入我们需要的degree值。
 
 - 先绘制曲线，然修改Degree：<BR>
@@ -239,19 +239,19 @@ Rhino目前是可以制作最高为11阶的曲线和曲面。rhino的核心可�
 
 可以来做这样一个实验：把degree设置为11，然后画两个点的曲线，同样的方法分别再分别画3个，4个，5个，6个点的曲线，如图28。
 
- ![图28](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic28.jpg)
+ ![图28](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic28.jpg)
 
 接下来，选择有两个cp点的曲线，在命令栏内输入“wh”回车，跳出What界面。如图29所示：
 
- ![图29](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic29.jpg)
+ ![图29](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic29.jpg)
 
 注意看里面的文字，显示为Line。用同样的方法查看其它曲线，如图30。
 
- ![图30](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic30.jpg)
+ ![图30](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic30.jpg)
 
 对比下它们的cp点数量和degree值。然后再用同样的方法绘制两条曲线，分别是12个控制点和13个控制点，然后进行What命令查看，如图31。
 
- ![图31](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic31.jpg)
+ ![图31](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic31.jpg)
 
 通过这个实验，可以发现一个规律：n阶的曲线至少需要(n+1)个cp数，如果cp数少于设置的degree值，会默认转换成按照cp数量可以做出来的最高degree值的曲线。
 
@@ -273,15 +273,15 @@ cp≥degree+1，但不能转换成“degree≥cp-1”。 首先，在rhino中，
 ### 阶数与节点的关系
 下面先看几张图，注意看它们的Knot点位置。
 
- ![图32](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic32.jpg)
+ ![图32](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic32.jpg)
 
 图32是一条2阶曲线，Knot点处只有G1连续(切线方向相同，且曲率不连续)。也就是说，曲线内部Knot点所在的位置，光顺性并不好。
 
- ![图33](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic33.jpg)
+ ![图33](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic33.jpg)
 
 图33是一条3阶曲线，Knot点处达到了G2连续(曲率连续，但是曲率的变化率不连续，也就是未到G3连续)。
 
- ![图34](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic34.jpg)
+ ![图34](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic34.jpg)
 
 图34是一条4阶曲线， Knot点处能够达到G3连续。
 
@@ -310,7 +310,7 @@ cp≥degree+1，但不能转换成“degree≥cp-1”。 首先，在rhino中，
 
 一般，对于三边面极点处不光滑，可以这样处理来解决问题。如图35：
 
- ![图35](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic35.jpg)
+ ![图35](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic35.jpg)
  
 当然，作为对曲面基础熟知的人，并不是将一块多边，或三角面补顺。而是极力去避免这样情况发生。
 ### 2. Nurbs的一个独有的特性，它可以被剪切\分割以及还原
@@ -336,7 +336,7 @@ Polysrf是rhino专有的名词，不是所有的Nurbs软件都有的。不过仅
 
 所以join也是rhino特有的。join就是程序把两曲面的边界合并为一条共用边界，距离小于公差的曲面都可以join在一起。理论上说，两块曲面之间的边界能够达到g0连续(也就是边界重合)就可以join。但是，要做到完全重合，有时候是很困难的事情。所以，rhino会允许它们之间在一定的误差距离之下，可以join在一起，这个距离就是在公差里面设定的数值。如图36所示。
 
- ![图36](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic36.jpg)
+ ![图36](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic36.jpg)
 
 这个值叫做绝对公差，也就是允许的误差值。指令的计算，都需要依靠公差的设置来做判断，不仅仅是join命令。公差是Nurbs建模领域中不可缺少的参数，可以说是它的一个数据精确度的“环境”。caid软件cam软件的很多标准都是基于公差设置建立的，所以要很注意它。建模之前，要首先设置好公差数值，后面再修改是没有意义的，而且如果事先没设置正确，后面补救起来很困难，基本上和重建差不多了。
 
@@ -351,7 +351,7 @@ Rhino3.0的绝对公差设置默认0.01单位，而到了Rhino4.0默认的绝对
 
 要注意，这里介绍它的原因在于如果可以做到曲面的join，我们就不要在曲线的时候就把它们join在一起了。复杂度会不一样，如果先把曲线join起来，最后作出来的曲面会多很多cv。因为曲线join之后本身会变得复杂，所以曲面也会跟着变得复杂。没有join之前，每条曲线的degree都是一样的，所以不会变复杂，如果不一样，就会变复杂了！对比一下：如图37
 
-![图37](https://gitee.com/al666ex/RhinoPython101/raw/master/images/basic/basic37.jpg)
+![图37](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic37.jpg)
 
 比较好的做法：应该是先生成面以后，再进行join。因为，那本来就是两个面的边界，本来就不是一条边，是分开join在一起的，边界也还是各自独立的。
 另外，polysrf是不能够打开cp的，因为组合后的曲面是不能够再对单一曲面做变形的，必须把它提取出来后才能编辑。不过最好是先编辑好单独曲面后，再join才是正确的方法。虽然Rhino4.0有了一部分可以对polysrf做造型编辑的功能，但是初学时还是建议要按照正确的流程来做模型。

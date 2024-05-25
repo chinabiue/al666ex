@@ -20,14 +20,14 @@ date: 2022-03-06 20:38:53
 <!--more-->
 除了一些原始曲面类型(如球体、圆锥体、平面和圆柱体)之外，Rhino 还支持三种自由曲面类型(Sub-D/网格/NURBS?)，其中最有用的是 Nurbs 曲面。与曲线类似，所有可能的曲面形状都可以由 Nurbs 曲面表示，这是 Rhino 中的默认曲面。它是迄今为止最有用的曲面定义，也是我们重点关注的对象。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-primitives.png" width="90%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-primitives.svg" width="90%"></div>
 
 <div STYLE="page-break-after: always;"></div>
 
 ### 8.9.1 NURBS曲面
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-normals.png" width=250 align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-normals.svg" width=250 align=right hspace="5" vspace="5"/>
 Nurbs 曲面与 Nurbs 曲线非常相似。相同的算法用于计算形状、法线、切线、曲率和其他属性，但存在一些明显的差异。例如，曲线具有切向量和法向平面，而曲面具有法向量和切线平面。这意味着曲线缺乏朝向，而曲面缺乏方向。当然，对于所有曲线和曲面类型都是如此，你必须要学会适应这一点。通常，在编写涉及曲线或曲面的代码时，您必须对朝向和方向做出假设，这些假设有时是错误的。<BR><BR>
 
 对于 NURBS 曲面，几何图形实际上隐含了两个方向，因为 NURBS 曲面是 {u} 和 {v} 曲线的矩形网格。尽管这些方向通常是任意的，但我们最终还是会使用它们，因为它们让事情变得简单了一些。
@@ -37,7 +37,7 @@ Nurbs 曲面与 Nurbs 曲线非常相似。相同的算法用于计算形状、�
 
 我们面临的问题是给定曲面与应该在曲面上的点之间的不匹配。我们不得不改变曲面，以便它和点之间的距离最小化。由于存在大量的点(并且由于表面控制点的数量是有限且固定的)，因此我们必须找出一种以非线性方式使表面变形的方法(即仅靠平移和旋转不会得到想要的结果)。请看下图，即问题的示意图：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-pointonplane.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-pointonplane.svg" width="100%"></div>
 
 为了澄清问题，我展开了一个非常扭曲的nurbs方块，以便将其简化为控制点的矩形网格。上图是在 {uvw} 空间中绘制的，而不是世界 {xyz} 空间。实际的曲面可能会以各种方式扭曲，但我们只对简化的{uvw}空间感兴趣。
 
@@ -51,14 +51,14 @@ Nurbs 曲面与 Nurbs 曲线非常相似。相同的算法用于计算形状、�
 
 $$f(y)=\frac{1}{x}$$
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-distanceweightfactor.png" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-distanceweightfactor.svg" width="80%"></div>
 
 如图所示，曲线的域从零到无穷大，对于{x}的每一个较高的值，我们得到{y}的一个较低的值，而{y}永远不会变成零。只有一个问题，这个问题在编程时就会表现出来。对于非常小的{x}值，即Greville点非常接近{S'}时，产生的{y}会非常大。当这个距离变成0时，扩散系数就会变成无限大，我们甚至永远到达不了那个程度。即使电脑的处理器在理论上能够代表大到1.8 × 10<sup>308</sup>的数字(无论如何也不可能接近无穷大)，当开始用接近极端的数字进行计算时，你有可能会越过二进制的无人区，使电脑崩溃。这还不算，在这种规模的水平上，数学的准确性也无法保证。很明显，你需要避开非常大和非常小的数字。
 
 在我们的案例中，这是一个很容易解决的问题，我们可以简单地将{x}值限制在{+0.01; +∞}域内，也就是说，{y}永远不能大于100。甚至可以让这个阈值变得更小，而不会遇到问题。即使我们把{x}限制在十亿分之一的单位(0.00000001)，我们仍然可以很好的进行计算。
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surface-uvw-to-xyz.png" width=300 align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surface-uvw-to-xyz.svg" width=300 align=right hspace="5" vspace="5"/>
 
 第一件事是写一个函数，接收一个曲面和一个{xyz}坐标的点，然后把点坐标转换到{uvw}空间。我们可以使用 *rs.SurfaceClosestPoint()* 方法来获得{u}和{v}分量，但{w}要花些心思。<BR><BR>
 
@@ -136,7 +136,7 @@ def InstantiateForceLists(Bound):
 
 如果我们真的直接根据每个控制点与{P'}距离的倒数来移动，那么拟合点的双曲扩散衰减在最终的曲面上会非常明显。看一个简单的例子，一个平面{Base}，需要与四个点{A；B；C；D}进行拟合。其中3个点在曲面之上（正距离），1个在曲面之下（负距离）：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-hyperbolas.png" width="90%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-hyperbolas.svg" width="90%"></div>
 
 左图可以看到四个单独的双曲线（每个拟合点一个），右图可以看到拟合操作的结果，它直接使用双曲线值来决定控制点的移动量。双曲线并不是按比例绘制的，实际上它们要细得多得多，但是按比例绘制会导致几乎看不见它们，因为它们会紧紧贴着水平线和垂直线。
 
@@ -146,7 +146,7 @@ def InstantiateForceLists(Bound):
 
 仔细看一下上图中的控制点{S}和{T}。{S}的扩散系数很高(上面有很多黄色)，而{T}的扩散系数很低(两边都是各种颜色的薄片)。但如果想大量移动{S}和{T}，我们需要以某种方式提高{T}移动向量的长度。如果把移动向量的长度除以所有双曲线之和，你就有点类似把所有的运动向量'单位化'了，结果如下图：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-multisamplefitter-algorithm2.png" width="50%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-multisamplefitter-algorithm2.svg" width="50%"></div>
 
 这是个更平滑的拟合。在{B}和{C}之间的下陷并不是因为原始曲面的形状，而是因为在{B}和{C}之间，其他拟合点开始获得更多的相对影响，并将曲面向它们拖下去。让我们看一下代码：
 
@@ -238,7 +238,7 @@ def DistributedSurfaceFitter():
 
 到目前为止，所有用来说明这个算法的图和曲线都是2维的，而且只显示了简化的情况。本页用3维空间图显示一个程序运行的进展情况。从一个包含30 × 30个控制点的矩形、平面开始，在它上方和下方总共有36个拟合点。算法持续运行，直到总偏差小于0.01单位。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-iterations.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-iterations.svg" width="100%"></div>
 
 <div STYLE="page-break-after: always;"></div>
 
@@ -247,7 +247,7 @@ def DistributedSurfaceFitter():
 ### 8.9.2 曲面的曲率
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvecurvaturelogic2.png" width=255 align=right hspace="5" vspace="5"/> 
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvecurvaturelogic2.svg" width=255 align=right hspace="5" vspace="5"/> 
 我们很容易感受到曲线的曲率。只需将一个圆尽可能地套在一条短的曲线上(这叫作密切圆)，这个圆的半径和圆心就是你需要的局部曲率。前面已经讨论过这个问题。<BR><BR>
 
 点{A; B; C; D; E}都存在特定的曲率。各个圆的半径是曲率的度量标准(事实上，曲率是半径的倒数)，而向量的方向是曲线平面的指示。
@@ -259,7 +259,7 @@ def DistributedSurfaceFitter():
 
 评估曲面曲率最明显的方法是用直线切开，穿过我们感兴趣的{P}点，然后简单地继续使用曲线曲率的算法。但是，如前所述，曲面缺乏方向性，因此我们根本不清楚应该从哪个角度来切开曲面(我们可以使用{u}和{v}方向，但这些不一定会给你有意义的答案)。不过，这种方法还是时常有用，它的名字叫法线曲率。正如你在下面的插图中所看到的，通过{P}点的截面有无数个，因此"{P}点的法线曲率是多少？"这个问题的答案也有无数个。
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvatures.png" width="90%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvatures.svg" width="90%"></div>
 
 但是在特定情况下，这个问题只有一个答案。"{P}处最高的法线曲率是多少？"。当观察所有可能的法线曲率的完整集合时，你会发现曲面在一个方向上大部分是平的，在另一个方向上大部分是弯曲的。因此这两个方向是特殊的，它们构成了曲面的主曲率。这两个主曲率方向总是互相垂直的，因此它们完全与{u}和{v}方向无关，即便({u}和{v}也不需要总是垂直)。
 
@@ -267,7 +267,7 @@ def DistributedSurfaceFitter():
 
 事情并没有结束。从所有法线曲率的集合开始，我们提取了主曲率的定义。主曲率总是成对出现(最小和最大)，它们既是数值也是方向。我们往往只对一个曲面的弯曲程度感兴趣，而不是特别关注哪个方向。其中一个原因是，主曲率方向在整个曲面上的演进并不是平滑的：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfacek-tensor-field.png" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surfacek-tensor-field.svg" width="80%"></div>
 
 左图显示了最大主曲率的方向。可以看到的，表面上有一些阈值线，在这些阈值线上，主方向突然发生了90º的转折。整个画面是混乱的，过于复杂。可以使用标准的**张量平滑算法**来平均每个方向和它相邻的方向，从而得到右图，它提供的分布信息更加有用(例如用于纹理或图案的目的)，但在图中矢量已经失去了意义。这就是为什么主曲率方向在日常使用中并不是一个非常有用的曲面属性的原因。
 
@@ -279,7 +279,7 @@ $$K_{Gauss}=K_{min} \cdot K_{max}$$
 
 其中K<sub>Gauss</sub>是高斯曲率，K<sub>min</sub>和K<sub>max</sub>是主曲率。假设你完全理解乘法的行为，我们来确定一些具体的情况
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvature-directions.png" width="90%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvature-directions.svg" width="90%"></div>
 
 由此我们可以得出结论，高斯曲率处处为0的曲面可以展开成一个平面，高斯曲率处处为负的表面都可以通过拉伸弹性布而制成。
 
@@ -298,7 +298,7 @@ $$K_{Mean}=\frac{K_{min} + K_{max}}{2}$$
 当说到"向量"时，我们通常是指小箭头：在某种空间背景下表示方向和大小的数字列表。当情况更复杂时，我们开始使用 "张量 "来代替向量。张量是一个更通用的术语，它的隐含意义更少，因此在许多科学文章表述中更受欢迎。
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-tensorspace2.png" width=375 align=right hspace="5" vspace="5"/> 
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-tensorspace2.svg" width=375 align=right hspace="5" vspace="5"/> 
 例如，你身体表面是一个二维张量空间(嵌入四维时空)，它有许多从一处到另一处平衡变化的属性，比如:毛发、肤色、湿润度、敏感度、雀斑度和气味等等。如果在一组采样点测量所有这些属性，我们就可以使用内推和外推算法根据结果数据，对你身体上的所有其他点进行有根据的猜测。我们甚至可以通过使用一些专用的符号集对这样的张量空间进行图形化表示。 <BR><BR>
 
 我们可以通过将皮肤的湿润度与盒子颜色中的蓝色量联系起来，将雀斑度与绿色联系起来，或与盒子的宽度联系起来，或与旋转角度联系起来，从而实现可视化。
@@ -310,7 +310,7 @@ $$K_{Mean}=\frac{K_{min} + K_{max}}{2}$$
 
 在这种特殊情况下，我们最终得到一个二维张量空间，其中张量类T由一个向量和一个切面组成：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-tensormatrixes.png" width="75%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-tensormatrixes.svg" width="75%"></div>
 
 由于在{u}和{v}方向上以规则的参数间隔对曲面进行采样，我们最终得到了一个张量矩阵(一个行和列的表格)。可以用一个二维列表来表示它。程序中需要两个这样的列表，因为我们需要存储两个独立的数据实体：向量和平面。
 
@@ -347,7 +347,7 @@ def SurfaceTensorField(Nu, Nv):
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1      | 这个子函数需要创建定义张量类的2个列表。一个向量列表，一个平面列表。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | 9...10 | 在进行每一次$N_u$迭代的开始，给T和K分别嵌套一个子列表，用于保存$N_v$范围内所有的迭代值。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 11     | 这条等式看起来很吓人，但这是一个非常标准的逻辑片段。这是一个常见的问题：如何将一个数字从一个尺度映射到另一个。我们知道用户想要多少个样本(某个整数)，我们知道曲面域的极限(两个双精度实数)。我们需要弄清楚曲面域的哪个参数与第N个样本数相匹配。观察下图以了解问题的示意图：<br><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-remapnumberscales.png" width="80%" float="right"><br>我们的样本数(最上面的一条)从{A}到{B}，而面的参数域值包括{C}和{D}之间的所有数值。我们需要弄清楚如何将{A\~B}范围内的数字映射到{C\~D}范围。在我们的例子中，需要一个线性映射函数，意味着{A}和{B}之间的数值会被重新映射到{C}和{D}之间的另一个数值。<br>第11行(和第13行)包含了这样一个映射算法的实现。我不打算详细说明它是如何工作的，如果想完全理解这个程序，你就必须自己去研究。 |
+| 11     | 这条等式看起来很吓人，但这是一个非常标准的逻辑片段。这是一个常见的问题：如何将一个数字从一个尺度映射到另一个。我们知道用户想要多少个样本(某个整数)，我们知道曲面域的极限(两个双精度实数)。我们需要弄清楚曲面域的哪个参数与第N个样本数相匹配。观察下图以了解问题的示意图：<br><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-remapnumberscales.svg" width="80%" float="right"><br>我们的样本数(最上面的一条)从{A}到{B}，而面的参数域值包括{C}和{D}之间的所有数值。我们需要弄清楚如何将{A\~B}范围内的数字映射到{C\~D}范围。在我们的例子中，需要一个线性映射函数，意味着{A}和{B}之间的数值会被重新映射到{C}和{D}之间的另一个数值。<br>第11行(和第13行)包含了这样一个映射算法的实现。我不打算详细说明它是如何工作的，如果想完全理解这个程序，你就必须自己去研究。 |
 | 14     | 获取{u,v}处的曲面框架。这是我们张量类的一部分。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 15     | 获取{u,v}处的所有曲面曲率信息。这包括主曲率、平均曲率和高斯曲率的值和向量。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | 17     | 如果曲面在{u,v}处没有曲率，则使用框架的X轴向量代替。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -380,7 +380,7 @@ def SmoothTensorField(T, K):
 | 行      | 描述                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 5...6   | 由于我们的张量空间是二维的，我们需要两个嵌套循环来迭代整个集合。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| 8...11  | 现在我们正在单独处理每个张量(前两个循环)，我们也需要处理每个张量的邻居(第二组嵌套循环)。我们可以用一个简单的表格来形象地说明手头的问题。<br>绿色区域是整个二维张量空间的一角，深绿色的线划定了每个单独的张量。深灰色的正方形是我们目前正在处理的张量。它位于{u,v}。它周围的八个白色方块是相邻的张量，它们将被用来模糊{u,v}处的张量。<br>我们需要再做两个嵌套循环，在这个3×3矩阵的9个坐标上进行迭代。我们还需要确保这9个坐标实际上都在二维张量空间上，而不是在边缘上摇摆不定。我们可以使用Mod运算符来确保一个数字被 "重新映射 "为属于某个数字域。<br><DIV><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-boxblurmatrix3x3.png" width="30%" align=center></DIV> |
+| 8...11  | 现在我们正在单独处理每个张量(前两个循环)，我们也需要处理每个张量的邻居(第二组嵌套循环)。我们可以用一个简单的表格来形象地说明手头的问题。<br>绿色区域是整个二维张量空间的一角，深绿色的线划定了每个单独的张量。深灰色的正方形是我们目前正在处理的张量。它位于{u,v}。它周围的八个白色方块是相邻的张量，它们将被用来模糊{u,v}处的张量。<br>我们需要再做两个嵌套循环，在这个3×3矩阵的9个坐标上进行迭代。我们还需要确保这9个坐标实际上都在二维张量空间上，而不是在边缘上摇摆不定。我们可以使用Mod运算符来确保一个数字被 "重新映射 "为属于某个数字域。<br><DIV><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-boxblurmatrix3x3.svg" width="30%" align=center></DIV> |
 | 12      | 一旦我们有了张量的 *mx* 和 *my* 坐标，我们就可以把它加到 *k_tot* 的求和向量中。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | 13...16 | 确保向量被投射回切平面并被单位化。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 

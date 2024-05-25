@@ -17,7 +17,7 @@ categories: book
 
 Rhino里的所有物体都由两个部分组成：几何部分和属性部分。几何类型有很多种，但是属性基本上都遵循同样的格式。属性用于存储信息，比如物体名称、颜色、图层、等级曲线密度、线型等等。对几何类型来说不是所有属性都有意义，比如说点就没有使用线型或材质属性，但并不影响它存储这些属性的能力。大多数属性或特性都很简单，可以随意读取和赋予给物体。
 
-<div align=center><img width="90%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-rhinoobjects.png"></div>
+<div align=center><img width="90%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-rhinoobjects.svg"></div>
 
 上表列出了插件开发者可以访问的大部分属性和特征。它们大部分封装在RhinoScriptSyntax模块中，某些特征在当前暂时不可访问，因为用户自定数据元素比较特殊。我们会在基本几何章节过后再细说用户数据。
 

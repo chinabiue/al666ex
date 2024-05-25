@@ -9,6 +9,8 @@ date: 2022-03-11 10:05:30
 ## Admonitions 警示
 警示可以在不打扰文件流的情况下，向用户展示一些注意事项。
 
+![df](../../img/a.svg)
+
 <!-- termynal -->
 
 ```console

@@ -11,7 +11,7 @@ date: 2022-01-15 11:16:23
 
 在Rhino里，用户不会直接面对参数化物体，但是openNURBS™内核里有一部分数学原型是参数化存储的。例如圆柱、球体、圆、旋转体和sum-surface。看下图突出显示显式(参数化)和隐式圆的区别：
 
-<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-circleschart.png" width="100%"></div>
+<div align=center ><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-circleschart.svg" width="100%"></div>
 
 当通过程序在Rhino中添加圆，我们可以指定平面+半径，也可以指定3个点(程序内部会转换为平面+半径)。你可能记得圆和正弦波与余弦波有着紧密的联系，就是那些可爱的波浪线。接下来我们要写一个程序，在指定半径球体上封装指定半径的圆。在我给出答案之前，花1分钟好好想想这个问题。
 
@@ -25,14 +25,14 @@ Rusin的算法是这样工作的：
 <!--more-->
 等一下，暂停。首先想一下球体是如何形成的。只有领悟了球体的特性，我们才能给它装上圆。在Rhino中，球体是旋转形成的，有两个极点和一条接缝：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-uv-map.png" width="100%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-uv-map.svg" width="100%"></div>
 
 北极点(左图黑点)和南极点(左图白点)都位于球体主轴，接缝(粗边缘)连接这两点。实质上，球体是由一个长方形平面两边弯曲，左边和右边重合形成接缝，上边和下边压缩为一点(极点)。我们应该很熟悉这个坐标系，因为地球用的就是这一套。地球以纬度和经度角度划分，球体以纬度和经度弧度划分。球体纬度弧度的数字域从南极点-½π开始，在赤道达到0.0，在北极点终止于½π。经度弧度域开始和结束都位于接缝上，环绕球体一周从0.0至2π。现在你应该知道它为什么叫‘接缝’了：它是弧度域从最小值突然跳变为最大值的地方。
 
 我们不能像右图上那样在长方形上封装小正方形，因为在极点附近它们会严重变形，实际上你也看得到在极点附近它们真的变形了。我们希望封装的圆保持完美，这意味着要和球体的收敛性做斗争。
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-sphereuv.png" width="200" alt="news_20191112_2" align=left hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-sphereuv.svg" width="200" alt="news_20191112_2" align=left hspace="5" vspace="5"/>
 假设我们要封装的圆半径远远小于球体半径，至少有两个圆我们可以毫不犹豫的加上：南北极点各放一个。有个额外的好处是，现在这两个圆完美覆盖了极点，只剩下那条烦人的接缝没有处理了。然后接下来要干的活是，确定需要多少个圆能直接覆盖掉这条接缝。接缝的长度是球体周长的一半(左图黄色箭头)。
 
 放松时间到，我们已经收集了要封装填充这个球体需要的所有信息。算法的最后一步是，从每一个在接缝上的圆开始，围绕球体堆积圆。我们需要计算球体上圆位置纬度的周长，用这个周长除以小圆直径，找到等于或小于结果的最大整数。原理的数学公式是：
@@ -74,7 +74,7 @@ def DistributeCirclesOnSphere():
 DistributeCirclesOnSphere()
 ```
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-spherepack.png" width="85%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-spherepack.svg" width="85%"></div>
 
 
 | 行              | 描述                                                                                                                                                                                                                                                                                                                                   |
@@ -98,7 +98,7 @@ DistributeCirclesOnSphere()
 
 下面的程序非常清楚地演示了基平面和椭圆的方向对应性。参考标准曲率分析图，如左图所示：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvaturespline.png" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvaturespline.svg" width="80%"></div>
 
 通过图片可以对样条曲线中不同曲率的范围有一个清晰的印象，但它不能很好地传达曲率的螺旋扭曲。近似线性的样条曲线部分往往具有扭曲的曲率，因为它们是从一个明确定义的折弯到另一个折弯的过渡。左图中的箭头表示这些扭曲区域，但仅从曲率图中很难推断出这一点。下面的程序将使用曲率信息通过一组椭圆放样曲面，这些椭圆已定向到局部样条几何的曲率平面。椭圆在曲线的折弯平面中具有较小的半径，而在垂直于折弯平面的半径较大。由于我们不会使用曲率的强度，而只会使用其方向，因此小细节将变得非常明显。
 
@@ -166,7 +166,7 @@ def FlatWorm():
 
 想象三维空间中的一个盒子，在其体积内包含了许多点。这个盒子内含一种单一的递归行为模式。递归函数对一个单一的条件语句求值：{当盒子体积内包含的点的数量超过一定的阈值时，就将其细分为8个更小的盒子，否则就将自己添加到文件中}。使用简单的If...Else语句很难实现这个功能。接下来，因为新创建的盒子也具有这种行为模式，它迸发出一连串的递归，产生如下图的效果：
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-threshold.png" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-threshold.svg" width="80%"></div>
 
 在这个情况下，输入是一团大点云，形状像球体的上半部分。点云内部存在一个密集点，其点的密度高于平均水平。由于细分的逼近模式，递归级联的结果生成了这些美丽的盒子堆栈。试图在不使用递归的情况下实现这一结果，将需要大量的步骤和很多很多行的代码。
 在我们能够进入酷的部分之前，我们必须写一些支持性的函数，这些函数--我不想说--再次涉及到测角术（角度数学）。
@@ -179,7 +179,7 @@ def FlatWorm():
 第一种方法与使用平面和半径添加圆非常相似，只是增加了扫掠角的参数。第二种方式也类似于使用3点系统添加圆，不同的是，弧线终止于第一和第二点之间。只给定A、B点位置以及起始切线向量，并没有直接的方法来添加弧线。我们必须写一个函数，将所需的起点-终点-方向方法转化为3点方法。在我们处理数学问题之前，让我们回顾一下它工作方式：
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arcs.png" width="200" alt="news_20191112_2" align=left hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arcs.svg" width="200" alt="news_20191112_2" align=left hspace="5" vspace="5"/>
 我们从两个点{A}和{B}以及一个矢量定义{D}开始。我们需要的是红色曲线，但现在我们还不知道怎么画这条线。请注意，如果{D}与{A}到{B}的直线平行或反平行，这个问题就没有解决办法。如果你想在Rhino中画一条这样的弧线，是不可能画出来的。因此，我们需要在函数中添加一些代码，当遇到无法解决的输入时就中止程序。  
 
 我们要找到结果弧线{M}中间点的坐标，然后我们才可以使用{A}、{B}和{M}的3点方法画出弧线。如左图示，弧线中点在与基线中点{C}垂直的线上。
@@ -236,7 +236,7 @@ def AddArcDir(ptStart, ptEnd, vecDir):
 | 19      | 使用起点、终点和中点参数创建弧线，返回ID。                                                                                                                                                                                                                      |
 
 <div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arctree.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arctree.svg" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
 我们要用这个函数来写一个递归的树生成器，树枝由输出弧线组成。树的形状由一组5个变量决定，由于递归范式的灵活性，很容易给树增加更多的行为模式。这个例子中实现树增长算法非常简单，不允许有很大的变化。
 
 五个基本参数是：
@@ -259,7 +259,7 @@ def AddArcDir(ptStart, ptEnd, vecDir):
 实际递归算法不会处理树枝的增加和弧线形状。这个功能由一个辅助函数完成的，在我们开始生成树之前，必须先写好这个函数。添加新树枝时遇到的问题是，我们希望树枝能平滑地连接到它们的父分支上。我们已经有了能画出切线连续弧线的程序，但还没有挑选终点的机制。在目前的植物生长方案中，树枝的生长由两个因素控制的：长度和角度。然而，由于一个树枝的末端可能有不止一个树枝在生长，所以需要有一定量的随机变化，以确保树枝看起来各不相同。
 
 <div style="float: left; clear: both;" align="left">
-<img width=325 src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-branchpropagation2.png" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/> 
+<img width=325 src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-branchpropagation2.svg" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/> 
 旁边的插图显示了用于树枝增殖的算法。红色曲线是分支弧线，我们需要在末端填充任意数量的树枝弧线。点{A}和向量{D}是由分支的形状决定的，但在长度和角度的限制范围内，我们可以自由地随机选择点{B}。所有可能的终点集合位于黄色锥体内。我们将使用一串向量方法来得到随机点{B}在黄色锥体内的位置：
 <br>
 1. 创建一个与{D}平行的新向量{T}。<br>
@@ -345,7 +345,7 @@ def RecursiveGrowth(ptStart, vecDir, props, generation):
 | 行      | 描述                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1       | 函数参数说明。除了比较明显的两个参数 *ptStart* 和 *vecDir*，此函数还接收另外2个参数：1个元组和1个代数计数器。元组包含所有生长参数。因为多达7个参数，所以我不想一个一个输入就打包成元组。另外这样也比较方便更改参数，而不是每次更改参数就要去更改函数的调用。代数计数器参数是整数，告诉函数现在产生是第几代树枝。通常情况下，递归函数不需要知道它的深度，但是在这个程序里是个例外，因为代数是递归函数的结束条件。 |
-| 2       | 为了可读性，我们对元组进行解包。在赋值侧，7个变量按顺序排列。参数元组包含以下值：<BR><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-data-table.png" width="100%" float="right">                                                                                                                                                                                                      |
+| 2       | 为了可读性，我们对元组进行解包。在赋值侧，7个变量按顺序排列。参数元组包含以下值：<BR><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-data-table.svg" width="100%" float="right">                                                                                                                                                                                                      |
 | 6       | 如果当前代数超过了最大允许代数限制(在参数元组第3个数，解包并赋值给maxGenrations)，函数会终止并跳出。因此，在递归继承上它会回退一步。                                                                                                                                                                                                                                                                             |
 | 10      | 在这里我们复制了一份参数元组。在后面可以看到，如果我们生成新的树枝，那些树枝会调用新的突变参数，但是在当前 函数实例中，我们要求固定的参数。                                                                                                                                                                                                                                                                      |
 | 11...12 | 对复制参数进行突变。即，用最大树枝长度乘以树枝长度突变值，对角度进行同样的处理。为了确保角度不至于失控，我们把角度突变限制于90度以内。                                                                                                                                                                                                                                                                           |
@@ -358,7 +358,7 @@ def RecursiveGrowth(ptStart, vecDir, props, generation):
 
 可以用迭代（For 循环）的方式来写这个树形生成器。生成的树看起来差不多，但是代码会有很大不同（可能会多出很多行）。分支的添加顺序很可能也会不同。下面的树是典型的数字生成树，左边的树是用迭代法生成的，右边的树是用递归法生成的。注意分支顺序的不同。如果你仔细分析一下上一页的递归函数，你就会发现这种差异来自哪里...
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer_iterativetree_vs_recursivetree.png" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer_iterativetree_vs_recursivetree.svg" width="80%"></div>
 
 不同设置组合的一个小小比较表。请注意生成的树有很高的随机性。
 
