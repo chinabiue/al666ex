@@ -19,16 +19,16 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: teal
-      accent: amber
+      accent: purple
       toggle:
-        icon: material/lightbulb
+        icon: material/toggle-switch
         name: 关灯
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
-      accent: amber
+      primary: black
+      accent: purple
       toggle:
-        icon: material/lightbulb-outline
+        icon: material/toggle-switch-off-outline
         name: 开灯
   features:
     - search.suggest
@@ -125,13 +125,13 @@ extra:
           data: 0
           note: >-
             Thanks for your feedback! 你开心就好！
-  social:
-    - icon: fontawesome/brands/pied-piper-alt
-      link: https://al666ex.pages.dev/
-      name: Alex The Creator
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:chinabiue@aliyun.com
-      name: "42"
+  # social:
+  #   - icon: fontawesome/brands/pied-piper-alt
+  #     link: https://al666ex.pages.dev/
+  #     name: Alex The Creator
+  #   - icon: fontawesome/solid/paper-plane
+  #     link: mailto:chinabiue@aliyun.com
+  #     name: "42"
 
 extra_javascript:
   - js/katex.js

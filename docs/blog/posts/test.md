@@ -1,16 +1,11 @@
 ---
-title: mkdocs material 语法实验
+title: Mkdocs Material 语法实验
 tags: mkdocs
-categories: [testing]
+categories: [mkdocs]
 authors:
     - Alex
 date: 2022-03-11 10:05:30
 ---
-## Admonitions 警示
-警示可以在不打扰文件流的情况下，向用户展示一些注意事项。
-
-![df](../../img/a.svg)
-
 <!-- termynal -->
 
 ```console
@@ -18,6 +13,8 @@ $ put python into my head
 ---> 100%
 Done!
 ```
+## Admonitions 警示
+警示可以在不打扰文件流的情况下，向用户展示一些注意事项。
 
 ### 配置
 mkdocs.yml 文件中，添加如下配置：
@@ -27,53 +24,13 @@ markdown_extensions:
     - admonition  # (1)!
     - pymdownx.details  #(2)!
     - pymdownx.superfences #(3)!
-    - pymdownx.blocks.admonition: #(4)!
-        types:
-        - note
-        - info
-        - tip
-        - warning
-        - danger
-        - bug
-        - success
-        - question
-        - failure
 ```
 
 1. 启用 Admonition 扩展
 2. 启用 Details 扩展, 该扩展可以实现折叠效果
 3. 启用 SuperFences 扩展, 该扩展可以实现代码块效果
-4. 启用警示的类型
 
 ### 使用
-很奇怪，[官网的语法](https://squidfunk.github.io/mkdocs-material/reference/admonitions/)有另一套实现方法。估计是一些历史原因。
-
-=== "官方语法"
-
-    ```
-    !!! note
-
-        官方语法
-        😈
-    ```
-    !!! note
-
-        官方语法
-        😈
-
-=== "奇怪语法"
-    ```
-    /// note
-
-        奇怪语法
-    ///
-    ```
-    /// note
-
-        奇怪语法
-    ///
-
-以下是按官网语法实现的代码与效果。
 
 ``` markdown title="警示"
 !!! note
@@ -87,7 +44,8 @@ markdown_extensions:
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
-👻👻👻👻👻👻👻 以下展示标题内容
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
+
 
 ``` markdown title="使用定制标题"
 !!! note "南方播放"
@@ -100,7 +58,7 @@ markdown_extensions:
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
-👻👻👻👻👻👻👻
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
 
 ``` markdown title="空标题"
 !!! note ""
@@ -113,20 +71,20 @@ markdown_extensions:
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
-👻👻👻👻👻👻👻
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
 
 ``` markdown title="块折叠"
-??? note 
+??? warning 
 
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 ```
-??? note 
+??? warining
 
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
-👻👻👻👻👻👻👻
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
 
 ``` markdown title="块折叠(默认展开)"
 ???+ note 
@@ -139,22 +97,62 @@ markdown_extensions:
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
-👻👻👻👻👻👻👻  
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍 
 
 ``` markdown title="行内嵌块"
-!!! note inline end "清单"
+!!! note inline end "右边"
+
+    或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
+    地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
+
+!!! note inline "左边"
 
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 ```
-!!! note inline end "清单"
+!!! note inline end "右边"
 
     或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
     地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
-可以把警示框子放置于右边(或左边，不展示了)。  
+!!! note inline "左边"
 
+    或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以
+    地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
 
+可以把警示框子放置于<br>
+右边(inline end)或者<br>
+左边(inline)。  <br>
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
+<hr>
+<BR>
+
+## 按钮
+
+### 配置
+mkdocs.yml 文件中，添加如下配置：
+
+```{.yaml .annotate}
+markdown_extensions:
+    - attr_list
+```
+### 使用
+``` markdown title="空心按钮"
+[Bing](https://cn.bing.com){ .md-button }
+```
+[Bing](https://cn.bing.com){ .md-button }
+
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
+``` markdown title="实心按钮"
+[Bing](https://cn.bing.com){ .md-button .md-button--primary}
+```
+[Bing](https://cn.bing.com){ .md-button .md-button--primary}
+
+🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍
+``` markdown title="自定图标"
+[Bing :fontawesome-solid-paper-plane:](https://cn.bing.com){ .md-button }
+```
+[Bing :fontawesome-solid-paper-plane:](https://cn.bing.com){ .md-button }
 
 ## 脚注
 脚注有时候很贴心。
@@ -169,6 +167,90 @@ markdown_extensions:
 
 [^1]:  五月是一个糟糕的月份
 
+
+++ctrl+alt+del++
+
+## 图标，表情
+
+### 配置
+``` yaml
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+```
+以下是Material for MkDocs内置的图标集：
+
+- :material-material-design: – [Material Design](https://materialdesignicons.com/)
+- :fontawesome-brands-font-awesome: – [FontAwesome](https://fontawesome.com/search?m=free)
+- :octicons-mark-github-16: – [Octicons](https://octicons.github.com/)
+- :simple-simpleicons: – [Simple Icons](https://simpleicons.org/)
+
+### 使用
+``` title="Emoji"
+:smile:
+```
+:smile:   
+
+``` title="Icon"
+:fontawesome-regular-face-laugh-wink:
+```
+:fontawesome-regular-face-laugh-wink:
+
+## 图像
+
+### 配置
+``` yaml
+markdown_extensions:
+  - attr_list
+  - md_in_html
+```
+
+### 使用
+=== "左"
+
+    ``` markdown title="Image, 左对齐"
+    ![Image title](https://dummyimage.com/600x400/eee/aaa){ align=left }
+    ```
+
+    <div class="result" markdown>
+
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ align=left width=300 }
+
+    四月一个晴朗的早晨，我在原宿后街同一个百分之百的女孩擦肩而过。
+
+    不讳地说，女孩算不得怎么漂亮，并无吸引人之处，衣着也不出众，脑后的头发执着地带有睡觉挤压的痕迹。年龄也已不小了- -应该快有30了。严格地说来，恐怕很难称之为女孩。然而，相距50米开外我便一眼看出：对于我来说，她是个百分之百的女孩。从看见她身姿的那一瞬间，我的胸口便如发生地鸣一般的震颤，口中如沙漠干得沙沙作响。
+
+    </div>
+
+=== "右"
+
+    ``` markdown title="Image, 右对齐"
+    ![Image title](https://dummyimage.com/600x400/eee/aaa){ align=right }
+    ```
+
+    <div class="result" markdown>
+
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ align=right width=300 }
+
+    或许你也有你的理想女孩。例如喜欢足颈细弱的女孩，毕竟眼睛大的女孩，十指绝对好看的女孩，或不明所以地迷上慢慢花时间进食的女孩。我当然有自己的偏爱。在饭店时就曾看邻桌一个女孩的鼻形看得发呆。
+
+    但要明确勾勒百分之百的女孩形象，任何人都无法做到。我就绝对想不起她长有怎样的鼻子。甚至是否有鼻子都已记不真切，现在我所能记的，只有她并非十分漂亮这一点。事情也真是不可思议。
+
+    </div>
+
+
+``` html title="Image with caption"
+<figure markdown>
+  ![Image title](https://dummyimage.com/600x400/){ width="300" }
+  <figcaption>Image caption</figcaption>
+</figure>
+```
+<figure markdown>
+  ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ width="300" }
+  <figcaption>Image caption</figcaption>
+</figure>
 
 
 <!-- 
