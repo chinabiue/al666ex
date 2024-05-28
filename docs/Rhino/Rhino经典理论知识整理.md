@@ -46,13 +46,14 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 
 下面介绍一下非均匀和有理在模型中的表现，先解释一下比较容易理解的“有理”：
 
-#### 有理<BR>
+#### 有理
+
 在Rhino中，可以注意观察一下，几乎所有的标准几何曲线，都是有理曲线。比如：圆，椭圆，抛物线，双曲线等等，都属于二次曲线范畴，这些只能是用有理曲线才可以精确描述。
 
 下面就以圆为代表来详细解释下有理的含义：
 ![图1](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic1.jpg)
 
->如图１，最左边的圆才是有理的圆，其他两个都是非有理的。
+> 如图１，最左边的圆才是有理的圆，其他两个都是非有理的。
 
 为什么呢？
 
@@ -64,24 +65,25 @@ B样条曲线是一种比较早出现的绘制曲线的方式，Photoshop里面�
 
 1. 我们可以通过曲率检测工具  (Curvaturegraph)来检测曲线曲率的变化：<BR>
    白色曲线和黑色曲线的距离都一样，那就表明这条曲线的曲率都是一样的。
-![图2](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic2.jpg)
+    ![图2](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic2.jpg)
+
     > 见图２，中间的那个圆，白色曲线看起来像一个多边形，所以它的曲率是不一样的，右边的曲线看起来和左边的曲线一样都很圆，其实还是一个多边形，因为右边曲线的cv比中间的那个圆要多的多，所以只是更类似标准的圆而已，并未达到标准圆的要求。<BR><BR>
 
     想知道图２中右边圆和标准圆之间的曲别，可以把曲率梳的检测结果“放大”，如图３。
-<center class='half'>
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic3.jpg" height=200> &#x2003 <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic4.jpg" height=200>
-</center>
+    <center class='half'>
+    <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic3.jpg" height=200> &#x2003 <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic4.jpg" height=200>
+    </center>
 
-> 当我们把它放大的时候，就可以很清楚看到它的曲率检测结果其实还是一个多边形；而真正的圆不论放大多大，结果都是圆的，如图４。
+    > 当我们把它放大的时候，就可以很清楚看到它的曲率检测结果其实还是一个多边形；而真正的圆不论放大多大，结果都是圆的，如图４。
 
 2. 另外也可以用半径检测工具  来看：<BR>
-<center class='half'>
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic5.jpg" height=160>  <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic6.jpg" height=160>  <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic7.jpg" height=160>
-</center>
+    <center class='half'>
+    <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic5.jpg" height=160>  <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic6.jpg" height=160>  <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic7.jpg" height=160>
+    </center>
 
-> 检测左边第一个圆得到的结果如图５，每个半径都相等，说明是真正的圆。<BR>
-检测中间的圆得到的结果如图６，在不同位置，半径不一样。<BR>
-图７是右边的圆的检测结果，虽然误差要小很多，但是在不同位置的半径也不一样。
+    > 检测左边第一个圆得到的结果如图５，每个半径都相等，说明是真正的圆。<BR>
+    检测中间的圆得到的结果如图６，在不同位置，半径不一样。<BR>
+    图７是右边的圆的检测结果，虽然误差要小很多，但是在不同位置的半径也不一样。
 
 证明第一个圆才是真正的圆以后，我们就可以从中取出1/4个圆来说明有理在模型中是如何表现的，如图８。<BR>
 <div align=left><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic8.jpg" width="30%"></div>
@@ -145,6 +147,7 @@ Rhino中有两个绘制曲线工具，分别是控制点曲线和内插点曲线
 ![图13](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic13.jpg)
 
 #### 犀牛我自己来
+
 **例1.** 打开non uniform.3dm文件，如图14使黑色曲线去贴合红色曲线，并使之重合。
 
 <div align=left><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/basic14.jpg" width="65%"></div>
@@ -184,17 +187,29 @@ Rebuild黑色曲线后，就成了：非有理的、均匀的曲线，这时用�
 简单来理解非均匀和有理就是：cp的权重是否一致，决定曲线(曲面)是不是有理，而Knot的赋值是不是均匀，决定曲线是不是均匀。
 
 # **解密Nurbs**
+
 Nurbs曲线，有一些基本元素，比如：cp、ep、Knot、degree…，前面在介绍Nurbs的时候已经介绍了前面三项内容，这里再重述下：
+
 ## 控制点(cp/cv)
+
 Nurbs曲线的定义值。除了首位两个控制点在曲线上外，其他都不在曲线上，其中的Weight值可以决定曲线是否为有理。Weight也是Nurbs的基本元素之一。
+
 ## 编辑点(ep)
+
 都在曲线上，编辑点曲线是通过Knot定义完一条曲线后在首尾各增加一个编辑点组成一条曲线。可以通过EditPtOn命令  来显示曲线编辑点。编辑它可以直接改变曲线，但是不容易精确控制曲线走向。
+
 ## 节点(Knot)
+
 通俗点讲，就是曲率开始变化的地方，曲线顶点(End)也是Knot点。在曲面上的表现就是iso线，所以Knot越多，模型上面的结构线也就越多。
+
 ## 锐角点(Kink)
+
 它也是曲线的基本元素之一，不过单一曲线不存在Kink，所以也可以理解成曲线的交点。对单一曲线添加Kink点，可以把曲线分割开来。
+
 ## 阶数(Degree)
+
 ### 阶数的概念
+
 这里重点要理解下阶数的概念。简单的说degree是一个数值，准确来说它是描述一条曲线的方程的“指数”。
 
 不知道大家是不是还记得高中里面介绍的圆的方程中指数是多少？
@@ -260,7 +275,7 @@ Rhino目前是可以制作最高为11阶的曲线和曲面。rhino的核心可�
 cp≥degree+1，但不能转换成“degree≥cp-1”。 首先，在rhino中，目前最高阶为11，但是控制点可以是无数个。然后，假设你画一条3阶的线，你可以有n个cp点，但是degree不等于cp-1。
 
 ### 最简曲线
-上面讲到了一个“n阶的曲线至少需要(n+1)个cp数”的公式cp≥degree+1。那么，当cp=degree+1的时候， 曲线就是最简曲线。用文字表示：最简曲线就是不能再减少cp的曲线；如果减少cp ，曲线的dgree就会降级。
+上面讲到了一个 `n阶的曲线至少需要(n+1)个cp数` 的公式cp≥degree+1。那么，当cp=degree+1的时候， 曲线就是最简曲线。用文字表示：最简曲线就是不能再减少cp的曲线；如果减少cp ，曲线的dgree就会降级。
 
 比如：degree=5的曲线，可以有6个cp，也可以有7个cp，更可以有10个cp ，甚至还可以有更多的cp数量，其中只有6个cp的曲线是“degree=5的最简曲线”。
 
@@ -286,6 +301,7 @@ cp≥degree+1，但不能转换成“degree≥cp-1”。 首先，在rhino中，
 图34是一条4阶曲线， Knot点处能够达到G3连续。
 
 通过上面几张图，可以对Knot点有两点新的理解：
+
 1. Knot点会降低曲线该处的连续性；
 2. 高阶的曲线可以提高Knot点处曲线的连续性。
    
@@ -367,18 +383,22 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 
 
 # **犀牛小笔记**
+
 ## 影响模型的品质的因素
+
 1. 等参线(ISOparm)的显示密度；
 2. 渲染网格(Render mesh)精度；
 3. 系统公差值(Tolerance)。
 
 ### 1.等参线的作用
+
 - 能更好的认识Nurbs曲面的结构；
 - 能直观的了解曲面的U方向和V方向的走向情况；
 - 可以通过察看等参线的分布了解控制点的分布。<BR>
     △ 在曲面上显示过多的等参线会增加系统负担。一般使用默认值1即可。
 
-### 2.Render mesh<BR>
+### 2.Render mesh
+
 - 对于精度要求高的模型，建议设置为Custom。Render mesh影响模型在视图中显示的精度以及渲染的精度。
 - Render mesh的概念：<BR>    受硬件的限制，只有少数的几种渲染器可以直接渲染Nurbs曲面。在Rhino中，不管是显示模式还是渲染显示前，都要事先把Nurbs曲面转化成mesh物体。<BR>
 - Rhino中Render mesh的生成：<BR>    第一次从线框显示模式切换到阴影显示模式时，速度会比较慢。之后再次切换时速度就会快很多了。<BR>
@@ -386,13 +406,16 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 - Render mesh的精度设置(在第二章内有详细的介绍)<BR>    ① Jagged&faster：<BR>    Render mesh精度较低、面数较少、计算和显示速度最快。<BR>    ② Smooth&slower：<BR>    Render mesh精度较高、面数较多、计算和显示速度中等。<BR>    ③ Custom<BR>    其中有一个重要的选项Max angle：一般设置为10～5就可以得到很好的mesh效果了。小于5之后会很慢，不建议设置。
 
 ### 3.影响模型精确度的公差值(误差值)：
+
 在建模之前应该设置好合适的绝对公差，不应该在建模过程中随便改变绝对公差值，否则会引起很多问题。
+
 - Absolute tolerance(绝对公差)：<BR>Rhino大部分指令都是在这个值下计算精度(误差范围)的，默认值为0.01。
 - Relative tolerance(相对公差)：<BR>根据模型尺寸的百分比确定公差范围，并不是一个确定的数值。默认值是1%。
 
 - 为什么两块曲面无法Join？<BR>
 答：可能是因为曲面之间的距离超过了绝对公差所设定的值(误差值)。<BR>
-解决问题的方法(两种方法)：<BR>
+解决问题的方法(两种方法)：
+
   > 1. 修改模型，使两块曲面之间的距离达到公差值的范围之内。
   > 2. 重设公差值，使之大于模型之间的距离值。不过不建议使用该方法。这样会降低模型的精度。
 
@@ -401,23 +424,30 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
     解决问题的方法：
     >把绝对公差值减小，重新修剪就可以得到正确的结果。
     修剪后可以使用Show Naked Edges  查看裸露边缘的情况。
+
 ## 曲线部分
-### 1.Degree值：<BR>
+
+### 1.Degree值：
+
  (在上一节“解密Nurbs>Degree”中已有详细介绍)<BR>
 
 > 1. 曲线的Degree数值越大，受控制点的影响越小，曲率越趋于平缓，曲线越顺滑。当Degree的数值为1时，曲线便是折线(Polyline)。
 > 2. Degree值越大，需要的控制点数也就越多，计算机需要计算和存储的量也更多。默认的Degree值为3。
 > 3. 改变已绘制好的曲线的Degree值：ChangeDegree  命令工具。
+
 ### 2.生成Nurbs曲线，大致可以分为3种<BR>
+
 > 1. 基本的曲线绘制工具。如：Control point curve  和 Edit point curve。
 > 2. 通过已有的曲线或曲面来生成曲线。如：<BR>Curve From 2 Views：通常用来生成模型的轮廓线，或者是绘制投影线。<BR>Project Curve to Surface  ：投影曲线。<BR>Extract ISOparm  ：提取等参线。
 > 3. 直接定义几个特殊点来生成特殊的几何曲线。
   
 ### 3.调节曲线造型的利器 ：Adjust end bulge
+
 >可以在保持曲线两端的切线方向或者曲率不变的情况下调节曲线造型。<BR>
 该命令的本质：限制了控制点的运动轨迹保证曲线两端的曲率或切线方向不变。
 
-### 4.曲线的连线性<BR>
+### 4.曲线的连线性
+
 > 1. 连续性的概念和分类：<BR>① G0：两条曲线在端点处重合，但是切线方向不相同。<BR>② G1：两条曲线不但在端点处重合，而且切线方向一致。<BR>③ G2：在两条曲线端点重合处不但切线方向相同，而且曲率相同。
 > 2. 连续性的作用：<BR>
 连续性在建模过程中体现在光滑性上。连续性越高，曲线与曲线或者曲面与曲面之间的光滑过度就越好。
@@ -429,12 +459,14 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 > 5. 连续性与Degree：
     Degree=3是达到G2连续的最简曲线阶数。Degree=2只能保持G1连续。
 
-### 5.常用的曲线编辑工具：<BR>
+### 5.常用的曲线编辑工具：
+
 > 1. Fillet  ：倒圆角，Degree=2，G1，3Points；<BR>
 > 2. Blend  ：混接，Degree≥3，G2；<BR>
 > 3. Match  ：匹配，G0、G1或G2<BR>Preserve other end ：另一端曲率是否改变。
 
 ## 曲面部分
+
 ### 1.Nurbs曲面的标准结构：
 
 > 一个标准的Nurbs曲面为4条边。(4边原则)
@@ -464,6 +496,7 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 > 对于Polysrf不能使用F10打开控制点编辑曲面，需要Explode炸开后再进行编辑曲面。
 
 ### 6.曲面的曲率分析工具：
+
 > 1. Zebra  斑马线<BR>
 > 1. Curvature Analysis  曲率分析<BR>
 > 1. Environment Map  环境贴图<BR>
@@ -472,18 +505,22 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 > 除了用Blendsrf制作之外，还要灵活运用Loft、SW1、SW2、Match等命令。可以很好的避免使用Blendsrf命令做混合曲面时出现的扭曲现象。
 
 ### 8.模拟倒角：
+
 > 1. 最简单的模拟：留出空隙，使用Blendsrf命令。
 > 1. Match模拟：在相应的倒角部位使用Insert Knot命令添两条ISO，使用Match即可。
 
 ### 9.Sweep1对话框中Style下的Align with surface:
+
 > 可以让截面线根据曲面边的切线方向自动调整旋转角度，可以使生成的曲面与原曲面保持相同的夹角。
 
 ### 10.两曲面之间做混合曲面之前如何才能绘制好截面线？
+
 > 1. 在两曲面的相应部位做投影线，使用Blend命令生成混合曲线，作为截面线。
 > 1. 先Blendsrf生成曲面，再提取ISO线，用做相应的处理，如：Adjust End Bulge命令。
 > 1. Blend Perpendicular命令，直接生成。
 
 ### 11.Matchsrf的条件
+
 > 1. 匹配曲面作为匹配的边，一定要是完整的原生边。
 > 1. 目标曲面可以是任何形式的边。<BR>如果选择了Average Surface选项之后，两块曲面都成为了匹配曲面。所以只有在两匹配曲面都是用原生边匹配才可选用。
 
@@ -500,6 +537,7 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 > 理性化、条理化。<BR>Nurbs建模中高级建模是由什么决定的？<BR>答：是建造这个模型的难易程度，而不是繁杂程度。
 
 ### 14.模型品质的决定因素：
+
 > 1. 分片结构的合理程度。(一般尽量按四边原则，主要是看个人的思维模式)
 > 1. 曲面的简单程度。要学会手工优化曲面。(a. 分片的合理；b. 软件工具的使用程度)
 > 1. 模型精度程度。(建模过程中的严谨程度)<BR>
@@ -509,6 +547,7 @@ solid的一个重要的点就是：一定要封闭，也就是要有“厚度”
 > 分片简单，精度高，造型准确并且曲面品质好。
 
 ### 16.模型分片的几个原则：
+
 > 1. 尽量按符合标准的Nurbs曲面四条边的特征(四边原则)分面。
 > 1. 曲面划分不宜过碎。
 > 1. 划分曲面时要适当忽略一些细节，简化曲面造型。

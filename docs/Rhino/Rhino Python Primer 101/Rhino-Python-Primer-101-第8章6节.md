@@ -4,8 +4,9 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-abbrlink: a226
-date: 2022-01-15 11:16:23
+date: 
+    created: 2022-01-15 11:16:23
+    updated: 2024-05-28 21:20:24
 ---
 ## 8.6 圆、椭圆和弧线
 
@@ -31,18 +32,19 @@ Rusin的算法是这样工作的：
 
 我们不能像右图上那样在长方形上封装小正方形，因为在极点附近它们会严重变形，实际上你也看得到在极点附近它们真的变形了。我们希望封装的圆保持完美，这意味着要和球体的收敛性做斗争。
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-sphereuv.svg" width="200" alt="news_20191112_2" align=left hspace="5" vspace="5"/>
+<div class="result" markdown>
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-sphereuv.svg){ align=left width=180 }
+
 假设我们要封装的圆半径远远小于球体半径，至少有两个圆我们可以毫不犹豫的加上：南北极点各放一个。有个额外的好处是，现在这两个圆完美覆盖了极点，只剩下那条烦人的接缝没有处理了。然后接下来要干的活是，确定需要多少个圆能直接覆盖掉这条接缝。接缝的长度是球体周长的一半(左图黄色箭头)。
 
 放松时间到，我们已经收集了要封装填充这个球体需要的所有信息。算法的最后一步是，从每一个在接缝上的圆开始，围绕球体堆积圆。我们需要计算球体上圆位置纬度的周长，用这个周长除以小圆直径，找到等于或小于结果的最大整数。原理的数学公式是：
 
 $$N_{count} = \left[\frac{2 \cdot R_{sphere} \cdot \cos{\phi}}{2 \cdot R_{circle}} \right]$$  
-想要给人留下深刻印象请背下这个公式...
 </div>
 
-<br clear="left" />
+想要给人留下深刻印象请背下这个公式...
 
+<hr>
 
 ```python linenums='1'
 import rhinoscriptsyntax as rs
@@ -178,8 +180,9 @@ def FlatWorm():
 
 第一种方法与使用平面和半径添加圆非常相似，只是增加了扫掠角的参数。第二种方式也类似于使用3点系统添加圆，不同的是，弧线终止于第一和第二点之间。只给定A、B点位置以及起始切线向量，并没有直接的方法来添加弧线。我们必须写一个函数，将所需的起点-终点-方向方法转化为3点方法。在我们处理数学问题之前，让我们回顾一下它工作方式：
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arcs.svg" width="200" alt="news_20191112_2" align=left hspace="5" vspace="5"/>
+<div class="result" markdown>
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arcs.svg){ width="200" align=left }
+
 我们从两个点{A}和{B}以及一个矢量定义{D}开始。我们需要的是红色曲线，但现在我们还不知道怎么画这条线。请注意，如果{D}与{A}到{B}的直线平行或反平行，这个问题就没有解决办法。如果你想在Rhino中画一条这样的弧线，是不可能画出来的。因此，我们需要在函数中添加一些代码，当遇到无法解决的输入时就中止程序。  
 
 我们要找到结果弧线{M}中间点的坐标，然后我们才可以使用{A}、{B}和{M}的3点方法画出弧线。如左图示，弧线中点在与基线中点{C}垂直的线上。
@@ -190,7 +193,7 @@ def FlatWorm():
 
 我们要解决的三角形在右下角有一个90º角，a是基线和平分线之间的角度，三角形底边的长度是{A}和{B}之间距离的一半，我们需要计算斜边的长度（{A}和{M}之间）。
 </div>
-<br clear="left" />
+
 
 a与三角形边长之间的关系是:
 
@@ -235,41 +238,43 @@ def AddArcDir(ptStart, ptEnd, vecDir):
 | 18      | 调整（单位化的）平分向量的大小以匹配这个长度。                                                                                                                                                                                                                  |
 | 19      | 使用起点、终点和中点参数创建弧线，返回ID。                                                                                                                                                                                                                      |
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arctree.svg" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/>
+<div class="result" markdown>
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-arctree.svg){width=365 align=right}
+
 我们要用这个函数来写一个递归的树生成器，树枝由输出弧线组成。树的形状由一组5个变量决定，由于递归范式的灵活性，很容易给树增加更多的行为模式。这个例子中实现树增长算法非常简单，不允许有很大的变化。
 
 五个基本参数是：
-<br>
+
 1. 增殖系数  
-   <br>
 2. 树枝长度  
-   <br>
 3. 树枝长度突变  
-   <br>
 4. 树枝角度  
-   <br>
 5. 树枝角突变 
-   
 </div>
-<br clear="left" />
+
 
 增殖系数是一个数字范围，表示每个分支末端生长树枝数量的最小值和最大值。这是一个完全随机的事情，这就是为什么它被称为"系数"而不是 "数字"。稍后会有更多关于随机数的内容。你可能已经猜到，树枝长度和树枝长度突变分别控制树枝的长度，和每一代树枝的长度的变化。树枝角度和树枝角度突变以类似的方式工作。
 
 实际递归算法不会处理树枝的增加和弧线形状。这个功能由一个辅助函数完成的，在我们开始生成树之前，必须先写好这个函数。添加新树枝时遇到的问题是，我们希望树枝能平滑地连接到它们的父分支上。我们已经有了能画出切线连续弧线的程序，但还没有挑选终点的机制。在目前的植物生长方案中，树枝的生长由两个因素控制的：长度和角度。然而，由于一个树枝的末端可能有不止一个树枝在生长，所以需要有一定量的随机变化，以确保树枝看起来各不相同。
 
-<div style="float: left; clear: both;" align="left">
-<img width=325 src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-branchpropagation2.svg" width="325" alt="news_20191112_2" align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-branchpropagation2.svg){ width="325" align=right } 
+<br>
 旁边的插图显示了用于树枝增殖的算法。红色曲线是分支弧线，我们需要在末端填充任意数量的树枝弧线。点{A}和向量{D}是由分支的形状决定的，但在长度和角度的限制范围内，我们可以自由地随机选择点{B}。所有可能的终点集合位于黄色锥体内。我们将使用一串向量方法来得到随机点{B}在黄色锥体内的位置：
 <br>
-1. 创建一个与{D}平行的新向量{T}。<br>
-2. 调整{T}的大小，使其长度在{Lmin}和{Lmax}之间。<br>
-3. 突变{T}，使之与{D}有一点偏差<br>
-4. 围绕{D}旋转{T}，使其方向随机化<br>
-</div>
-<br clear="left" />
 
----
+1. 创建一个与{D}平行的新向量{T}。<br>
+   
+2. 调整{T}的大小，使其长度在{Lmin}和{Lmax}之间。<br>
+   
+3. 突变{T}，使之与{D}有一点偏差<br>
+   
+4. 围绕{D}旋转{T}，使其方向随机化<br>
+
+</div>
+
+<hr>
+
 ```python linenums='1'
 def RandomPointInCone(origin, direction, minDistance, maxDistance, maxAngle):
     vecTwig = rs.VectorUnitize(direction)
@@ -294,7 +299,8 @@ def RandomPointInCone(origin, direction, minDistance, maxDistance, maxAngle):
 维基百科提到关于递归主题的定义中，有一个是："为了理解递归，人们必须首先理解递归"。这显然只是为了搞笑，但实际上这也是一个明确无误的事实。下面的程序完全符合递归的定义，同时也相当短。它会产生视觉上有趣的效果，但是很明显它只是一个简陋的植物生成器。要想完美模仿现实中的树，可以通过试错法进行探索。这个程序可能比本入门手册中的任何其他示例程序都更值得玩味。你可以按照你认为合适的方式，修改、变更、改变、扭曲和弯曲它，看会产生什么样的结果。
 
 任何合法递归函数都必须遵守一套规则：
-<br>
+
+
 1.	在程序结束前，必须至少对自己进行一次调用。<br>
 2.	即使不对自己进行任何调用，也必须有一种退出方式<br>
 

@@ -4,7 +4,9 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-date: 2022-02-19 13:33:40
+date: 
+    created: 2022-02-19 13:33:40
+    updated: 2024-05-28 21:33:14
 ---
 
 ## 8.8 网格
@@ -40,8 +42,8 @@ date: 2022-02-19 13:33:40
 
 $$f(x, y, \Theta, \Delta) = z$$
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshgraph_xy.svg" width=375 align=right hspace="5" vspace="5"/>
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshgraph_xy.svg){width=375 align=right }
 
 其中，用户可以使用变量 *x* 、 *y* 、 *Θ* 和 *Δ* 指定任何有效的数学函数。网格平面中的每个顶点都有一个唯一的 *x* 和 *y* 值的组合，可以通过自定义的函数来确定该顶点的 *z* 值（ *Θ* 和 *Δ* 是 *x* 和 *y* 的极坐标）。这意味着平面上的每个点{A}都有一个与之相关的坐标{B}，它与A的 *x* 和 *y* 分量相同，但不包括 *z* 分量。B点就是我们网格的顶点。<BR><BR>
 
@@ -71,9 +73,11 @@ def createmeshvertices(function, fdomain, resolution):
 | 7     | 这里调用一个尚不存在的函数。不过，我认为这个函数名很直接，现在不需要进一步解释。                                                                                                                                                                                                                                                                                                 |
 | 8     | 将新顶点添加到 *V* 列表中。请注意，顶点是以一维列表的形式存储的，这使得在一个特定的( *行，列* )坐标上访问项目变得稍微麻烦了。                                                                                                                                                                                                                                                    |
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshfacelogic.svg" width=325 align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshfacelogic.svg){width=325 align=right}
+
 一旦我们有了顶点，我们就可以创建连接它们的面列表。由于面列表是拓扑结构，我们的顶点在空间中的位置并不重要，重要的是它们的组织方式。右边的图片是我每次遇到网格面逻辑时都会画的网格示意图。该图显示了一个有12个顶点和6个四边形面的网格，它的顶点序列逻辑与上一页函数所创建的顶点列表相同。X和Y方向的顶点数量分别为4和3（N<sub>x</sub>=4，N<sub>y</sub>=3）。
+
 </div>
 
 现在，每个四边形面都要以逆时针的方式连接四个顶点。你可能已经注意到，每个面四角上的顶点指数的绝对差异是相同的。就左下角的四边形而言， *{A=0; B=3; C=4; D=1}* 。在右上角四边形的情况下 *{A=7; B=10; C=11; D=8}* 。我们可以用更简单的方式来定义这些数字，这样可以把变量的数量减少到只有一个，而不是四个：
@@ -161,8 +165,8 @@ def loadfunctiondata():
 | 6...9   | 从 \*.txt 文件读取设置，按设置写入文件的顺序分配回各变量。                                                                                                                                                                                                                                                   |
 | 11...13 | 如果抛出了一个异常，我们要返回一组默认值。默认值定义在这里。                                                                                                                                                                                                                                                 |
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-xyphidelta.svg" width=280 align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-xyphidelta.svg){width=280 align=right}
 
 现在已经处理了四个问题中的两个（网格拓扑结构，保存和加载持久性设置），是处理大问题的时候了。在 *CreateMeshVertices()* 运行过程中，我们调用了一个叫 *SolveEquation()* 的函数，尽管它还不存在。 *SolveEquation()* 必须对特定的{x,y}坐标用自定义的函数计算出一个{z}值，这我们以前没有做过。但要找到问题的答案非常容易。
 
@@ -296,8 +300,9 @@ randommeshcolors()
 
 <div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-boxcp.svg" width="60%"></div>
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-loggraph.svg" width=260 align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-loggraph.svg){width=260 align=right}
 
 网格上的顶点{A}在曲面上有一个与之相关的点{$A_{cp}$}，这两者之间的距离{$D_A$}是接近度的衡量标准。这个度量是线性的，也就是说，一个两倍远的顶点得到的接近度值是一倍远的两倍。线性分布由右图中的红线表示。实际上，使用对数尺度(绿线)更有直观意义，因为它在处理大范围数值时要好得多。想象一下，我们有一个网格，其排序后的接近值集合是这样的：
 

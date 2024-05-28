@@ -4,17 +4,20 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-date: 2022-01-20 21:30:07
+date: 
+    created: 2022-01-20 21:30:07
+    updated: 2024-05-28 20:08:42
 ---
 Rhino Python Primer 101这本书是官方出版的学习python编程在Rhino中应用的手册。
 
 没有中文版，这不是问题，咱学英文；但是有一点比较坑的是，里面的程序没有经过仔细的校对，思路都是对的，但是只要一上手运行就会发现各种错误。
 因为程序是很严谨的，就像书里自己也说了python大小写敏感，只要错了一个字母，就是运行不起来。这可恐怖了，加了两层buff，一是英文首先就不好理解了，再加上程序错误，极容易产生的情绪是学习一下就发现进行不下去了，很沮丧。
 
-///info |🤳请看作者立的FLAG
-All the example code in this primer can be copy-pasted directly into the _EditPythonScript dialog.<BR>
-本入门所有代码可直接复制粘贴至 *_EditPythonScript* 对话框。
-///
+!!! info "🤳请看作者立的FLAG"
+    
+    All the example code in this primer can be copy-pasted directly into the _EditPythonScript dialog.<BR>
+    本入门所有代码可直接复制粘贴至 *_EditPythonScript* 对话框。
+
 
 但是我不怕困难，一学英语，二学编程。两手都要抓，两手都要硬。对学习过的程序，都需要运行一遍，以在电脑上运行通过为标准，对书中的程序进行一次大扫除。
 首先运行环境是：
@@ -22,9 +25,11 @@ All the example code in this primer can be copy-pasted directly into the _EditPy
 import sys
 print(sys.version)
 ```
-///note
-`2.7.9 (IronPython 2.7.9 (2.7.9.0) on .NET 4.0.30319.42000 (64-bit))`<br>**Rhino 7.12**
-///
+!!! note ""
+    
+    `2.7.9 (IronPython 2.7.9 (2.7.9.0) on .NET 4.0.30319.42000 (64-bit))`<br>
+    **Rhino 7.12**
+
 
 以下是扫除过程。
 <!--MORE-->
@@ -44,7 +49,12 @@ _SelNone
 -_Sweep1 _SelName RailPolygon _SelName ProfilePolygon _Enter _Enter _Closed=Yes Enter
 ```
 直接运行会弹出个窗口，然后要你选择，无论你怎么选最后都生成不了书上这玩意。对新手极不友好，很多人就放弃了。书的作者可能，就完全没运行过自己写的这段宏，还不如不贴呢，打击了多少人的积极性。
-<div align=center><img width="50%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/hexagonaltorus.svg"></div>
+
+<figure markdown>
+  ![Hexagonaltorus](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/hexagonaltorus.svg){ width="400" }
+  <figcaption>Polygon</figcaption>
+</figure>
+
 问题在哪呢？我来给出答案：问题在最后一行命令有巨大问题。
 
 `-_Sweep1 _SelName RailPolygon _SelName ProfilePolygon _Enter _Enter _Closed=Yes Enter`
@@ -112,6 +122,7 @@ rs.Command ("_Delete")
 
 ## 第5章 条件执行
 以下程序无错误，但是有副作用。运行了无法停止，哈哈。请把程序关了重新打开。
+
 第27页
 ```python
 import rhinoscriptsyntax as rs
@@ -171,7 +182,11 @@ def myfavoritethings():
 ```
 
 第35页，左边的程序并不会产生右图的结果。下面这个程序能生成比较像右边图。
-<div align=center><img width="60%" src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/sin_cos.png"></div>
+
+<figure markdown>
+  ![sin_cos](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/basic/sin_cos.png){ width="400" }
+  <figcaption>sin_cos</figcaption>
+</figure>
 
 ```python
 import rhinoscriptsyntax as rs
@@ -302,6 +317,7 @@ blendcorners()
 #### 8.7.3 几何曲线特性
 
 书里这个程序，存在两个问题：
+
 1. 用于保存用户生成物体的列表 *preview* 是一个嵌套列表，如果不更改删除方式，除了默认参数可以运行，用户输入任何自定参数时，会走到删除 *preview* 内列表这一步报错，因为 *rs.DeleteObjects()* 分析 *preview* 列表内的元素并不是有效的Rhino物体。
 2. 在接收用户参数这一步，并不能处理用户随意输入的无效信息。
 

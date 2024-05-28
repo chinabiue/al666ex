@@ -4,7 +4,9 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-date: 2022-02-03 21:48:14
+date: 
+    created: 2022-02-03 21:48:14
+    updated: 2024-05-28 21:20:50
 ---
 
 ## 8.7 Nurbs曲线
@@ -42,16 +44,16 @@ ${K_N}$是节点数量，${P_N}$是控制点数量，${D}$是阶数。
 
 ### 8.7.1 控制点曲线
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-filletcorners.svg" width="190" align=right hspace="5" vspace="5"/>
-
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-filletcorners.svg){ width="190" align=right }
+ <br>
 Rhino里的 *_FilletCorners* 命令能在多重直线锐角处放置倒角。因为倒角是切线弧，所以要求角是平面角。因此所有平面曲线总是可以像右图那样进行倒角。
 
 输入曲线{A}有9个$G_0$角(实心点)可以进行倒角操作，3个G1角(空心点)无需进行倒角。因为每一段曲线的长度都大于倒角半径的2倍，没有倒角互相干涉，可以预见到最终结果会如曲线{B}所示。
 
 因为混合曲线是自由形体，允许任意扭曲和弯曲。有非平面的组成部分对它们来说并不是问题。我们今天的任务编写程序把多重直线倒角。我们不并准备处理多重曲线(带自由曲线分段)，因为那涉及了太多数学和逻辑问题，超过这个简单的曲线介绍内容。所以很不幸我们的程序不能处理非平面倒角问题。
 
-我们倒角程序的逻辑很简单：<br>
+ <br>
 </div>
 
 我们倒角程序的逻辑很简单：
@@ -237,8 +239,8 @@ def equidistanceoffset():
     rs.EnableRedraw(True)
 ```
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-equidistantoffset-result.svg" width=305 align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-equidistantoffset-result.svg){width=305 align=right}
 如果前面我已经解释得比较清楚了，上面的程序不需要过多解释。所有的代码都比较直白。<BR><BR>
 
 右图展示的程序运行的结果，所有偏移值都乘以10。绿带区域(偏移80.0和90.0之间)的墨绿色线条长度都为10。

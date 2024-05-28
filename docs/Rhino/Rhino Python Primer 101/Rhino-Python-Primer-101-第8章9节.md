@@ -4,7 +4,9 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-date: 2022-03-06 20:38:53
+date: 
+    created: 2022-03-06 20:38:53
+    updated: 2024-05-28 21:33:32
 ---
 ## 8.9 曲面
 
@@ -26,8 +28,9 @@ date: 2022-03-06 20:38:53
 
 ### 8.9.1 NURBS曲面
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-normals.svg" width=250 align=right hspace="5" vspace="5"/>
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-normals.svg){width=250 align=right}
+
 Nurbs 曲面与 Nurbs 曲线非常相似。相同的算法用于计算形状、法线、切线、曲率和其他属性，但存在一些明显的差异。例如，曲线具有切向量和法向平面，而曲面具有法向量和切线平面。这意味着曲线缺乏朝向，而曲面缺乏方向。当然，对于所有曲线和曲面类型都是如此，你必须要学会适应这一点。通常，在编写涉及曲线或曲面的代码时，您必须对朝向和方向做出假设，这些假设有时是错误的。<BR><BR>
 
 对于 NURBS 曲面，几何图形实际上隐含了两个方向，因为 NURBS 曲面是 {u} 和 {v} 曲线的矩形网格。尽管这些方向通常是任意的，但我们最终还是会使用它们，因为它们让事情变得简单了一些。
@@ -51,14 +54,14 @@ Nurbs 曲面与 Nurbs 曲线非常相似。相同的算法用于计算形状、�
 
 $$f(y)=\frac{1}{x}$$
 
-<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-distanceweightfactor.svg" width="80%"></div>
+<div align=center><img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-distanceweightfactor.svg" width="70%"></div>
 
 如图所示，曲线的域从零到无穷大，对于{x}的每一个较高的值，我们得到{y}的一个较低的值，而{y}永远不会变成零。只有一个问题，这个问题在编程时就会表现出来。对于非常小的{x}值，即Greville点非常接近{S'}时，产生的{y}会非常大。当这个距离变成0时，扩散系数就会变成无限大，我们甚至永远到达不了那个程度。即使电脑的处理器在理论上能够代表大到1.8 × 10<sup>308</sup>的数字(无论如何也不可能接近无穷大)，当开始用接近极端的数字进行计算时，你有可能会越过二进制的无人区，使电脑崩溃。这还不算，在这种规模的水平上，数学的准确性也无法保证。很明显，你需要避开非常大和非常小的数字。
 
 在我们的案例中，这是一个很容易解决的问题，我们可以简单地将{x}值限制在{+0.01; +∞}域内，也就是说，{y}永远不能大于100。甚至可以让这个阈值变得更小，而不会遇到问题。即使我们把{x}限制在十亿分之一的单位(0.00000001)，我们仍然可以很好的进行计算。
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surface-uvw-to-xyz.svg" width=300 align=right hspace="5" vspace="5"/>
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-surface-uvw-to-xyz.svg){width=300 align=right }
 
 第一件事是写一个函数，接收一个曲面和一个{xyz}坐标的点，然后把点坐标转换到{uvw}空间。我们可以使用 *rs.SurfaceClosestPoint()* 方法来获得{u}和{v}分量，但{w}要花些心思。<BR><BR>
 
@@ -246,8 +249,10 @@ def DistributedSurfaceFitter():
 
 ### 8.9.2 曲面的曲率
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvecurvaturelogic2.svg" width=255 align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-curvecurvaturelogic2.svg){width=255 align=right}
+
 我们很容易感受到曲线的曲率。只需将一个圆尽可能地套在一条短的曲线上(这叫作密切圆)，这个圆的半径和圆心就是你需要的局部曲率。前面已经讨论过这个问题。<BR><BR>
 
 点{A; B; C; D; E}都存在特定的曲率。各个圆的半径是曲率的度量标准(事实上，曲率是半径的倒数)，而向量的方向是曲线平面的指示。
@@ -297,8 +302,10 @@ $$K_{Mean}=\frac{K_{min} + K_{max}}{2}$$
 
 当说到"向量"时，我们通常是指小箭头：在某种空间背景下表示方向和大小的数字列表。当情况更复杂时，我们开始使用 "张量 "来代替向量。张量是一个更通用的术语，它的隐含意义更少，因此在许多科学文章表述中更受欢迎。
 
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-tensorspace2.svg" width=375 align=right hspace="5" vspace="5"/> 
+<div class="result" markdown>
+
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-tensorspace2.svg){width=375 align=right}
+
 例如，你身体表面是一个二维张量空间(嵌入四维时空)，它有许多从一处到另一处平衡变化的属性，比如:毛发、肤色、湿润度、敏感度、雀斑度和气味等等。如果在一组采样点测量所有这些属性，我们就可以使用内推和外推算法根据结果数据，对你身体上的所有其他点进行有根据的猜测。我们甚至可以通过使用一些专用的符号集对这样的张量空间进行图形化表示。 <BR><BR>
 
 我们可以通过将皮肤的湿润度与盒子颜色中的蓝色量联系起来，将雀斑度与绿色联系起来，或与盒子的宽度联系起来，或与旋转角度联系起来，从而实现可视化。

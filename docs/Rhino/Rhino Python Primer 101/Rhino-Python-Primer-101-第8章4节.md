@@ -4,7 +4,12 @@ tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
-date: 2022-01-08 11:26:20
+date: 
+    created: 2022-01-08 11:26:20
+    updated: 2024-05-28 20:37:20
+---
+
+# Rhino-Python-Primer-101-第8章4节
 ---
 ## 8.4 线段与多重直线
 
@@ -76,13 +81,11 @@ def SubDividePolyline(arrV):
 
     第10行: 计算平均点括号使用混乱，本文已更正并运行通过
 
-
-<div style="float: left; clear: both;" align="left">
-<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-r2shortpath.svg" width="325" align=right hspace="5" vspace="5"/>
+<div class="result" markdown>
+![Image title](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-r2shortpath.svg){ align=right width=320 }
 
 如您所知，两点之间的最短路径是一条直线。对于我们所有的空间定义，从$R^1$到$R^N$都是如此。但是，$R^2$空间中的最短路径不一定是$R^3$空间中的最短路径。如果我们想用$R^2$中的直线连接曲面上的两个点，我们需要做的就是通过曲面[u，v]空间绘制一条线性路线。(由于我们只能向 Rhino 添加使用 3D 世界坐标的曲线，因此我们需要相当数量的样点来给人以平滑度的印象。)上图中的红色粗曲线是连接 [A] 和 [B] 的$R^2$参数空间中的最短路径。我们可以清楚地看到，这绝对不是$R^3$空间中最短的路径。
 </div>
-<br clear="left" />
 
 暂时还没有高科技，但要为下一个例子做好准备......
 

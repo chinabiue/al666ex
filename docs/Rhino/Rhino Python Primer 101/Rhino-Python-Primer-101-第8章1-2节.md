@@ -1,10 +1,12 @@
 ---
 title: Rhino Python Primer 101 第8章1_2节
 tags: Rhino-Python-Primer-101
-date: 2021-12-29 20:39:25
 authors:
     - Alex
 categories: book
+date: 
+    created: 2021-12-29 20:39:25
+    updated: 2024-05-28 20:16:42
 ---
 
 ## 8.1 openNURBS™内核
@@ -26,7 +28,7 @@ Rhino里的所有物体都由两个部分组成：几何部分和属性部分。
 
 
 
-```py
+```py hl_lines="1 27"
 
 import rhinoscriptsyntax as rs
 
