@@ -8,8 +8,8 @@ site_description: >-
 copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
 
 # Repository
-repo_name: al666ex/al666ex
-repo_url: https://gitee.com/al666ex/al666ex
+repo_name: Al666ex
+repo_url: https://gitee.com/al666ex/
 
 # Conifguration
 theme:
@@ -21,24 +21,27 @@ theme:
       primary: teal
       accent: purple
       toggle:
-        icon: material/toggle-switch
+        # icon: material/toggle-switch
+        icon: material/toggle-switch-off
         name: 关灯
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       accent: purple
       toggle:
-        icon: material/toggle-switch-off-outline
+        # icon: material/toggle-switch-off-outline
+        icon: material/link
         name: 开灯
   features:
     - search.suggest
-    # - navigation.footer
+    - navigation.footer
     - search.highlight
     - content.tabs.link
     - content.footnote.tooltips
     - content.tooltips
     - content.code.annotate
     - content.code.copy
+    - navigation.tabs.sticky
     - navigation.tabs
     - navigation.top
     - navigation.expand

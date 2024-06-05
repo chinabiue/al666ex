@@ -1,12 +1,12 @@
 ---
 hide:
   - navigation
-# title: Home
+title: Alex The Creator
 
 ---
 There are lots of interesting things that I want to learn.
 === "✨✨Blog✨✨"
-    [**This is mainly a blog site with some documentation.**](https://al666ex.pages.dev/blog/)<br>
+    This is mainly a **[blog](https://al666ex.pages.dev/blog/)** site with some documentation.<br>
     <img align=center  width="90%" src="\img\dddmw.jpg"></img>
 
 === "🐍Python"
