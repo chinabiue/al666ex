@@ -6,17 +6,17 @@ authors:
     - Alex
 date: 2022-01-12 22:24:27
 ---
-![Power by Samila](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/20.png)
+![Power by Samila](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/20.png)
 
 生成艺术，就是计算机根据算法自动生成的艺术作品。
 
 感觉挺好玩的，编程定好规则，就会自动生成一系列艺术作品。
 
-这是一个python玩具： [Samila项目说明](http://al666ex.gitee.io/p/537b.html)
+这是一个python玩具： [Samila项目说明](https://al666ex.pages.dev/blog/2022/01/12/samila%E9%A1%B9%E7%9B%AE%E8%AF%B4%E6%98%8E/)
 
 用tkinter做了一个简单的界面，使用Samila生成属于自己的独一无二的图片。
 
-![可选颜色/seed/分辨率/投影方式](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/tkinter.png)
+![可选颜色/seed/分辨率/投影方式](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/tkinter.png)
 !!! info ""
 
     - 可选颜色156种
@@ -31,9 +31,9 @@ date: 2022-01-12 22:24:27
 
 变换参数可以生成的一些有意思的图片
 
-![POLAR模式下](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/21.png)
+![POLAR模式下](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/21.png)
 
-![RECTILINEAR模式下](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/22.png)
+![RECTILINEAR模式下](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/22.png)
 
 
 这个小程序的可玩性/可更改性有：

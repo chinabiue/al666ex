@@ -16,9 +16,9 @@ categories: [coding, rhino]
 效果如下：
 
 
-![从VSC发送程序至Rhino运行测试，成功](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/vsc0.jpg)
+![从VSC发送程序至Rhino运行测试，成功](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/vsc0.jpg)
 <!--more-->
-![从VSC发送程序至Rhino运行测试，成功。其实Rhino自带编辑器也挺好用，唯一不能忍就是自定义变量名不能补全，Rhinopython里各种长变量名简直要逆天。比金箍棒还要长的变量名，你能忍就能敲出来，不能忍就用VSCode。](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/vsc1.jpg)
+![从VSC发送程序至Rhino运行测试，成功。其实Rhino自带编辑器也挺好用，唯一不能忍就是自定义变量名不能补全，Rhinopython里各种长变量名简直要逆天。比金箍棒还要长的变量名，你能忍就能敲出来，不能忍就用VSCode。](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/vsc1.jpg)
 
 
 
@@ -35,7 +35,7 @@ RhinoPython是一个VSCode插件，可以在VSCode编辑器内写Rhino python程
 
 从v0.1.7开始, 它同时支持Rhino 5 和Rhino 6.（本次安装使用的是7.1）
 
-⭐ 如果喜欢用Visual Studio, 试一试[RhinoPythonForVS](https://github.com/ccc159/RhinoPythonForVS， 那玩意更快更智能!
+⭐ 如果喜欢用Visual Studio, 试一试[RhinoPythonForVS](https://github.com/ccc159/RhinoPythonForVS)， 那玩意更快更智能!
 
 ### 功能
 和原装Rhino python编辑器一样。只是更高效、简单和快速。
@@ -53,15 +53,15 @@ RhinoPython是一个VSCode插件，可以在VSCode编辑器内写Rhino python程
 3. 安装 [RhinoPython for VS code](https://marketplace.visualstudio.com/items%3FitemName%3Djingchengchen.rhinopython)
 下载Rhino插件`CodeListener` ([food4rhino](https://www.food4rhino.com/app/code-listener))并安装
 4. 打开Rhino, 点击`tools（工具） -> pythonscript（python脚本） -> edit（编辑）`, 在Rhino python编辑器窗口，点击 `tools -> options`, 复制Module search path里的所有路径到文本文件备用。
-![目录展示](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/vsc2.jpg)
+![目录展示](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/vsc2.jpg)
 5. 在Rhino窗口，点击 `tools（工具） -> options（选项） -> Plug-ins（插件程序） -> CodeListener -> Proterties（详情）`, 点击文件名称后面那个链接打开资源管理器。向上两级，到达包含AutoComplete文件夹的目录。进入AutoComplete文件夹并复制 AutoComplete 文件夹的当前路径。
-![目录地址](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/vsc3.jpg)
+![目录地址](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/vsc3.jpg)
 打开VS Code，打开`user settings（常用设置`） 快捷键`Ctrl+`, 在搜索栏键入"python.autoComplete.extraPaths"，在出现的选项中点击“在settings.json中编辑",把刚才复制的几个库路径与自动完成路径复制入设置文件。请参考以下我的配置文件内容。
-![设置路径](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/vsc4.jpg)
+![设置路径](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/vsc4.jpg)
 
-/// warning
- 如果加入路径到python.autoComplete.extraPaths，自动补全并没有生效， 有一种可能是并没有正确定稿库文件的根目录。比如你的库 ExampleLib 在文件夹"...\Libs"下，你可能需要写入的路径是"...\Libs", 而不是"...\Libs\ExampleLib"。 **请注意使用双斜杠\\\\**
-///
+!!! warning ""
+    如果加入路径到python.autoComplete.extraPaths，自动补全并没有生效， 有一种可能是并没有正确定稿库文件的根目录。比如你的库 ExampleLib 在文件夹"...\Libs"下，你可能需要写入的路径是"...\Libs", 而不是"...\Libs\ExampleLib"。 **请注意使用双斜杠\\\\**
+
 
 ```json
 {

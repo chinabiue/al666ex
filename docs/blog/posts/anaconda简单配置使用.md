@@ -7,11 +7,12 @@ authors:
 date: 2022-08-09 10:13:09
 ---
 
-/// info |
- Anacoda是Python的一个集合包，主要用于数据处理与机器学习。
- 它集成了众多你需要的包，可以方便的对包进行管理。
- 可以减少安装配置新包的时间。如果喜欢可以使用；如果不喜欢就不要使用，可以直接安装python包，通过pip安装新包。
-///
+!!! info ""
+
+    Anacoda是Python的一个集合包，主要用于数据处理与机器学习。
+    它集成了众多你需要的包，可以方便的对包进行管理。
+    可以减少安装配置新包的时间。如果喜欢可以使用；如果不喜欢就不要使用，可以直接安装python包，通过pip安装新包。
+
 ## 1. Anaconda和miniconda的选择
 
 ### 1.1 如果符合以下条件，请选择Anaconda:🐍
@@ -79,7 +80,6 @@ conda install -n vsc ipython
 conda create -n [你的名字]
 ```
 
-/// warning | 安装miniconda后CMD闪退/无法运行解决办法
-删除注册表 
-HKEY_CURRENT_USER\Software\Microsoft\Command Processor\AutoRun 的值**if exit**
-///
+!!! warning "安装miniconda后CMD闪退/无法运行解决办法"
+    删除注册表 
+    HKEY_CURRENT_USER\Software\Microsoft\Command Processor\AutoRun 的值**if exit**

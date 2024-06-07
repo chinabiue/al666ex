@@ -6,7 +6,7 @@ authors:
     - Alex
 date: 2022-01-12 21:38:20
 ---
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/logo.png" width=400 height=400>
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/logo.png" width=400 height=400>
 
 # Samila
 <!-- 
@@ -27,12 +27,12 @@ date: 2022-01-12 21:38:20
 -->
 ----------
 ## 目录		
-|   1   |   2   |	3 |	
-|------|------|-----|	
-|[概述](https://github.com/sepandhaghighi/samila#overview)|[问题 & Bug上报](https://github.com/sepandhaghighi/samila#issues--bug-reports)|[参考](https://github.com/sepandhaghighi/samila#references)|
-|[安装](https://github.com/sepandhaghighi/samila#installation)|[依赖](https://github.com/sepandhaghighi/samila#dependencies)|[更改日志](https://github.com/sepandhaghighi/samila/blob/master/CHANGELOG.md)|[作者](https://github.com/sepandhaghighi/samila/blob/master/AUTHORS.md)|
-|[使用](https://github.com/sepandhaghighi/samila#usage)|[贡献](https://github.com/sepandhaghighi/samila/blob/master/.github/CONTRIBUTING.md)|[许可](https://github.com/sepandhaghighi/samila/blob/master/LICENSE)|
-|[数学细节](https://github.com/sepandhaghighi/samila#mathematical-details)|[行为准则](https://github.com/sepandhaghighi/samila/blob/master/.github/CODE_OF_CONDUCT.md)|[支持](https://github.com/sepandhaghighi/samila#show-your-support)|
+| 1                                                                         | 2                                                                                           | 3                                                                             |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [概述](https://github.com/sepandhaghighi/samila#overview)                 | [问题 & Bug上报](https://github.com/sepandhaghighi/samila#issues--bug-reports)              | [参考](https://github.com/sepandhaghighi/samila#references)                   |
+| [安装](https://github.com/sepandhaghighi/samila#installation)             | [依赖](https://github.com/sepandhaghighi/samila#dependencies)                               | [更改日志](https://github.com/sepandhaghighi/samila/blob/master/CHANGELOG.md) | [作者](https://github.com/sepandhaghighi/samila/blob/master/AUTHORS.md) |
+| [使用](https://github.com/sepandhaghighi/samila#usage)                    | [贡献](https://github.com/sepandhaghighi/samila/blob/master/.github/CONTRIBUTING.md)        | [许可](https://github.com/sepandhaghighi/samila/blob/master/LICENSE)          |
+| [数学细节](https://github.com/sepandhaghighi/samila#mathematical-details) | [行为准则](https://github.com/sepandhaghighi/samila/blob/master/.github/CODE_OF_CONDUCT.md) | [支持](https://github.com/sepandhaghighi/samila#show-your-support)            |
 
 ## 概述
 
@@ -121,7 +121,7 @@ Samila是一个使用python语言的生成艺术生成器，通过数千个点�
 188781
 >>> plt.show()
 ```
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/images/1.png">	
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/1.png">	
 
 ### 投影
 ```py
@@ -133,7 +133,7 @@ Samila是一个使用python语言的生成艺术生成器，通过数千个点�
 829730
 >>> plt.show()
 ```
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/images/2.png">	
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/2.png">	
 
 * 支持的投影方法 : `RECTILINEAR`, `POLAR`, `AITOFF`, `HAMMER`, `LAMBERT`， `MOLLWEIDE`
 * 默认投影为 `RECTILINEAR`
@@ -147,7 +147,7 @@ Samila是一个使用python语言的生成艺术生成器，通过数千个点�
 234752
 >>> plt.show()
 ```
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/images/3.png">	
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/3.png">	
 
 ### 颜色
 ```py
@@ -158,7 +158,7 @@ Samila是一个使用python语言的生成艺术生成器，通过数千个点�
 1018273
 >>> plt.show()
 ```
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/images/4.png">	
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/4.png">	
 
 * 支持颜色请查看 `VALID_COLORS` 列表
 * `color` 和 `bgcolor` 参数支持`VALID_COLORS` 列表内的颜色名和RGB/RGBA格式
@@ -170,7 +170,7 @@ Samila是一个使用python语言的生成艺术生成器，通过数千个点�
 >>> g.plot(projection=Projection.POLAR)
 >>> plt.show()
 ```
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/images/5.png">	
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/5.png">	
 
 ### NFT.storage
 把生成图片直接上传至 [NFT.storage](https://NFT.storage)
@@ -210,11 +210,11 @@ Samila是一个使用python语言的生成艺术生成器，通过数千个点�
 Samila的原理很简单，只是对一个方形空间进行从笛卡尔坐标系到其他专用坐标系（比如[极坐标](https://en.wikipedia.org/wiki/Polar_coordinate_system)）的转换操作。
 
 ### 例
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/mathematical_details/transformation.png">
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/transformation.png">
 
 比如在左边的方块，我们有一组符合以下定义的点：
 
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/mathematical_details/S1.jpg">
+$$S_1 = \{(x,y)\}| - \pi < x < \pi, -\pi < y < \pi$$
 
 以下两个函数用于转换：
 ```py
@@ -225,8 +225,7 @@ Samila的原理很简单，只是对一个方形空间进行从笛卡尔坐标�
     result = random.uniform(-1,1) * y**3 - math.cos(x**2) + 2*x
     return result
 ```
-
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/mathematical_details/S2.jpg">
+$$ S_2 = \lbrace (f_1(x,y), f_2(x,y))|(x,y) \in S_1\rbrace $$
 
 这里传入参数为极坐标 `Projection.POLAR` ，所以最后我们得到极坐标空间图:
 
@@ -235,9 +234,9 @@ Samila的原理很简单，只是对一个方形空间进行从笛卡尔坐标�
 >>> g.generate(seed=10)
 >>> g.plot(projection=Projection.POLAR)
 ```
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/mathematical_details/S2_.jpg">
+$$ S_2' = \lbrace (r, \theta) = (Z * x^2 - \sin(y^2) + |y-x|, Z * y^3 - \cos(x^2) + 2x) | (x,y) \in S_1, Z \sim U(-1,1) \rbrace $$
 
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/images/6.png">
+<img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/6.png">
 
 ## 问题 & Bug上报			
 
