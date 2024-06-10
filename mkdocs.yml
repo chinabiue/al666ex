@@ -59,6 +59,7 @@ edit_uri: ""
 
 # Plugins
 plugins:
+  - social
   - blog:
       blog_toc: true
       categories_toc: true
