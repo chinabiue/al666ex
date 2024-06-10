@@ -9,78 +9,26 @@ date: 2022-01-12 21:38:20
 <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/logo.png" width=400 height=400>
 
 # Samila
-<!-- 
-<div align="center">
-<img src="https://gitee.com/al666ex/samila/raw/master/otherfiles/logo.png" width=400 height=400>
-<br/>
-<h1>Samila</h1>
- <br/>
-<a href="https://www.python.org/"><img src="https://img.shields.io/badge/built%20with-Python3-green.svg" alt="built with Python3" /></a>
-<a href="https://codecov.io/gh/sepandhaghighi/samila">
-  <img src="https://codecov.io/gh/sepandhaghighi/samila/branch/master/graph/badge.svg" />
-</a>
-<a href="https://badge.fury.io/py/samila"><img src="https://badge.fury.io/py/samila.svg" alt="PyPI version" height="18"></a>
-<a href="https://discord.com/invite/94bz5QGZWb">
-  <img src="https://img.shields.io/discord/900055829225562162.svg" alt="Discord Channel">
-</a> 
-</div> 
--->
 ----------
 ## 目录		
-| 1                                                                         | 2                                                                                           | 3                                                                             |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| [概述](https://github.com/sepandhaghighi/samila#overview)                 | [问题 & Bug上报](https://github.com/sepandhaghighi/samila#issues--bug-reports)              | [参考](https://github.com/sepandhaghighi/samila#references)                   |
-| [安装](https://github.com/sepandhaghighi/samila#installation)             | [依赖](https://github.com/sepandhaghighi/samila#dependencies)                               | [更改日志](https://github.com/sepandhaghighi/samila/blob/master/CHANGELOG.md) | [作者](https://github.com/sepandhaghighi/samila/blob/master/AUTHORS.md) |
-| [使用](https://github.com/sepandhaghighi/samila#usage)                    | [贡献](https://github.com/sepandhaghighi/samila/blob/master/.github/CONTRIBUTING.md)        | [许可](https://github.com/sepandhaghighi/samila/blob/master/LICENSE)          |
-| [数学细节](https://github.com/sepandhaghighi/samila#mathematical-details) | [行为准则](https://github.com/sepandhaghighi/samila/blob/master/.github/CODE_OF_CONDUCT.md) | [支持](https://github.com/sepandhaghighi/samila#show-your-support)            |
+- [概述](https://github.com/sepandhaghighi/samila#overview)
+- [安装](https://github.com/sepandhaghighi/samila#installation)            
+- [使用](https://github.com/sepandhaghighi/samila#usage)                  
+- [数学细节](https://github.com/sepandhaghighi/samila#mathematical-details) 
+- [问题 & Bug上报](https://github.com/sepandhaghighi/samila#issues--bug-reports)              
+- [作者](https://github.com/sepandhaghighi/samila/blob/master/AUTHORS.md)
+- [贡献](https://github.com/sepandhaghighi/samila/blob/master/.github/CONTRIBUTING.md)       
+- [参考](https://github.com/sepandhaghighi/samila#references)                   
+- [许可](https://github.com/sepandhaghighi/samila/blob/master/LICENSE)         
+- [支持](https://github.com/sepandhaghighi/samila#show-your-support)            
+- [更改日志](https://github.com/sepandhaghighi/samila/blob/master/CHANGELOG.md) 
+- [行为准则](https://github.com/sepandhaghighi/samila/blob/master/.github/CODE_OF_CONDUCT.md) 
 
 ## 概述
 
 <p align="justify">	
 Samila是一个使用python语言的生成艺术生成器，通过数千个点你可以生成自己的艺术品。每一个单点的位置都通过带随机参数的公式确定。因为随机数的存在，每一张生成的图片看起来都不一样。
 </p>
-
-
-<!-- <table>
-	<tr> 
-		<td align="center">Open Hub</td>
-		<td align="center"><a href="https://www.openhub.net/p/samila"><img src="https://www.openhub.net/p/samila/widgets/project_thin_badge.gif"></a></td>	
-	</tr>
-	<tr>
-		<td align="center">PyPI Counter</td>
-		<td align="center"><a href="http://pepy.tech/project/samila"><img src="http://pepy.tech/badge/samila"></a></td>
-	</tr>
-	<tr>
-		<td align="center">Github Stars</td>
-		<td align="center"><a href="https://github.com/sepandhaghighi/samila"><img src="https://img.shields.io/github/stars/sepandhaghighi/samila.svg?style=social&label=Stars"></a></td>
-	</tr>
-</table> -->
-
-
-
-<!-- <table>
-	<tr> 
-		<td align="center">Branch</td>
-		<td align="center">master</td>	
-		<td align="center">dev</td>	
-	</tr>
-    <tr>
-		<td align="center">CI</td>
-		<td align="center"><img src="https://github.com/sepandhaghighi/samila/workflows/CI/badge.svg?branch=master"></td>
-		<td align="center"><img src="https://github.com/sepandhaghighi/samila/workflows/CI/badge.svg?branch=dev"></td>
-	</tr>
-</table> -->
-
-
-<!-- <table>
-	<tr> 
-		<td align="center">Code Quality</td>
-		<td><a href="https://www.codacy.com/gh/sepandhaghighi/samila/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sepandhaghighi/samila&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/14df8ed5f8434aaea85889555b0182a9"/></a></td>
-		<td><a href="https://codebeat.co/projects/github-com-sepandhaghighi-samila-dev"><img alt="codebeat badge" src="https://codebeat.co/badges/01e6aa48-4cc2-4d9c-8288-c9fb490ad371" /></a></td>
-		<td><a href="https://www.codefactor.io/repository/github/sepandhaghighi/samila"><img src="https://www.codefactor.io/repository/github/sepandhaghighi/samila/badge" alt="CodeFactor" /></a></td>
-	</tr>
-</table> -->
-
 
 <!-- more -->
 ## 安装		
@@ -214,7 +162,7 @@ Samila的原理很简单，只是对一个方形空间进行从笛卡尔坐标�
 
 比如在左边的方块，我们有一组符合以下定义的点：
 
-$$S_1 = \{(x,y)\}| - \pi < x < \pi, -\pi < y < \pi$$
+$$S_1 = \{(x,y)| - \pi < x < \pi, -\pi < y < \pi \}$$
 
 以下两个函数用于转换：
 ```py
@@ -251,20 +199,6 @@ $$ S_2' = \lbrace (r, \theta) = (Z * x^2 - \sin(y^2) + |y-x|, Z * y^3 - \cos(x^2
 </a>
 
 
-## 依赖
-
-<table>
-	<tr> 
-		<td align="center">master</td>	
-		<td align="center">dev</td>	
-	</tr>
-	<tr>
-		<td align="center"><a href="https://requires.io/github/sepandhaghighi/samila/requirements/?branch=master"><img src="https://requires.io/github/sepandhaghighi/samila/requirements.svg?branch=master" alt="Requirements Status" /></a></td>
-		<td align="center"><a href="https://requires.io/github/sepandhaghighi/samila/requirements/?branch=dev"><img src="https://requires.io/github/sepandhaghighi/samila/requirements.svg?branch=dev" alt="Requirements Status" /></a></td>
-	</tr>
-</table>
-
-
 ## 参考			
 
 <blockquote>1- Schönlieb, Carola-Bibiane, and Franz Schubert. "Random simulations for generative art construction–some examples." Journal of Mathematics and the Arts 7.1 (2013): 29-39.</blockquote>
@@ -283,30 +217,3 @@ $$ S_2' = \lbrace (r, \theta) = (Z * x^2 - \sin(y^2) + |y-x|, Z * y^3 - \cos(x^2
 <h3>捐助项目</h3>	
 
 真心希望你能喜欢我们的项目，能提供点支持吗？我们的项目不是也不会以赢利为目标。我们需要钱以继续维护这个项目;-) 。			
-
-<h4>Bitcoin</h4>
-1KtNLEEeUbTEK9PdN6Ya3ZAKXaqoKUuxCy
-<h4>Ethereum</h4>
-0xcD4Db18B6664A9662123D4307B074aE968535388
-<h4>Litecoin</h4>
-Ldnz5gMcEeV8BAdsyf8FstWDC6uyYR6pgZ
-<h4>Doge</h4>
-DDUnKpFQbBqLpFVZ9DfuVysBdr249HxVDh
-<h4>Tron</h4>
-TCZxzPZLcJHr2qR3uPUB1tXB6L3FDSSAx7
-<h4>Ripple</h4>
-rN7ZuRG7HDGHR5nof8nu5LrsbmSB61V1qq
-<h4>Binance Coin</h4>
-bnb1zglwcf0ac3d0s2f6ck5kgwvcru4tlctt4p5qef
-<h4>Tether</h4>
-0xcD4Db18B6664A9662123D4307B074aE968535388
-<h4>Dash</h4>
-Xd3Yn2qZJ7VE8nbKw2fS98aLxR5M6WUU3s
-<h4>Stellar</h4>
-GALPOLPISRHIYHLQER2TLJRGUSZH52RYDK6C3HIU4PSMNAV65Q36EGNL
-<h4>Zilliqa</h4>
-zil1knmz8zj88cf0exr2ry7nav9elehxfcgqu3c5e5
-<h4>Coffeete</h4>
-<a href="http://www.coffeete.ir/opensource">
-<img src="http://www.coffeete.ir/images/buttons/lemonchiffon.png" style="width:260px;" />
-</a>
