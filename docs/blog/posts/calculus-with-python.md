@@ -10,7 +10,7 @@ date: 2022-03-11 10:05:30
 [本书来源](https://ryancheunggit.gitbooks.io/calculus-with-python/content/)
 实际上去gitbook阅读体验会更好，只是有时网速会慢。
 由于epub格式公式显示全是乱的，就整理了一下输出PDF以便阅读。
-[整理好的PDF下载](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus_with_python.pdf)
+[整理好的PDF下载](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus_with_python.pdf)
 
 ---
 
@@ -77,7 +77,7 @@ import matplotlib.pyplot as plt
 
 plt.plot(x,y)
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00002.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00002.jpg)
 
 
 **2. 指数函数(Exponential Functions) :**
@@ -102,7 +102,8 @@ print np.exp(2)
 ```PYTHON
 plt.plot(x, exp(x))
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00003.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00003.jpg)
+
 注意到，上面的Python定义中，我们只是利用了numpy中现成的欧拉常数$e$,如果没有这个神奇的常数，我们是否就无法定义指数函数了呢？答案是否定的：
 ```PYTHON
 def exp2(x):
@@ -143,7 +144,7 @@ y3 = np.log10(x)
 
 plt.plot(x,y1,'red',x,y2,'yellow',x,y3,'blue')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00004.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00004.jpg)
 
 **4. 三角函数(Trigonometric Functions) :**
 
@@ -151,11 +152,12 @@ plt.plot(x,y1,'red',x,y2,'yellow',x,y3,'blue')
 ```PY
 plt.plot(np.linspace(-2*np.pi,2*np.pi),np.sin(np.linspace(-2*np.pi,2*np.pi)))
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00005.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00005.jpg)
 ```py
 plt.plot(np.linspace(-2*np.pi,2*np.pi),np.cos(np.linspace(-2*np.pi,2*np.pi)))
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00006.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00006.jpg)
+
 这里我们没有给出对数函数和三角函数的数学表达式，没有告诉大家如何在Python中定义自己的对数函数和三角函数。这并不表述我们没法这么做，与指数函数一样，我们会在后面章节为读者揭开这些奇妙函数背后的故事。
 
 ---
@@ -189,7 +191,7 @@ y = np.array([h(i) for i in x])
 plt.plot(x, y, 'bo')
 ```
 <div style="clear: both;" align="LEFT">
-<img src=https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00007.jpg width=320/> 
+<img src=https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00007.jpg width=320/> 
 </div>
 
 我们也可以使用Python的lambda函数功能来简明地定义$h$:
@@ -198,7 +200,7 @@ h2 = lambda x: f(g(x))
 plt.plot(x,h2(x),'rs')
 ```
 <div style="clear: both;" align="LEFT">
-<img src=https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00008.jpg width=320/> 
+<img src=https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00008.jpg width=320/> 
 </div>
 
 **逆函数（Inverse Function）:**
@@ -213,7 +215,7 @@ x = np.linspace(0,2,100)
 
 plt.plot(x, w(x),'b',x,winv(x),'r',x,x,'g-.')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00009.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00009.jpg)
 
 **高阶函数（Higher Order Functions）:**
 
@@ -230,7 +232,7 @@ shifted_g = horizontal_shift(g,2)
 plt.plot(x,g(x),'b',x,shifted_g(x),'r')
 ```
 <div style="clear: both;" align="LEFT">
-<img src=https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00010.jpg width=330/> 
+<img src=https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00010.jpg width=330/> 
 </div>
 
 以高阶函数的观点看去，函数的复合便是将两个函数作为输入给复合函数，然后由其产生一个新的函数作为输出。复合函数可以如此定义：
@@ -313,7 +315,7 @@ for p in e**(1j*x):
 ```
 
 <div STYLE="FLOAT:LEFT"; align="left">
-<img src=https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00011.jpg width=100% align=left/> 
+<img src=https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00011.jpg width=100% align=left/> 
 </div><BR><BR><BR><BR>
 想要理解这张图的几何意义的话，<BR>
 就请继续学习吧少年
@@ -396,7 +398,7 @@ for xval in xvals:
 
     xval,sums.evalf(subs={x:xval}),'ro')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00012.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00012.jpg)
 
 表明指数函数$e^x$在$x=0$处展开的泰勒级数只取前20项的话，在输入值越接近展开点（$x=0$）处的近似效果就越好。
 
@@ -440,7 +442,7 @@ for xval in xvals:
 
     xval,sum15.evalf(subs={x:xval}),'yo')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00013.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00013.jpg)
 
 可以明显看出，在输入值远离展开点$x=0$处时，用越多项数获得的近似结果越接近真实值。
 
@@ -523,7 +525,8 @@ plt.text(4.5,8.5,r"$f(x)$", fontsize = 18,color="red")
 
 plt.show()
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00014.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00014.jpg)
+
 下面尝试用上面的定义来证明$\lim_{x\rightarrow 4}x^2-2x-6=2$:
 
 依据定义，我们需要show的是：对于任意$\epsilon$,能找到一个$\delta$使得：$0<|x-4|<\delta$时有$|f(x)-2|<\epsilon$
@@ -611,7 +614,8 @@ x,exponential, 'blue',\
 x,polynomial, 'green',\
 x,logarithmic, 'red')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00015.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00015.jpg)
+
 根据上图，当$x\rightarrow \infty$时：$x!> e^x> x^3 > ln(x)$，要想证明的话，可以取极限，例如：$\lim_{x\rightarrow \infty}\frac{e^x}{x^3}=\infty$（用洛必达法则计算），表明$x\rightarrow \infty$时，虽然分子分母都在趋向无限大，但是分子仍然远远凌驾于分母之上，决定了整个表达式的表现。
 
 类似地我们也可以这样看：$\lim_{x\rightarrow \infty}\frac{ln(x)}{x^3}=0$，表明分母将会远远凌驾于分子之上。
@@ -648,8 +652,9 @@ y2 = [g.evalf(subs={x:xval}) for xval in xvals]
 plt.plot(xvals[:100],y1[:100],'r',xvals[:100],y2[:100],'b')
 plt.plot(xvals,y1,'r',xvals,y2,'b')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00016.jpg)
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00017.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00016.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00017.jpg)
+
 Sympy可以帮助我们分析一个函数的阶：
 ```PY
 print sympy.O(f, (x, sympy.oo))
@@ -732,7 +737,8 @@ def makeplot(f,l,d):
 
         plt.show()
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00018.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00018.jpg)
+
 另一个是物理中的例子：对路程的时间函数$s(t)$求导可以得到速度的时间函数$v(t)$，再进一步求导可以得到加速度的时间函数$a(t)$这个理解较好，因为导数真正关心的事是：当我们稍微改变一点函数的输入值时，函数的输出值会有怎样变化。在单元时，导数看上去是曲线的切线斜率，但是到更多元时，就很难有“斜率”这样的直观感受了，但是输出值随着输入值的极小变化而产生的相应变化这样的理解还是成立的。
 
 **导数（Derivative）**
@@ -913,7 +919,8 @@ plt.plot(10.0/3,0,marker = 'o', color = 'r' )
 
 plt.show()
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00019.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00019.jpg)
+
 我们要猜$f(x)=x^2-2x-4=0$的解，从$x_0=4$的初始猜测值开始，找到$f(x)$在$x=x_0$处的切线$y=2x-8$，找到其与$y=0$的交点$(4,0)$，将该交点更新为新的猜测的解$x_1=4$，如此循环。
 
 如下定义牛顿迭代法：
@@ -966,6 +973,7 @@ $$f^{(n)}(x)=\frac{d}{dx}f^{(n-1)}(x)$$
 如果将求导数$\frac{d}{dx}$看作是一个运算符，则相当于反复对运算的结果使用$n$次运算符：
 
 $${(\frac{d}{dx})}^nf=\frac{d^n}{dx^n}f$$
+
 ```PY
 from sympy.abc import x
 from sympy.abc import y
@@ -1007,7 +1015,8 @@ plt.text(0.1,0.9,r"$\frac{4-l}{2}$", fontsize = 18,color="black")
 
 plt.show()
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00020.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00020.jpg)
+
 用一张给定边长$4$的正方形纸来折一个没有盖的纸盒，设纸盒的底部边长为$l$，纸盒的高为$\frac{4-l}{2}$，那么纸盒的体积为：
 
 $$V(l)=l^2\frac{4-l}{2}$$
@@ -1021,7 +1030,8 @@ V = lambda l: 0.5*l**2*(4-l)
 
 plt.plot(l,V(l))
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00021.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00021.jpg)
+
 通过观察函数图，不难看出，在$l$的值大约在$2.5$往上去一点的位置处，获得的纸盒的体积最大。
 
 **关键点（Critical Points）**
@@ -1106,7 +1116,8 @@ for i in range(len(x)):
 
     color = 'black')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00022.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00022.jpg)
+
 要找到这样一条直线，实际上是一个优化问题：
 
 $$\underset{a}{min}Err(a)=\sum_{i}{(y_i-ax_i)}^2$$
@@ -1145,7 +1156,7 @@ plt.plot(x,a*x,'red', linestyle = '--')
 
 plt.plot(x,slope*x+intercept, 'blue')
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00023.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00023.jpg)
 
 <div STYLE="page-break-after: always;"></div>
 
@@ -1177,7 +1188,8 @@ for p in np.linspace(-2,2,20):
 plt.plot(lindomain,slope*lindomain+intercept,'red',linewidth = 1)
 plt.plot(domain,[v.subs(t,i) for i in domain],linewidth = 2)
 ```
-![](https://gitee.com/al666ex/RhinoPython101/raw/master/images/giteepages/calculus/Image00024.jpg)
+![](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/calculus/Image00024.jpg)
+
 数学家发明并研究积分的一个重要目的便是为了方便地求解微分方程。
 
 **不定积分（Indefinite Integral）**

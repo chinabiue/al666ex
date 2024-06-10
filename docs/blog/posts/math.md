@@ -85,24 +85,25 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 | $\bmod {a}$ | \bmod{a} | $\pmod{a}$ | \pmod{a} |
 
 ### 1.4 巨算符
-| 符号         | 格式       | 符号        | 格式      |
-| ------------ | ---------- | ----------- | --------- |
-| $\sum     $  | \sum       | $\prod   $  | \prod     |
-| $\bigcup  $  | \bigcup    | $\bigcap $  | \bigcap   |
-| $\bigvee  $  | \bigvee    | $\bigwedge$ | \bigwedge |
-| $\bigsqcup$  | \bigsqcup  | $\coprod $  | \coprod   |
-| $\bigoplus$  | \bigoplus  | $\bigodot$  | \bigodot  |
-| $\bigotimes$ | \bigotimes | $\biguplus$ | \biguplus |
-| $\int     $  | \int       | $\oint   $  | \oint     |
-| $\iint    $  | \iint      | $\oiint  $  | \oiint    |
-| $\iint    $  | \iint      | $\oiint  $  | \oiiint   |
+===  "巨算符"
+    | 符号         | 格式       | 符号        | 格式      |
+    | ------------ | ---------- | ----------- | --------- |
+    | $\sum     $  | \sum       | $\prod   $  | \prod     |
+    | $\bigcup  $  | \bigcup    | $\bigcap $  | \bigcap   |
+    | $\bigvee  $  | \bigvee    | $\bigwedge$ | \bigwedge |
+    | $\bigsqcup$  | \bigsqcup  | $\coprod $  | \coprod   |
+    | $\bigoplus$  | \bigoplus  | $\bigodot$  | \bigodot  |
+    | $\bigotimes$ | \bigotimes | $\biguplus$ | \biguplus |
+    | $\int     $  | \int       | $\oint   $  | \oint     |
+    | $\iint    $  | \iint      | $\oiint  $  | \oiint    |
+    | $\iint    $  | \iint      | $\oiint  $  | \oiiint   |
 
-例：
-> 累加$\sum_{k=1}^n\frac{1}{k}  \qquad  \displaystyle\sum_{k=1}^n\frac{1}{k}$
+===  "示例"
+    **累加**    $\sum_{k=1}^n\frac{1}{k}  \qquad  \displaystyle\sum_{k=1}^n\frac{1}{k}$
 
-> 累乘$\prod_{k=1}^n\frac{1}{k}  \qquad  \displaystyle\prod_{k=1}^n\frac{1}{k}$
+    **累乘**    $\prod_{k=1}^n\frac{1}{k}  \qquad  \displaystyle\prod_{k=1}^n\frac{1}{k}$
 
-> 积分$\displaystyle \int_0^1xdx  \qquad  \iint_{D_{xy}}  \qquad  \iiint_{\Omega_{xyz}}$
+    **积分**    $\displaystyle \int_0^1xdx  \qquad  \iint_{D_{xy}}  \qquad  \iiint_{\Omega_{xyz}}$
 
 ### 1.5 文本/数学关系通用符号
 | 符号 | 格式 | 符号 | 格式 |
@@ -136,6 +137,7 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 | 符号                     | 格式                   | 符号                         | 格式                       |
 | ------------------------ | ---------------------- | ---------------------------- | -------------------------- |
 | $a \xleftarrow{x+y+z} b$ | a \xleftarrow{x+y+z} b | $c \xrightarrow[x<y]{abc} d$ | c \xrightarrow[x<y]{abc} d |
+
 ​
 
 ### 1.7 数学重音符号
@@ -248,7 +250,10 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 
 ---
 ## 2. 数学公式排版
-数学公式有两种排版方式：其一是与文字混排，称为**行内公式**；其二是单独列为一行排版，称为**行间公式**。
+数学公式有两种排版方式：
+
+- 其一是与文字混排，称为**行内公式**；
+- 其二是单独列为一行排版，称为**行间公式**。
 
 行内公式由一对`$`在同一行包裹；行间公式由一对`$$`在上下行包裹。
 
@@ -256,16 +261,15 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 
 如对于`e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}`来说，
 
-行内公式：
-/// note |
-$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$
-///
 
-​
-行间公式：
-/// note |
-$$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$$
-/// 
+=== "行内公式"
+    !!! note ""
+        $e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$
+
+=== "行间公式"
+    !!! note ""
+        $$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$$
+
 
 当进入公式排版时，输入的空格和换行将被忽略。若要换行，可使用命令\\\\。
 
@@ -288,11 +292,11 @@ $$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$$
 
 $$e^{i\pi}+1=0\tag{1.1}$$
 
-$$
+<!-- $$
 \begin{equation}
 x^n+y^n=z^n 
 \end{equation}
-$$
+$$ -->
 
 ### 2.3 上标和下标
 可用`^`和`_`标明上下标。注意上下标的内容一般需要用花括号包裹，否则上下标只对后面的一个符号起作用。
@@ -327,12 +331,21 @@ $$
 
 巨算符的上下标位置可由`\limits`和`\nolimits`调整。前者令巨算符的上下标位于上下方；后者令巨算符的上下标位于右上方和右下方。
 
-在行内公式中，`\sum_{i=1}^{n}i`、`\sum\limits_{i=1}^{n}i`和`\sum\nolimits_{i=1}^{n}i`分别为：
-$\sum_{i=1}^{n}i$、$\qquad\sum\limits_{i=1}^{n}i$、$\qquad \sum\nolimits_{i=1}^{n}i$
+在行内公式中，`\sum_{i=1}^{n}i`、`\sum\limits_{i=1}^{n}i`和`\sum\nolimits_{i=1}^{n}i`如下：
 
+在行间公式中，`\sum_{i=1}^{n}i`、`\sum\limits_{i=1}^{n}i`和`\sum\nolimits_{i=1}^{n}i`如下：
 
-在行间公式中，`\sum_{i=1}^{n}i`、`\sum\limits_{i=1}^{n}i`和`\sum\nolimits_{i=1}^{n}i`分别为：
-$$\sum_{i=1}^{n}i \qquad \sum\limits_{i=1}^{n}i \qquad\sum\nolimits_{i=1}^{n}i$$
+=== "行内公式"
+    !!! note ""
+        $\sum_{i=1}^{n}i$  、 $\qquad\sum\limits_{i=1}^{n}i$  、 $\qquad \sum\nolimits_{i=1}^{n}i$
+
+=== "行间公式"
+    !!! note ""
+        $$
+        \sum_{i=1}^{n}i \\
+        \sum\limits_{i=1}^{n}i\\
+        \quad\sum\nolimits_{i=1}^{n}i
+        $$
 
 ### 2.6 公式
 
@@ -340,214 +353,266 @@ $$\sum_{i=1}^{n}i \qquad \sum\limits_{i=1}^{n}i \qquad\sum\nolimits_{i=1}^{n}i$$
 通常来讲应当避免写出超过一行而需要折行的长公式。如果一定要折行的话，习惯上优先在等号之前折行，其次在加号、减号之前，再次在乘号、除号之前。其它位置应当避免折行。
 
 amsmath宏包的multline环境提供了书写折行长公式的方便环境。它允许用\\\\折行，将公式编号放在最后一行。多行公式的首行左对齐，末行右对齐，其余行居中。通常用`$$`包围公式会居中，用`$`包围公式会左对齐。
-```PY
-$\begin{aligned}
-a + b + c + d + e + 
-f + g + h + i \\
-&= j + k + l + m + n\\
-&= o + p + q + r + s\\
-&= t + u + v + x + z
-\end{aligned}$
-```
 
-$\begin{aligned}
-a + b + c + d + e + 
-f + g + h + i \\
-&= j + k + l + m + n\\
-&= o + p + q + r + s\\
-&= t + u + v + x + z
-\end{aligned}$
+=== "长公式折行代码"
+    !!! note ""
+        ```PY
+        $\begin{aligned}
+        a + b + c + d + e + 
+        f + g + h + i \\
+        &= j + k + l + m + n\\
+        &= o + p + q + r + s\\
+        &= t + u + v + x + z
+        \end{aligned}$
+        ```
+
+=== "长公式折行展示效果"
+    !!! note ""
+        $\begin{aligned}
+        a + b + c + d + e + 
+        f + g + h + i \\
+        &= j + k + l + m + n\\
+        &= o + p + q + r + s\\
+        &= t + u + v + x + z
+        \end{aligned}$
 
 公式的最后一行不写\\\\，如果写了，反倒会产生一个多余的空行。
-```PY
-$$
-\begin{cases}
-x=\rho\cos\theta \\
-y=\rho\sin\theta \\
-\end{cases}
-$$
-```
 
-$$
-\begin{cases}
-x=\rho\cos\theta \\
-y=\rho\sin\theta \\
-\end{cases}
-$$
+=== "最后一行不要加\\\\"
+    !!! note ""
+        ```PY
+        $$
+        \begin{cases}
+        x=\rho\cos\theta \\
+        y=\rho\sin\theta \\
+        \end{cases}
+        $$
+        ```
+
+=== "不加\\\\展示效果 "
+    !!! note ""
+        $$
+        \begin{cases}
+        x=\rho\cos\theta \\
+        y=\rho\sin\theta \\
+        \end{cases}
+        $$
 
 还有, 不要在公式内使用中文, 除非是 `$\text{中文}$`$\text{中文}$(但是也不推荐)
 
 #### 2.6.2 多行公式
 更多的情况是，我们需要罗列一系列公式，并令其按照等号对齐。目前最常用的是align环境，它将公式用&隔为两部分并对齐。分隔符通常放在等号左边：
-```py
-$$
-\begin{aligned}
-a & = b + c \\
-& = d + e
-\end{aligned}
-$$
-```
 
-$$
-\begin{aligned}
-a & = b + c \\
-& = d + e
-\end{aligned}
-$$
+=== "aligned MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{aligned}
+        a & = b + c \\
+        & = d + e
+        \end{aligned}
+        $$
+        ```
+
+=== "aligned 展示效果 "
+    !!! note ""
+        $$
+        \begin{aligned}
+        a & = b + c \\
+        & = d + e
+        \end{aligned}
+        $$
 
 aligned还能够对齐多组公式，除等号前的&之外，公式之间也用&分隔：
-```py
-$$
-\begin{aligned}
-a &=1  &  b &=2   & c &=3   \\
-d &=-1 &  e &=-2  & f &=-5
-\end{aligned}
-$$
 
-```
+=== "对齐多组公式 MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{aligned}
+        a &=1  &  b &=2   & c &=3   \\
+        d &=-1 &  e &=-2  & f &=-5
+        \end{aligned}
+        $$
+        ```
 
-$$
-\begin{aligned}
-a &=1  &  b &=2   & c &=3   \\
-d &=-1 &  e &=-2  & f &=-5
-\end{aligned}
-$$
+=== "对齐多组公式 展示效果 "
+    !!! note ""
+        $$
+        \begin{aligned}
+        a &=1  &  b &=2   & c &=3   \\
+        d &=-1 &  e &=-2  & f &=-5
+        \end{aligned}
+        $$
 
 如果我们不需要按等号对齐，只需罗列数个公式，gather将是一个很好用的环境：
-```PY
-$$
-\begin{gather}
-a = b + c \\
-d = e + f + g \\
-h + i = j + k \\
-l + m = n
-\end{gather}
-$$
-```
 
-$$
-\begin{gather}
-a = b + c \\
-d = e + f + g \\
-h + i = j + k \\
-l + m = n
-\end{gather}
-$$
+=== "gather MD代码 "
+    !!! note ""
+        ```PY
+        $$
+        \begin{gather}
+        a = b + c \\
+        d = e + f + g \\
+        h + i = j + k \\
+        l + m = n
+        \end{gather}
+        $$
+        ```
+
+=== "gather 展示效果 "
+    !!! note ""
+        $$
+        \begin{gather}
+        a = b + c \\
+        d = e + f + g \\
+        h + i = j + k \\
+        l + m = n
+        \end{gather}
+        $$
 
 #### 2.6.3 分支公式
 使用cases环境可支持分支公式：
-```py
-$$
-|x| =
-\begin{cases}
--x & \text{if } x < 0,\\
-0 & \text{if } x = 0,\\
-x & \text{if } x > 0.
-\end{cases}
-$$
-```
 
-$$
-|x| =
-\begin{cases}
--x & \text{if } x < 0,\\
-0 & \text{if } x = 0,\\
-x & \text{if } x > 0.
-\end{cases}
-$$
+=== "cases MD代码 "
+    !!! note ""
+        ```py
+        $$
+        |x| =
+        \begin{cases}
+        -x & \text{if } x < 0,\\
+        0 & \text{if } x = 0,\\
+        x & \text{if } x > 0.
+        \end{cases}
+        $$
+        ```
+=== "cases 展示效果 "
+    !!! note ""
+        $$
+        |x| =
+        \begin{cases}
+        -x & \text{if } x < 0,\\
+        0 & \text{if } x = 0,\\
+        x & \text{if } x > 0.
+        \end{cases}
+        $$
 
 ### 2.7 矩阵
 amsmath宏包直接提供了多种排版矩阵的环境，包括不带定界符的`matrix`，以及带各种定界符的矩阵`pmatrix`（( ）、`bmatrix`（[ ）、`Bmatrix`（\{）、`vmatrix`（|）、`Vmatrix`（∥）。
-```py
-$$
-\begin{matrix}
-1 & 2 \\ 3 & 4
-\end{matrix}
-$$
-```
 
-$$
-\begin{matrix}
-1 & 2 \\ 3 & 4
-\end{matrix} \qquad
-$$
+- 不带定界符的`matrix`
+=== "matrix MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{matrix}
+        1 & 2 \\ 3 & 4
+        \end{matrix}
+        $$
+        ```
 
-```py
-$$
-\begin{pmatrix}
-x_{11} & x_{12} & \ldots & x_{1n}\\
-x_{21} & x_{22} & \ldots & x_{2n}\\
-\vdots & \vdots & \ddots & \vdots\\
-x_{n1} & x_{n2} & \ldots & x_{nn}\\
-\end{pmatrix} 
-$$
-```
+=== "matrix 展示效果 "
+    !!! note ""
+        $$
+        \begin{matrix}
+        1 & 2 \\ 3 & 4
+        \end{matrix} \qquad
+        $$
 
-$$
-\begin{pmatrix}
-x_{11} & x_{12} & \ldots & x_{1n}\\
-x_{21} & x_{22} & \ldots & x_{2n}\\
-\vdots & \vdots & \ddots & \vdots\\
-x_{n1} & x_{n2} & \ldots & x_{nn}\\
-\end{pmatrix} 
-$$
+- 带定界符的矩阵`pmatrix`（( ）
+=== "pmatrix MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{pmatrix}
+        x_{11} & x_{12} & \ldots & x_{1n}\\
+        x_{21} & x_{22} & \ldots & x_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        x_{n1} & x_{n2} & \ldots & x_{nn}\\
+        \end{pmatrix} 
+        $$
+        ```
+=== "pmatrix 展示效果 "
+    !!! note ""
+        $$
+        \begin{pmatrix}
+        x_{11} & x_{12} & \ldots & x_{1n}\\
+        x_{21} & x_{22} & \ldots & x_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        x_{n1} & x_{n2} & \ldots & x_{nn}\\
+        \end{pmatrix} 
+        $$
+- 带定界符的矩阵`bmatrix`（[ ）、`Bmatrix`（\{）
+=== "bmatrix MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{bmatrix}
+        1 & 2 \\ 3 & 4
+        \end{bmatrix} 
+        $$
+        ```
 
-```py
-$$
-\begin{bmatrix}
-1 & 2 \\ 3 & 4
-\end{bmatrix} 
-$$
-```
+=== "bmatrix 展示效果 "
+    !!! note ""
+        $$
+        \begin{bmatrix}
+        1 & 2 \\ 3 & 4
+        \end{bmatrix} 
+        $$
 
-$$
-\begin{bmatrix}
-1 & 2 \\ 3 & 4
-\end{bmatrix} 
-$$
+=== "Bmatrix MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{Bmatrix}
+        1 & 2 \\ 3 & 4
+        \end{Bmatrix}
+        $$
+        ```
+=== "Bmatrix 展示效果 "
+    !!! note ""
+        $$
+        \begin{Bmatrix}
+        1 & 2 \\ 3 & 4
+        \end{Bmatrix}
+        $$
 
-```py
-$$
-\begin{Bmatrix}
-1 & 2 \\ 3 & 4
-\end{Bmatrix}
-$$
-```
+- 带定界符的矩阵`vmatrix`（|）、`Vmatrix`（∥）
+=== "vmatrix MD代码 "
+    !!! note ""
+        ```py
+        $$
+        \begin{vmatrix}
+        1 & 2 \\ 3 & 4
+        \end{vmatrix}
+        $$
+        ```
+=== "vmatrix 展示效果 "
+    !!! note ""
+        $$
+        \begin{vmatrix}
+        1 & 2 \\ 3 & 4
+        \end{vmatrix}
+        $$
 
-$$
-\begin{Bmatrix}
-1 & 2 \\ 3 & 4
-\end{Bmatrix}
-$$
+=== "Vmatrix MD代码 "
+    !!! note ""
+        ```PY
+        $$
+        \begin{Vmatrix}
+        1 & 2 \\ 3 & 4
+        \end{Vmatrix}
+        $$
+        ```
 
-```py
-
-$$
-\begin{vmatrix}
-1 & 2 \\ 3 & 4
-\end{vmatrix}
-$$
-```
-
-$$
-\begin{vmatrix}
-1 & 2 \\ 3 & 4
-\end{vmatrix}
-$$
-
-```PY
-$$
-\begin{Vmatrix}
-1 & 2 \\ 3 & 4
-\end{Vmatrix}
-$$
-```
-
-$$
-\begin{Vmatrix}
-1 & 2 \\ 3 & 4
-\end{Vmatrix}
-$$
+=== "Vmatrix 展示效果 "
+    !!! note ""
+        $$
+        \begin{Vmatrix}
+        1 & 2 \\ 3 & 4
+        \end{Vmatrix}
+        $$
 
 ### 2.8 数学字母字体
 LATEX允许一部分数学符号切换字体，主要是拉丁字母、数字、大写希腊字母以及重音符号等。
