@@ -16,22 +16,25 @@ theme:
   name: material
   custom_dir: overrides
   palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Let there be light
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: teal
-      accent: purple
+      accent: indigo
       toggle:
-        # icon: material/toggle-switch
-        icon: material/toggle-switch-off
-        name: 关灯
+        icon: material/toggle-switch
+        name: Let there be dark
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: purple
+      accent: indigo
       toggle:
-        # icon: material/toggle-switch-off-outline
-        icon: material/link
-        name: 开灯
+        icon: material/toggle-switch-off
+        name: Let it be
+
   features:
     - search.suggest
     - navigation.footer
@@ -59,7 +62,7 @@ edit_uri: ""
 
 # Plugins
 plugins:
-  - social
+  # - social
   - blog:
       blog_toc: true
       categories_toc: true
