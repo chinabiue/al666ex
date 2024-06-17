@@ -16,61 +16,69 @@ date: 2022-06-21 20:19:06
 
 以下分段展示两个代码的不同实现方式，可以看出pathlib更简洁高效。
 ## 1. 新建文件夹与重命名
-```python
-import os
-import os.path
+=== "原来方式：os.makedirs"
+    ```python
+    import os
+    import os.path
 
-#创建了first/second目录
-os.makedirs(os.path.join('first', 'sencond'), exist_ok=True)
-#将 sau.txt 文件重命名为 first/sau.txt.bak,并移到first目录下
-os.rename('sau.txt', os.path.join('first', 'sau.txt.bak'))
-```
+    #创建了first/second目录
+    os.makedirs(os.path.join('first', 'sencond'), exist_ok=True)
+    #将 sau.txt 文件重命名为 first/sau.txt.bak,并移到first目录下
+    os.rename('sau.txt', os.path.join('first', 'sau.txt.bak'))
+    ```
+=== "Path.mkdir 新建文件夹"
+    使用 Path 对象执行相同的操作，由于采用链式调用的方法，pathlib 代码将路径放在第一位。
+    ```python
+    from pathlib import Path
 
-使用 Path 对象执行相同的操作，由于采用链式调用的方法，pathlib 代码将路径放在第一位。
-```python
-from pathlib import Path
+    Path('first/second').mkdir(parents=True, exist_ok=True)
+    ```
+=== "Path.rename的当移动文件使用"
+    前提是移动目的地的文件结构要已经存在，rename不会给你在移动过程中新建文件结构。
 
-Path('first/second').mkdir(parents=True, exist_ok=True)
-Path('sau.txt').rename('src/sau.txt.bak')
-```
+    ```python
+    from pathlib import Path
+
+    Path('sau.txt').rename('src/sau.txt.bak')
+    ```
 <!-- more -->
 ## 2. 匹配特定模式 
+=== "老方式"
+    ```python
+    from glob import glob
+    #找出所有后缀名为.csv的文件
+    top_level_csv_files = glob('*.csv')
+    all_csv_files = glob('**/*.csv', recursive=True)
+    ```
+=== "新方式： pathlib 模块同样包括类似 glob 的功能。通过对Path对象的操作，已经不再需要导入glob模块了。"
+    ```python
+    from pathlib import Path
 
-```python
-from glob import glob
-#找出所有后缀名为.csv的文件
-top_level_csv_files = glob('*.csv')
-all_csv_files = glob('**/*.csv', recursive=True)
-```
-
-新的 pathlib 模块同样包括类似 glob 的功能。通过对Path对象的操作，已经不再需要导入glob模块了。
-```python
-from pathlib import Path
-
-top_level_csv_files = Path.cwd().glob('*.csv')
-all_csv_files = Path.cwd().rglob('*.csv')
-```
+    top_level_csv_files = Path.cwd().glob('*.csv')
+    all_csv_files = Path.cwd().rglob('*.csv')
+    ```
 
 ## 3. 读取文件夹里所有文本
-```python
-from glob import glob
+=== "老式for循环"
+    ```python
+    from glob import glob
 
-file_contents = []
-#读取一个或多个文件夹内所有py文本内容
-for filename in glob('**/*.py', recursive=True):
-    with open(filename) as python_file:
-        file_contents.append(python_file.read())
-```
+    file_contents = []
+    #读取一个或多个文件夹内所有py文本内容
+    for filename in glob('**/*.py', recursive=True):
+        with open(filename) as python_file:
+            file_contents.append(python_file.read())
+    ```
 
-用 Path 对象的 read_text 方法配合列表推导式，一行代码解决问题：
-```python
-from pathlib import Path
+=== "用 Path 对象的 read_text 方法配合列表推导式，一行代码解决问题："
+    ```python
+    from pathlib import Path
 
-file_contents = [
-    path.read_text()
-    for path in Path.cwd().rglob('*.py')
-]
-```
+    file_contents = [
+        path.read_text()
+        for path in Path.cwd().rglob('*.py')
+    ]
+    ```
 
 ## 4. 写入文本
 ```python
