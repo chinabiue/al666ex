@@ -262,14 +262,21 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 如对于`e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}`来说，
 
 
-=== "行内公式"
-    !!! note ""
-        $e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$
+<div class="grid cards" markdown>
 
-=== "行间公式"
-    !!! note ""
-        $$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$$
+-   :material-cat:{ .lg .middle } __行内公式__
 
+    ---
+
+    $e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$
+
+
+-   :material-dog:{ .lg .middle } __行间公式__
+
+    ---
+    $$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$$
+
+</div>
 
 当进入公式排版时，输入的空格和换行将被忽略。若要换行，可使用命令\\\\。
 
@@ -289,8 +296,8 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 使用`\tag{}`可以为公式手动标号：
 
 `e^{i\pi}+1=0\tag{1.1}`
-
-$$e^{i\pi}+1=0\tag{1.1}$$
+!!! note ""
+    $$e^{i\pi}+1=0\tag{1.1}$$
 
 <!-- $$
 \begin{equation}
@@ -335,17 +342,23 @@ $$ -->
 
 在行间公式中，`\sum_{i=1}^{n}i`、`\sum\limits_{i=1}^{n}i`和`\sum\nolimits_{i=1}^{n}i`如下：
 
-=== "行内公式"
-    !!! note ""
-        $\sum_{i=1}^{n}i$  、 $\qquad\sum\limits_{i=1}^{n}i$  、 $\qquad \sum\nolimits_{i=1}^{n}i$
+<div class="grid cards" markdown>
+-   :material-cat:{ .lg .middle } __行内公式__
 
-=== "行间公式"
-    !!! note ""
-        $$
-        \sum_{i=1}^{n}i \\
-        \sum\limits_{i=1}^{n}i\\
-        \quad\sum\nolimits_{i=1}^{n}i
-        $$
+    ---
+    $\sum_{i=1}^{n}i$  、 $\qquad\sum\limits_{i=1}^{n}i$  、 $\qquad \sum\nolimits_{i=1}^{n}i$
+
+
+-   :material-dog:{ .lg .middle } __行间公式__
+
+    ---
+    $$
+    \sum_{i=1}^{n}i \\
+    \sum\limits_{i=1}^{n}i\\
+    \quad\sum\nolimits_{i=1}^{n}i
+    $$
+</div>
+
 
 ### 2.6 公式
 
@@ -354,194 +367,240 @@ $$ -->
 
 amsmath宏包的multline环境提供了书写折行长公式的方便环境。它允许用\\\\折行，将公式编号放在最后一行。多行公式的首行左对齐，末行右对齐，其余行居中。通常用`$$`包围公式会居中，用`$`包围公式会左对齐。
 
-=== "长公式折行代码"
-    !!! note ""
-        ```PY
-        $\begin{aligned}
-        a + b + c + d + e + 
-        f + g + h + i \\
-        &= j + k + l + m + n\\
-        &= o + p + q + r + s\\
-        &= t + u + v + x + z
-        \end{aligned}$
-        ```
+<div class="grid cards" markdown>
 
-=== "长公式折行展示效果"
-    !!! note ""
-        $\begin{aligned}
-        a + b + c + d + e + 
-        f + g + h + i \\
-        &= j + k + l + m + n\\
-        &= o + p + q + r + s\\
-        &= t + u + v + x + z
-        \end{aligned}$
+-   :material-cat:{ .lg .middle } __长公式折行代码__
+
+    ---
+    ```py
+    $\begin{aligned}
+    a + b + c + d + e + 
+    f + g + h + i \\
+    &= j + k + l + m + n\\
+    &= o + p + q + r + s\\
+    &= t + u + v + x + z
+    \end{aligned}$
+    ```
+
+-   :material-dog:{ .lg .middle } __长公式折行展示效果__
+
+    ---
+    $\begin{aligned}
+    a + b + c + d + e + 
+    f + g + h + i \\
+    &= j + k + l + m + n\\
+    &= o + p + q + r + s\\
+    &= t + u + v + x + z
+    \end{aligned}$
+</div>
 
 公式的最后一行不写\\\\，如果写了，反倒会产生一个多余的空行。
 
-=== "最后一行不要加\\\\"
-    !!! note ""
-        ```PY
-        $$
-        \begin{cases}
-        x=\rho\cos\theta \\
-        y=\rho\sin\theta \\
-        \end{cases}
-        $$
-        ```
+<div class="grid cards" markdown>
 
-=== "不加\\\\展示效果 "
-    !!! note ""
-        $$
-        \begin{cases}
-        x=\rho\cos\theta \\
-        y=\rho\sin\theta \\
-        \end{cases}
-        $$
+-   :material-cat:{ .lg .middle } __最后一行不要加\\\\__
+
+    ---
+    ```py
+    $$
+    \begin{cases}
+    x=\rho\cos\theta \\
+    y=\rho\sin\theta \\
+    \end{cases}
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __不加\\\\展示效果__
+
+    ---
+    $$
+    \begin{cases}
+    x=\rho\cos\theta \\
+    y=\rho\sin\theta \\
+    \end{cases}
+    $$
+</div>
 
 还有, 不要在公式内使用中文, 除非是 `$\text{中文}$`$\text{中文}$(但是也不推荐)
 
 #### 2.6.2 多行公式
 更多的情况是，我们需要罗列一系列公式，并令其按照等号对齐。目前最常用的是align环境，它将公式用&隔为两部分并对齐。分隔符通常放在等号左边：
 
-=== "aligned MD代码 "
-    !!! note ""
-        ```py
-        $$
-        \begin{aligned}
-        a & = b + c \\
-        & = d + e
-        \end{aligned}
-        $$
-        ```
+<div class="grid cards" markdown>
 
-=== "aligned 展示效果 "
-    !!! note ""
-        $$
-        \begin{aligned}
-        a & = b + c \\
-        & = d + e
-        \end{aligned}
-        $$
+-   :material-cat:{ .lg .middle } __aligned MD代码__
+
+    ---
+    ```py
+    $$
+    \begin{aligned}
+    a & = b + c \\
+    & = d + e
+    \end{aligned}
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __aligned 展示效果__
+
+    ---
+    $$
+    \begin{aligned}
+    a & = b + c \\
+    & = d + e
+    \end{aligned}
+    $$
+</div>
 
 aligned还能够对齐多组公式，除等号前的&之外，公式之间也用&分隔：
 
-=== "对齐多组公式 MD代码 "
-    !!! note ""
-        ```py
-        $$
-        \begin{aligned}
-        a &=1  &  b &=2   & c &=3   \\
-        d &=-1 &  e &=-2  & f &=-5
-        \end{aligned}
-        $$
-        ```
+<div class="grid cards" markdown>
 
-=== "对齐多组公式 展示效果 "
-    !!! note ""
-        $$
-        \begin{aligned}
-        a &=1  &  b &=2   & c &=3   \\
-        d &=-1 &  e &=-2  & f &=-5
-        \end{aligned}
-        $$
+-   :material-cat:{ .lg .middle } __对齐多组公式 MD代码__
+
+    ---
+    ```py
+    $$
+    \begin{aligned}
+    a &=1  &  b &=2   & c &=3   \\
+    d &=-1 &  e &=-2  & f &=-5
+    \end{aligned}
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __对齐多组公式 展示效果__
+
+    ---
+    $$
+    \begin{aligned}
+    a &=1  &  b &=2   & c &=3   \\
+    d &=-1 &  e &=-2  & f &=-5
+    \end{aligned}
+    $$
+</div>
 
 如果我们不需要按等号对齐，只需罗列数个公式，gather将是一个很好用的环境：
 
-=== "gather MD代码 "
-    !!! note ""
-        ```PY
-        $$
-        \begin{gather}
-        a = b + c \\
-        d = e + f + g \\
-        h + i = j + k \\
-        l + m = n
-        \end{gather}
-        $$
-        ```
+<div class="grid cards" markdown>
 
-=== "gather 展示效果 "
-    !!! note ""
-        $$
-        \begin{gather}
-        a = b + c \\
-        d = e + f + g \\
-        h + i = j + k \\
-        l + m = n
-        \end{gather}
-        $$
+-   :material-cat:{ .lg .middle } __gather MD代码__
+
+    ---
+    ```PY
+    $$
+    \begin{gather}
+    a = b + c \\
+    d = e + f + g \\
+    h + i = j + k \\
+    l + m = n
+    \end{gather}
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __gather 展示效果__
+
+    ---
+    $$
+    \begin{gather}
+    a = b + c \\
+    d = e + f + g \\
+    h + i = j + k \\
+    l + m = n
+    \end{gather}
+    $$
+</div>
 
 #### 2.6.3 分支公式
 使用cases环境可支持分支公式：
 
-=== "cases MD代码 "
-    !!! note ""
-        ```py
-        $$
-        |x| =
-        \begin{cases}
-        -x & \text{if } x < 0,\\
-        0 & \text{if } x = 0,\\
-        x & \text{if } x > 0.
-        \end{cases}
-        $$
-        ```
-=== "cases 展示效果 "
-    !!! note ""
-        $$
-        |x| =
-        \begin{cases}
-        -x & \text{if } x < 0,\\
-        0 & \text{if } x = 0,\\
-        x & \text{if } x > 0.
-        \end{cases}
-        $$
+<div class="grid cards" markdown>
+
+-   :material-cat:{ .lg .middle } __cases MD代码__
+
+    ---
+    ```py
+    $$
+    |x| =
+    \begin{cases}
+    -x & \text{if } x < 0,\\
+    0 & \text{if } x = 0,\\
+    x & \text{if } x > 0.
+    \end{cases}
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __cases 展示效果__
+
+    ---
+    $$
+    |x| =
+    \begin{cases}
+    -x & \text{if } x < 0,\\
+    0 & \text{if } x = 0,\\
+    x & \text{if } x > 0.
+    \end{cases}
+    $$
+</div>
 
 ### 2.7 矩阵
 amsmath宏包直接提供了多种排版矩阵的环境，包括不带定界符的`matrix`，以及带各种定界符的矩阵`pmatrix`（( ）、`bmatrix`（[ ）、`Bmatrix`（\{）、`vmatrix`（|）、`Vmatrix`（∥）。
 
 - 不带定界符的`matrix`
-=== "matrix MD代码 "
-    !!! note ""
-        ```py
-        $$
-        \begin{matrix}
-        1 & 2 \\ 3 & 4
-        \end{matrix}
-        $$
-        ```
+<div class="grid cards" markdown>
 
-=== "matrix 展示效果 "
-    !!! note ""
-        $$
-        \begin{matrix}
-        1 & 2 \\ 3 & 4
-        \end{matrix} \qquad
-        $$
+-   :material-cat:{ .lg .middle } __matrix MD代码__
+
+    ---
+    ```py
+    $$
+    \begin{matrix}
+    1 & 2 \\ 3 & 4
+    \end{matrix}
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __matrix 展示效果__
+
+    ---
+    $$
+    \begin{matrix}
+    1 & 2 \\ 3 & 4
+    \end{matrix} \qquad
+    $$
+
+</div>
+
 
 - 带定界符的矩阵`pmatrix`（( ）
-=== "pmatrix MD代码 "
-    !!! note ""
-        ```py
-        $$
-        \begin{pmatrix}
-        x_{11} & x_{12} & \ldots & x_{1n}\\
-        x_{21} & x_{22} & \ldots & x_{2n}\\
-        \vdots & \vdots & \ddots & \vdots\\
-        x_{n1} & x_{n2} & \ldots & x_{nn}\\
-        \end{pmatrix} 
-        $$
-        ```
-=== "pmatrix 展示效果 "
-    !!! note ""
-        $$
-        \begin{pmatrix}
-        x_{11} & x_{12} & \ldots & x_{1n}\\
-        x_{21} & x_{22} & \ldots & x_{2n}\\
-        \vdots & \vdots & \ddots & \vdots\\
-        x_{n1} & x_{n2} & \ldots & x_{nn}\\
-        \end{pmatrix} 
-        $$
+<div class="grid cards" markdown>
+
+-   :material-cat:{ .lg .middle } __pmatrix MD代码__
+
+    ---
+    ```py
+    $$
+    \begin{pmatrix}
+    x_{11} & x_{12} & \ldots & x_{1n}\\
+    x_{21} & x_{22} & \ldots & x_{2n}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    x_{n1} & x_{n2} & \ldots & x_{nn}\\
+    \end{pmatrix} 
+    $$
+    ```
+
+-   :material-dog:{ .lg .middle } __pmatrix 展示效果__
+
+    ---
+    $$
+    \begin{pmatrix}
+    x_{11} & x_{12} & \ldots & x_{1n}\\
+    x_{21} & x_{22} & \ldots & x_{2n}\\
+    \vdots & \vdots & \ddots & \vdots\\
+    x_{n1} & x_{n2} & \ldots & x_{nn}\\
+    \end{pmatrix} 
+    $$
+
+</div>
+
 - 带定界符的矩阵`bmatrix`（[ ）、`Bmatrix`（\{）
 === "bmatrix MD代码 "
     !!! note ""
@@ -648,3 +707,6 @@ amsmath提供了一个\boldsymbol命令，可将本身支持粗体符号的数�
 | -------------------------------------- | -------------------------------------- |
 | $\mathbf{A\ a\ \Omega\ \omega\ 1}$     | `\mathbf{A\ a\ \Omega\ \omega\ 1}`     |
 | $\boldsymbol{A\ a\ \Omega\ \omega\ 1}$ | `\boldsymbol{A\ a\ \Omega\ \omega\ 1}` |
+
+
+
