@@ -11,7 +11,7 @@ date: 2024-04-02 22:08:07
 
 ### [**Python Crash Course**](https://ehmatthes.github.io/pcc_3e/)
 
-![](../img/pcc_3e_cover-170px.png)
+![](../assets/img/pcc_3e_cover-170px.png)
 
 Python Crash Course is the world’s best-selling guide to the Python programming language. This fast-paced, thorough introduction will have you writing programs, solving problems, and developing functioning applications in no time.
 
@@ -37,7 +37,7 @@ If you’ve been thinking about digging into programming, Python Crash Course wi
 
 ### [**Automate the boring stuff with python**](https://automatetheboringstuff.com/)
 
-![](../img/cover_automate2_thumb.jpg)
+![](../assets/img/cover_automate2_thumb.jpg)
 
 **Practical Programming for Total Beginners**
 
@@ -66,7 +66,7 @@ Don't spend your time doing work a well-trained monkey could do. Even if you've 
 
 ### [**Fluent Python**](https://www.fluentpython.com/)
 
-![](../img/fluentpython2e-cover-drop-shadow.png)
+![](../assets/img/fluentpython2e-cover-drop-shadow.png)
 
 Don't waste time bending Python to fit patterns you've learned in other languages. Python's simplicity lets you become productive quickly, but often this means you aren't using everything the language has to offer. With the updated edition of this hands-on guide, you'll learn how to write effective, modern Python 3 code by leveraging its best ideas.
 
@@ -84,7 +84,7 @@ Complete with major updates throughout, this new edition features five parts tha
 
 ### [**Building Python Web APIs with FastAPI**](https://www.oreilly.com/library/view/building-python-web/9781801076630/)
 
-![](../img/fast.jpg)
+![](../assets/img/fast.jpg)
 
 Discover FastAPI features and best practices for building and deploying high-quality web APIs from scratch
 

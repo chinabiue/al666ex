@@ -1,7 +1,9 @@
 ---
+title: Alex The Creator
+template: home.html
 hide:
   - navigation
-title: Alex The Creator
+  - toc
 
 ---
 There are lots of interesting things that I want to learn.

@@ -9,18 +9,18 @@ FastAPI很短平快，以下首个试跑程序。
 
 ``` {.python .annotate hl_lines="4"} 
 # c2_1st_app.py
-{!./py/fastapi_demo/c2_1st_app.py!}
-```
+{!./assets/py/fastapi_demo/c2_1st_app.py!}
+``` 
 
 1. 导入FastAPI类
 2. 创建FastAPI实例
 3. 定义路由和处理函数
 
 vscode运行截图
-![](../../../img/fastapi_demo/vscode_1st_app.png)
+![](../../../assets/img/fastapi_demo/vscode_1st_app.png)
 
 浏览器访问截图
-![](../../../img/fastapi_demo/1st_app_web.png)
+![](../../../assets/img/fastapi_demo/1st_app_web.png)
 
 ## 处理请求参数
 
@@ -77,14 +77,14 @@ FastAPI有自动生成的测试接口，可以用来测试API。
 
 
 1. 打开WSL Debian,并进入项目文件夹。项目文件夹就是py文件所在的文件夹。输入 `code .`在当前位置打开vscode。
-   ![](../../../img/fastapi_demo/1wsl.png)
+   ![](../../../assets/img/fastapi_demo/1wsl.png)
 2. 在vscode命令行输入 `uvicorn c2_query:app'，并回车。
-   ![](../../../img/fastapi_demo/2vscode.png)
+   ![](../../../assets/img/fastapi_demo/2vscode.png)
 3. 程序运行无误，会弹出一个小窗口，点击小窗口`Open in Browser`，在浏览器中打开网址。
 4. 在打开的网址后加上`/docs`，会打开API文档。
-   ![](../../../img/fastapi_demo/3docs.png)
+   ![](../../../assets/img/fastapi_demo/3docs.png)
 5. 可以在网页上测试刚写好的API了。
-   ![](../../../img/fastapi_demo/4test.png)
+   ![](../../../assets/img/fastapi_demo/4test.png)
 
    
 ### 请求体和查询参数

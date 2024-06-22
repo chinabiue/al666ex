@@ -42,7 +42,7 @@ page.wait_for_selector() 这一句始终没有找到一个好的条件来结束�
 
 
 ```Python hl_lines="5 6 7 30" linenums="1"
-{! py/gitee.py !}
+{! assets/py/gitee.py !}
 ```
 
 !!! warning "Update"

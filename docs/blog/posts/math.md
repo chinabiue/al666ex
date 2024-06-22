@@ -4,7 +4,9 @@ tags: python
 categories: [math]
 authors:
     - Alex
-date: 2023-09-11 10:40:50
+date: 
+    created: 2023-09-11 10:40:50
+    updated: 2024-06-21 22:25:00
 ---
 Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种简单的方式在 VS Code 中书写数学公式.
 
@@ -264,14 +266,14 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __行内公式__
+-   :material-cat:{ .lg .middle .red} __行内公式__
 
     ---
 
     $e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$
 
 
--   :material-dog:{ .lg .middle } __行间公式__
+-   :material-dog:{ .lg .middle .green} __行间公式__
 
     ---
     $$e=\lim_{n\rightarrow\infty}(1+\frac{1}{n})^{n}$$
@@ -343,13 +345,13 @@ $$ -->
 在行间公式中，`\sum_{i=1}^{n}i`、`\sum\limits_{i=1}^{n}i`和`\sum\nolimits_{i=1}^{n}i`如下：
 
 <div class="grid cards" markdown>
--   :material-cat:{ .lg .middle } __行内公式__
+-   :material-cat:{ .lg .middle .orange} __行内公式__
 
     ---
     $\sum_{i=1}^{n}i$  、 $\qquad\sum\limits_{i=1}^{n}i$  、 $\qquad \sum\nolimits_{i=1}^{n}i$
 
 
--   :material-dog:{ .lg .middle } __行间公式__
+-   :material-dog:{ .lg .middle .aqua} __行间公式__
 
     ---
     $$
@@ -369,7 +371,7 @@ amsmath宏包的multline环境提供了书写折行长公式的方便环境。�
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __长公式折行代码__
+-   :material-cat:{ .lg .middle .yellow} __长公式折行代码__
 
     ---
     ```py
@@ -382,7 +384,7 @@ amsmath宏包的multline环境提供了书写折行长公式的方便环境。�
     \end{aligned}$
     ```
 
--   :material-dog:{ .lg .middle } __长公式折行展示效果__
+-   :material-dog:{ .lg .middle .blue} __长公式折行展示效果__
 
     ---
     $\begin{aligned}
@@ -398,7 +400,7 @@ amsmath宏包的multline环境提供了书写折行长公式的方便环境。�
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __最后一行不要加\\\\__
+-   :material-cat:{ .lg .middle .green} __最后一行不要加\\\\__
 
     ---
     ```py
@@ -410,7 +412,7 @@ amsmath宏包的multline环境提供了书写折行长公式的方便环境。�
     $$
     ```
 
--   :material-dog:{ .lg .middle } __不加\\\\展示效果__
+-   :material-dog:{ .lg .middle .purple} __不加\\\\展示效果__
 
     ---
     $$
@@ -428,7 +430,7 @@ amsmath宏包的multline环境提供了书写折行长公式的方便环境。�
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __aligned MD代码__
+-   :material-cat:{ .lg .middle .aqua} __aligned MD代码__
 
     ---
     ```py
@@ -440,7 +442,7 @@ amsmath宏包的multline环境提供了书写折行长公式的方便环境。�
     $$
     ```
 
--   :material-dog:{ .lg .middle } __aligned 展示效果__
+-   :material-dog:{ .lg .middle .red} __aligned 展示效果__
 
     ---
     $$
@@ -455,7 +457,7 @@ aligned还能够对齐多组公式，除等号前的&之外，公式之间也用
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __对齐多组公式 MD代码__
+-   :material-cat:{ .lg .middle .blue} __对齐多组公式 MD代码__
 
     ---
     ```py
@@ -467,7 +469,7 @@ aligned还能够对齐多组公式，除等号前的&之外，公式之间也用
     $$
     ```
 
--   :material-dog:{ .lg .middle } __对齐多组公式 展示效果__
+-   :material-dog:{ .lg .middle .orange} __对齐多组公式 展示效果__
 
     ---
     $$
@@ -482,7 +484,7 @@ aligned还能够对齐多组公式，除等号前的&之外，公式之间也用
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __gather MD代码__
+-   :material-cat:{ .lg .middle .purple} __gather MD代码__
 
     ---
     ```PY
@@ -496,7 +498,7 @@ aligned还能够对齐多组公式，除等号前的&之外，公式之间也用
     $$
     ```
 
--   :material-dog:{ .lg .middle } __gather 展示效果__
+-   :material-dog:{ .lg .middle .yellow} __gather 展示效果__
 
     ---
     $$
@@ -514,7 +516,7 @@ aligned还能够对齐多组公式，除等号前的&之外，公式之间也用
 
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __cases MD代码__
+-   :material-cat:{ .lg .middle .red} __cases MD代码__
 
     ---
     ```py
@@ -528,7 +530,7 @@ aligned还能够对齐多组公式，除等号前的&之外，公式之间也用
     $$
     ```
 
--   :material-dog:{ .lg .middle } __cases 展示效果__
+-   :material-dog:{ .lg .middle .green} __cases 展示效果__
 
     ---
     $$
@@ -547,7 +549,7 @@ amsmath宏包直接提供了多种排版矩阵的环境，包括不带定界符�
 - 不带定界符的`matrix`
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __matrix MD代码__
+-   :material-cat:{ .lg .middle .orange} __matrix MD代码__
 
     ---
     ```py
@@ -558,7 +560,7 @@ amsmath宏包直接提供了多种排版矩阵的环境，包括不带定界符�
     $$
     ```
 
--   :material-dog:{ .lg .middle } __matrix 展示效果__
+-   :material-dog:{ .lg .middle .aqua} __matrix 展示效果__
 
     ---
     $$
@@ -573,7 +575,7 @@ amsmath宏包直接提供了多种排版矩阵的环境，包括不带定界符�
 - 带定界符的矩阵`pmatrix`（( ）
 <div class="grid cards" markdown>
 
--   :material-cat:{ .lg .middle } __pmatrix MD代码__
+-   :material-cat:{ .lg .middle .yellow} __pmatrix MD代码__
 
     ---
     ```py
@@ -587,7 +589,7 @@ amsmath宏包直接提供了多种排版矩阵的环境，包括不带定界符�
     $$
     ```
 
--   :material-dog:{ .lg .middle } __pmatrix 展示效果__
+-   :material-dog:{ .lg .middle .blue} __pmatrix 展示效果__
 
     ---
     $$

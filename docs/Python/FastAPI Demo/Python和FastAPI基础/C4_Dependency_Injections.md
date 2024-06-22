@@ -8,14 +8,14 @@ categories:
 FastAPI很短平快，以下首个试跑程序。
 
 ```py hl_lines="3"
-{!./py/fastapi_demo/c2_1st_app.py!}
+{!./assets/py/fastapi_demo/c2_1st_app.py!}
 ```
 
 vscode运行截图
-![](../../../img/fastapi_demo/vscode_1st_app.png)
+![](../../../assets/img/fastapi_demo/vscode_1st_app.png)
 
 浏览器访问截图
-![](../../../img/fastapi_demo/1st_app_web.png)
+![](../../../assets/img/fastapi_demo/1st_app_web.png)
 
 ## 处理请求参数
 

@@ -3,7 +3,7 @@ site_name: Alex The Creator
 site_url: https://al666ex.pages.dev/
 site_author: Alex The Creator
 site_description: >-
-  All the meaningless python, rhino, grasshopper
+  Spend my spare time at coding, drawing, and listening to the muzik
 # Coyright
 copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
 
@@ -14,7 +14,7 @@ repo_url: https://gitee.com/al666ex/
 # Conifguration
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: docs/assets/overrides
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -53,8 +53,8 @@ theme:
     # - toc.integrate
     - toc.follow
 
-  logo: img/favicon.ico
-  favicon: img/favicon.ico
+  logo: assets/img/favicon.ico
+  favicon: assets/img/favicon.ico
   icon:
     annotation: material/arrow-right-circle
   language: en
@@ -141,12 +141,12 @@ extra:
   #     name: "42"
 
 extra_javascript:
-  - js/katex.js
+  - assets/js/katex.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
-  - js/custom.js
+  - assets/js/custom.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
-  - css/custom.css
-  - css/extra.css
+  - assets/css/extra.css
+  - assets/css/custom.7c86dd97.min.css
