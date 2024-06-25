@@ -9,7 +9,8 @@ copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
 
 # Repository
 repo_name: Al666ex
-repo_url: https://gitee.com/al666ex/
+repo_url: https://github.com/chinabiue/al666ex
+edit_uri: edit/main/docs/
 
 # Conifguration
 theme:
@@ -44,6 +45,8 @@ theme:
     - content.tooltips
     - content.code.annotate
     - content.code.copy
+    - content.action.edit
+    - content.action.view
     - navigation.tabs.sticky
     - navigation.tabs
     - navigation.top
@@ -57,12 +60,23 @@ theme:
   favicon: assets/img/favicon.ico
   icon:
     annotation: material/arrow-right-circle
+    repo: fontawesome/solid/trash
+    edit: material/file-edit
+    view: material/file-eye
   language: en
-edit_uri: ""
 
 # Plugins
 plugins:
-  # - social
+  - git-revision-date-localized:
+      type: timeago
+      fallback_to_build_date: false
+      enable_creation_date: true
+      enabled: true
+  - git-authors
+  # - git-committers:
+  #     enabled: true
+  #     repository: chinabiue/al666ex
+  #     branch: main
   - blog:
       blog_toc: true
       categories_toc: true

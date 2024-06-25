@@ -1,5 +1,5 @@
 # Time flies
-!!! success
+!!! success ""
 
     Wish everyone success
 
