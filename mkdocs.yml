@@ -60,7 +60,7 @@ theme:
   favicon: assets/img/favicon.ico
   icon:
     annotation: material/arrow-right-circle
-    repo: fontawesome/solid/trash
+    # repo: fontawesome/solid/trash
     edit: material/file-edit
     view: material/file-eye
   language: en

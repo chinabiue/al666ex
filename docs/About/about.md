@@ -15,9 +15,6 @@ $ Southernplayalisticadillacfunkymuzik
 
 <div class="grid" markdown>
 
-:simple-mailgun: __[Mail](mailto:chinabiue@aliyun.com)__
-{ .card }
-
 :fontawesome-brands-internet-explorer: __[Website](https://al666ex.pages.dev/)__
 { .card }
 
