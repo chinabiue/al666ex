@@ -1,39 +1,120 @@
 ---
 title: Alex The Creator
 template: home.html
+date:
+  created: 2023-04-29 19:09:07
+  updated: 2024-06-29 15:09:00
 hide:
   - navigation
   - toc
+  - footer
+  - feedback
 
 ---
-There are lots of interesting things that I want to learn.
-=== "✨✨Blog✨✨"
-    This is mainly a **[blog](https://al666ex.pages.dev/blog/)** site with some documentation.<br>
-    <img align=center  width="90%" src="\img\dddmw.jpg"></img>
 
-=== "🐍Python"
-    [Python](https://al666ex.pages.dev/Python/) is very interesting!<br>
-    <img align=center  width="39%" src="\img\python.jpg"></img>
+<!-- There are lots of interesting things that I want to learn. -->
+# What did the Creator Create Here?
 
-=== "🦏Rhino"
-    [Rhino](https://al666ex.pages.dev/Rhino/) is fantasticly interesting!<br>
-    <img align=center  width="29%" src="\img\rhino.jpg"></img>
+<div class="grid cards wide" markdown>
 
-<!-- === "🐱Git"
-    [Git](https://git-scm.com/book/zh/v2) is a command line wired tool.<br>
-    <img align=center  width="29%" src="\img\github.jpg"></img>
+-   :material-format-paint:{ .lg .middle } __Craft This Site With Material for MKDocs__
+  
+    ---
 
-=== "🦅Deutsch"
-    Not start yet.🎃🎃🎃<br>
-    <img align=center  width="35%" src="\img\de.jpg"></img>
+    Using documents and  templates I built this site.
 
-=== "🐙PLC"
-    Not start yet.🎞🎞🎞<br>
-    <img align=center  width="30%" src="\img\octopus.png"></img>
+    [:octicons-arrow-right-24: GO GO](/)
 
-=== "🦎Small fun"
-    Not start yet. 🐱‍🚀💢<br>
-    <img align=center  width="29%" src="\img\lizard.jpg"></img> 
-=== "🕷Data Structure"
-    [Data Structure](https://runestone.academy/ns/books/published/pythonds3/index.html) is the exercise for my Brain.<br>
-    <img align=center  width="33%" src="\img\ds.jpg"></img> -->
+-   :simple-python:{.lg .middle .green} __Playing With Python__
+
+    ---
+
+    Python is a programming language that lets you work quickly and integrate systems more effectively.
+
+    [:octicons-arrow-right-24: Go Python](/Python/)
+
+-   :simple-rhinoceros:{.lg .middle .red} __Rhinoceroes__
+
+    ---
+
+    Rhino is the most versatile of all 3D modelers, a jack-of-all-trades used in many industries…
+
+    [:octicons-arrow-right-24: Go Rhino](/Rhino)
+
+-   :simple-blogger:{.lg .middle .orange} __Blog Something Interesting__
+
+    ---
+
+    Write something down is very useful. Think more and you will not fall asleep at the middle of the night.
+
+    [:octicons-arrow-right-24: Go Blog](/blog/)
+
+</div>
+
+---
+# Who Deserve The Thanks?
+
+
+<div class="accent" markdown>
+
+### For those who create the beatiful programming language, we fellow the road they built before and thanks for giving us fun.
+
+</div>
+
+<div class="grid" markdown>
+
+<span class="quote">
+:material-format-quote-open:
+ The author of the [Python](https://www.python.org/) programming language. See also my resume and my publications list, a brief bio, assorted writings, presentations and interviews (all about Python), some pictures of me, my new blog, and my old blog on Artima.com. I am @gvanrossum on Twitter.
+:material-format-quote-close:
+</span>
+<br/><br/><br/>
+<img src="/assets/img/guido.jpg" class="headshot centered" />
+<br/>
+<a href="https://gvanrossum.github.io/" target="_blank" class="author centered">Guido van Rossum</a>
+{ .testimonial }
+
+<span class="quote">
+:material-format-quote-open:
+Isaac Newton (born December 25, 1642 [January 4, 1643, New Style], Woolsthorpe, Lincolnshire, England—died March 20 [March 31], 1727, London) was an English physicist and mathematician who was the culminating figure of the Scientific Revolution of the 17th century. 
+:material-format-quote-close:
+</span>
+<br/><br/><br/>
+<img src="/assets/img/newton.webp" class="headshot centered" />
+<br/>
+<a href="https://www.britannica.com/biography/Isaac-Newton" target="_blank" class="author centered">Isaac Newton</a>
+{ .testimonial }
+
+<span class="quote">
+:material-format-quote-open:
+Me is a frog
+Me is a frog
+Me is a frog
+Me is a frog
+Me is a frog
+:material-format-quote-close:
+</span>
+<br/><br/><br/>
+<img src="/assets/img/pa.png" class="headshot centered" />
+<br/>
+<a href="https://al666ex.pages.dev/" target="_blank" class="author centered">Alex The creator</a>
+{ .testimonial }
+
+</div>
+
+---
+# Sponsors & Backers
+
+### At the end of 2024, the economic of world is very bad, lots of people didn't get hired, Also I will lose my job at that time.I **appreciate** if you can feed me something!  :fontawesome-solid-money-check-dollar:{.lg .green .middle}
+
+??? danger "Thanks"
+
+    === "Wechat"
+        
+        ![Wechat](/assets/img/wechat.png){width=300}
+        
+    === "Alipay"
+        
+        ![Alipay](/assets/img/alipay.png){width=300}
+
+---

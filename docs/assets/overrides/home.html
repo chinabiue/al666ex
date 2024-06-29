@@ -4,53 +4,115 @@
 {% extends "main.html" %}
 {% block tabs %}
 {{ super() }}
+<!-- Additional styles for landing page -->
 <style>
-  .md-header {
-    position: initial
+  .mdx-container {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(0, 0%, 100%, 1)' /></svg>") no-repeat bottom, linear-gradient(to bottom, var(--md-primary-fg-color), #a63fd9 99%, var(--md-default-bg-color) 99%);
+    background-size: contain;
+    padding-top: 6rem;
   }
 
-  .md-main__inner {
-    margin: 0
+  [data-md-color-scheme="slate"] .mdx-container {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(230, 15%, 14%, 1)' /></svg>") no-repeat bottom, linear-gradient(to bottom, var(--md-primary-fg-color), #363949 99%, var(--md-default-bg-color) 99%);
+    background-size: contain;
   }
 
-  .md-content {
-    display: none
+  .mdx-hero {
+    color: var(--hb-hero-color);
+    margin: 0.8rem;
   }
 
-  @media screen and (min-width:60em) {
-    .md-sidebar--secondary {
-      display: none
+  .mdx-hero h1 {
+    color: currentcolor;
+    margin-bottom: 1rem;
+    font-size: 1.9rem;
+  }
+
+  @media screen and (max-width: 29.9375em) {
+    .mdx-hero h1 {
+      font-size: 1.4rem;
     }
   }
 
-  @media screen and (min-width:76.25em) {
-    .md-sidebar--primary {
-      display: none
+  .mdx-hero__content {
+    padding-bottom: 6rem;
+  }
+
+  @media screen and (min-width: 60em) {
+    .mdx-hero {
+      align-items: stretch;
+      display: flex;
     }
+
+    .mdx-hero__content {
+      margin-top: 3.5rem;
+      max-width: 38rem;
+      padding-bottom: 14vw;
+    }
+
+    .mdx-hero__image {
+      order: 1;
+      transform: translateX(4rem);
+      width: 38rem;
+    }
+  }
+
+  @media screen and (min-width: 76.25em) {
+    .mdx-hero__image {
+      transform: translateX(8rem);
+    }
+  }
+
+  .mdx-hero .md-button {
+    color: var(--hb-hero-color);
+    border-color: var(--hb-hero-color);
+  }
+
+  [data-md-color-scheme="slate"] .mdx-hero .md-button--primary {
+    color: var(--md-primary-fg-color);
+  }
+
+  .mdx-hero .md-button--primary {
+    color: var(--md-primary-fg-color);
+    background-color: var(--hb-hero-color);
+    border-color: transparent;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .md-main .md-button--primary {
+    color: var(--md-primary-fg-color);
+    background-color: var(--hb-hero-color);
+    border-color: transparent;
+  }
+
+  nav[class="md-tabs"] {
+    border-bottom: none;
   }
 </style>
+
 <section class="mdx-container">
   <div class="md-grid md-typeset">
     <div class="mdx-hero">
       <div class="mdx-hero__image">
-        <img src="assets/img/bg.png" alt="" width="1500" height="1000" draggable="false">
+        <img src="assets/img/bg.png" alt="" width="1200" height="800" draggable="false">
       </div>
       <div class="mdx-hero__content">
         <h1>Southernplayalisticadillacmuzik</h1>
-        <p>{{ config.site_description }}. Just have fun.</p>
+        <p>{{ config.site_description }}.<br> Just have fun.</p>
         <a href="{{ 'blog/' | url }}" title="Blogger" class="md-button md-button--primary">
           Blog
         </a>
-        <a href="{{ 'Python/' | url }}" title="Let's Coding" class="md-button ">
+        <a href="{{ 'Python/' | url }}" title="Let's Coding" class="md-button">
           Python
         </a>
-        <a href="{{ 'Rhino/' | url }}" title="Let's Drawing" class="md-button ">
+        <a href="{{ 'Rhino/' | url }}" title="Let's Drawing" class="md-button">
           Rhino
         </a>
       </div>
     </div>
   </div>
 </section>
+<hr />
 {% endblock %}
-{% block content %}{% endblock %}
-{% block footer %}{% endblock %}

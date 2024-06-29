@@ -17,24 +17,18 @@ theme:
   name: material
   custom_dir: docs/assets/overrides
   palette:
-    - media: "(prefers-color-scheme)"
+    # - media: "(prefers-color-scheme: dark)"
+    - scheme: slate
+      accent: amber
       toggle:
-        icon: material/link
-        name: Let there be light
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: teal
-      accent: indigo
+        icon: material/brightness-2
+        name: "Switch to light mode"
+    # - media: "(prefers-color-scheme: light)"
+    - scheme: default
+      accent: deep purple
       toggle:
-        icon: material/toggle-switch
-        name: Let there be dark
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: black
-      accent: indigo
-      toggle:
-        icon: material/toggle-switch-off
-        name: Let it be
+        icon: material/brightness-5
+        name: "Switch to dark mode"
 
   features:
     - search.suggest
@@ -60,7 +54,6 @@ theme:
   favicon: assets/img/favicon.ico
   icon:
     annotation: material/arrow-right-circle
-    # repo: fontawesome/solid/trash
     edit: material/file-edit
     view: material/file-eye
   language: en
@@ -73,18 +66,14 @@ plugins:
       enable_creation_date: true
       enabled: true
   - git-authors
-  # - git-committers:
-  #     enabled: true
-  #     repository: chinabiue/al666ex
-  #     branch: main
   - blog:
       blog_toc: true
       categories_toc: true
       archive_toc: true
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-  # - minify:
-  #     minify_html: true
+  - minify:
+      minify_html: true
   - termynal:
       title: cmd
       buttons: macos
@@ -146,13 +135,6 @@ extra:
           data: 0
           note: >-
             Thanks for your feedback! 你开心就好！
-  # social:
-  #   - icon: fontawesome/brands/pied-piper-alt
-  #     link: https://al666ex.pages.dev/
-  #     name: Alex The Creator
-  #   - icon: fontawesome/solid/paper-plane
-  #     link: mailto:chinabiue@aliyun.com
-  #     name: "42"
 
 extra_javascript:
   - assets/js/katex.js
@@ -162,5 +144,5 @@ extra_javascript:
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
-  - assets/css/extra.css
-  - assets/css/custom.7c86dd97.min.css
+  - assets/css/custom.css
+  - assets/css/plugin.css
