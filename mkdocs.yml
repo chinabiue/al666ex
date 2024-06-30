@@ -8,7 +8,7 @@ site_description: >-
 copyright: Copyright &copy; 2020 - 2042 Alex The Creator. All Rights Reserved.
 
 # Repository
-repo_name: Al666ex
+repo_name: al666ex
 repo_url: https://github.com/chinabiue/al666ex
 edit_uri: edit/main/docs/
 
@@ -32,7 +32,6 @@ theme:
 
   features:
     - search.suggest
-    - navigation.footer
     - search.highlight
     - content.tabs.link
     - content.footnote.tooltips
@@ -42,6 +41,7 @@ theme:
     - content.action.edit
     - content.action.view
     - navigation.tabs.sticky
+    - navigation.footer
     - navigation.tabs
     - navigation.top
     - navigation.expand
@@ -137,10 +137,10 @@ extra:
             Thanks for your feedback! 你开心就好！
 
 extra_javascript:
-  - assets/js/katex.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
   - assets/js/custom.js
+  - assets/js/katex.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css

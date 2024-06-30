@@ -23,7 +23,7 @@ hide:
 
     Using documents and  templates I built this site.
 
-    [:octicons-arrow-right-24: GO GO](/)
+    [:octicons-arrow-right-24: GO GO](#)
 
 -   :simple-python:{.lg .middle .green} __Playing With Python__
 
@@ -31,7 +31,7 @@ hide:
 
     Python is a programming language that lets you work quickly and integrate systems more effectively.
 
-    [:octicons-arrow-right-24: Go Python](/Python/)
+    [:octicons-arrow-right-24: Go Python](Python/)
 
 -   :simple-rhinoceros:{.lg .middle .red} __Rhinoceroes__
 
@@ -39,7 +39,7 @@ hide:
 
     Rhino is the most versatile of all 3D modelers, a jack-of-all-trades used in many industries…
 
-    [:octicons-arrow-right-24: Go Rhino](/Rhino)
+    [:octicons-arrow-right-24: Go Rhino](Rhino)
 
 -   :simple-blogger:{.lg .middle .orange} __Blog Something Interesting__
 
@@ -47,7 +47,7 @@ hide:
 
     Write something down is very useful. Think more and you will not fall asleep at the middle of the night.
 
-    [:octicons-arrow-right-24: Go Blog](/blog/)
+    [:octicons-arrow-right-24: Go Blog](blog/)
 
 </div>
 
@@ -87,11 +87,7 @@ Isaac Newton (born December 25, 1642 [January 4, 1643, New Style], Woolsthorpe, 
 
 <span class="quote">
 :material-format-quote-open:
-Me is a frog
-Me is a frog
-Me is a frog
-Me is a frog
-Me is a frog
+Graduated from University in 2008, I was a part time gate keeper and a member of football player of my class. Almost jobless at the end of 2024.  I am interesting in the fields of automations, internet technology, mechanics and power electronics.
 :material-format-quote-close:
 </span>
 <br/><br/><br/>
@@ -111,10 +107,10 @@ Me is a frog
 
     === "Wechat"
         
-        ![Wechat](/assets/img/wechat.png){width=300}
+        ![Wechat](assets/img/wechat.png){width=220}
         
     === "Alipay"
         
-        ![Alipay](/assets/img/alipay.png){width=300}
+        ![Alipay](assets/img/alipay.png){width=220}
 
 ---
