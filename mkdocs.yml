@@ -118,6 +118,9 @@ markdown_extensions:
 
 # Additional configuration
 extra:
+  status:
+    new: Recently added
+    deprecated: Not valid anymore
   generator: false
   analytics:
     provider: google

@@ -1,8 +1,11 @@
 ---
 title: Blog
 ---
-# :material-account-cowboy-hat-outline:{.orange} THEY PLAY GAMES :material-nintendo-game-boy:{.red}
-!!! success ""
+# :material-account-cowboy-hat-outline:{.orange} THEY PLAY GAMES :material-nintendo-game-boy:{.red }
 
-    **Wish everyone success**
+<div class="grid cards" markdown>
 
+-   **Wish everyone success**{.centered .red}
+
+    ![](../assets/img/dd21.webp)
+</div>

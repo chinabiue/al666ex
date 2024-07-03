@@ -1,5 +1,4 @@
 ---
-title: Rhino-Python-Primer-101-第8章5节
 tags: Rhino-Python-Primer-101
 categories: book
 date: 
@@ -8,7 +7,7 @@ date:
 authors:
     - Alex
 ---
-## 8.5 平面
+# 8.5 平面
 
 在Rhino中平面并不是真正的物体，它的功能主要是用来在3D世界空间定义坐标系。实际上，最好把平面想象成向量，它们只是数学结构而已。虽然在Rhino内部平面是用参数等式定义的，我发现把它当成一组轴来理解更好:
 

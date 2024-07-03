@@ -1,13 +1,15 @@
 ---
-title: Rhino Python Primer 101 Rev3程序勘误
 tags: Rhino-Python-Primer-101
 categories: book
 authors:
     - Alex
 date: 
     created: 2022-01-20 21:30:07
-    updated: 2024-05-28 20:08:42
+    updated: 2024-07-03 20:11:43
+icon: material/book
+status: new
 ---
+# :material-book:{.red} Rev3程序勘误
 Rhino Python Primer 101这本书是官方出版的学习python编程在Rhino中应用的手册。
 
 没有中文版，这不是问题，咱学英文；但是有一点比较坑的是，里面的程序没有经过仔细的校对，思路都是对的，但是只要一上手运行就会发现各种错误。

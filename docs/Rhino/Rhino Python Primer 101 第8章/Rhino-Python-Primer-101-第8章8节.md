@@ -1,5 +1,4 @@
 ---
-title: Rhino-Python-Primer-101-第8章8节
 tags: Rhino-Python-Primer-101
 categories: book
 authors:
@@ -9,7 +8,7 @@ date:
     updated: 2024-05-28 21:33:14
 ---
 
-## 8.8 网格
+# 8.8 网格
 
 本章要说的不是 Nurbs 曲面(这应该是 nurbs 曲线之后的下一个逻辑步骤)，而是网格。我将借这个机会向你介绍一个完全不同类别的几何体，官方名称是多边形网格，它代表了一种完全不同的造型方法。
 
@@ -22,7 +21,7 @@ date:
 - NURBS没有明暗层次，NURBS几何体只有等高线和边缘可以直接在视口中绘制。如果一个NURBS曲面要有阴影，那么就必须转换成网格来实现。这意味着在一个有阴影的视口中插入NURBS曲面会导致一个明显的（有时是非常明显的）时间滞后，因为软件需要时间把NURBS转换为网格来产生阴影效果。
 - 在Rhino中的网格可以是非框架的，也就是说有两个以上的面共享一条边。虽然从技术上来说，NURBS的行为并非不可能，但Rhino并不允许这样做。非网格形状在拓扑学上更难处理。如果一条边只属于一个面，它就是一条外部边（裸露的），如果它属于两个面，它就被认为是内部的。
 
-### 8.8.1 几何学与拓扑学
+## 8.8.1 几何学与拓扑学
 
 如前所述，只有顶点和面是网格定义的必要组成部分。顶点代表网格定义的几何部分，面代表拓扑部分。你有可能不知道我在说什么......请允许我解释一下。
 
@@ -264,7 +263,7 @@ def meshfunction_xy():
 | $\left[\sin(x) + \sin(y) + x + y\right]$    | int(math.sin(x) + math.sin(y) + x + y)               | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-g.svg" width="100%"> |
 | $\log\left(\sin(x) + \sin(y) + 2.01\right)$ | math.log(math.sin(x)<BR>+math.sin(y)+2.01)           | <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/rhino101/primer-meshxy-h.svg" width="100%"> |
 
-### 8.8.2 形状 vs. 图像
+## 8.8.2 形状 vs. 图像
 
 网格对象的顶点和面列表定义了它的形式（几何和拓扑结构），但网格也可以有局部显示属性。颜色和纹理坐标是其中的两个属性，我们可以通过RhinoScriptSyntax来控制。  颜色列表（通常被称为 "假色"）是一个可选的网格属性，它为网格中的每个顶点定义了单独的颜色。我所知道的Rhino指令中，唯一能产生网格假色数据的有分析指令 *(_DraftAngleAnalysis, _ThicknessAnalysis, _CurvatureAnalysis等等)* ，但不幸的是这些命令不允许输出分析网格的结果。在我们对假色网格做一些有用的事情之前，让我们先做一些简单的事情，比如给网格对象分配随机颜色：
 
