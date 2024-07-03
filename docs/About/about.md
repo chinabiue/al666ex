@@ -1,10 +1,11 @@
 ---
 title: About 
 date: 2024-03-29 10:19:00
-categories: 
-    - None
 authors:
     - PAlex
+hide:
+    - toc
+    - feedback
 ---
 <!-- termynal: {title: Music Loading...} -->
 

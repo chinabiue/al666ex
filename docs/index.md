@@ -3,7 +3,7 @@ title: Alex The Creator
 template: home.html
 date:
   created: 2023-04-29 19:09:07
-  updated: 2024-06-29 15:09:00
+  updated: 2024-07-01 20:19:21
 hide:
   - navigation
   - toc
@@ -17,7 +17,7 @@ hide:
 
 <div class="grid cards wide" markdown>
 
--   :material-format-paint:{ .lg .middle } __Craft This Site With Material for MKDocs__
+-   :material-format-paint:{ .lg .middle .yellow } __Craft This Site With Material for MKDocs__
   
     ---
 
@@ -64,9 +64,9 @@ hide:
 <div class="grid" markdown>
 
 <span class="quote">
-:material-format-quote-open:
+:material-format-quote-open:{.red}
  The author of the [Python](https://www.python.org/) programming language. See also my resume and my publications list, a brief bio, assorted writings, presentations and interviews (all about Python), some pictures of me, my new blog, and my old blog on Artima.com. I am @gvanrossum on Twitter.
-:material-format-quote-close:
+:material-format-quote-close:{.red}
 </span>
 <br/><br/><br/>
 <img src="/assets/img/guido.jpg" class="headshot centered" />
@@ -75,9 +75,9 @@ hide:
 { .testimonial }
 
 <span class="quote">
-:material-format-quote-open:
+:material-format-quote-open:{.red}
 Isaac Newton (born December 25, 1642 [January 4, 1643, New Style], Woolsthorpe, Lincolnshire, England—died March 20 [March 31], 1727, London) was an English physicist and mathematician who was the culminating figure of the Scientific Revolution of the 17th century. 
-:material-format-quote-close:
+:material-format-quote-close:{.red}
 </span>
 <br/><br/><br/>
 <img src="/assets/img/newton.webp" class="headshot centered" />
@@ -86,9 +86,9 @@ Isaac Newton (born December 25, 1642 [January 4, 1643, New Style], Woolsthorpe, 
 { .testimonial }
 
 <span class="quote">
-:material-format-quote-open:
+:material-format-quote-open:{.red}
 Graduated from University in 2008, I was a part time gate keeper and a member of football player of my class. Almost jobless at the end of 2024.  I am interesting in the fields of automations, internet technology, mechanics and power electronics.
-:material-format-quote-close:
+:material-format-quote-close:{.red}
 </span>
 <br/><br/><br/>
 <img src="/assets/img/pa.png" class="headshot centered" />
@@ -105,11 +105,11 @@ Graduated from University in 2008, I was a part time gate keeper and a member of
 
 ??? danger "Thanks"
 
-    === "Wechat"
+    === "Wechat" 
         
         ![Wechat](assets/img/wechat.png){width=220}
         
-    === "Alipay"
+    === "Alipay" 
         
         ![Alipay](assets/img/alipay.png){width=220}
 
