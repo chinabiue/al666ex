@@ -14,7 +14,7 @@ title: Rhino学习兴趣小组!
 ## **进阶**
 * [Rhino Python Primer 101](https://developer.rhino3d.com/guides/rhinopython/primer-101/)
   
-* [Rhino Python Primer 101-第8章 中文兴趣版](Rhino Python Primer 101/Rhino-Python-Primer-101-第8章1-2节)
+* [Rhino Python Primer 101-第8章 中文兴趣版](Rhino Python Primer 101/Rhino-Python-Primer-101-第8章1-2节.md)
 
 !!! info "**About Rhino**"
 

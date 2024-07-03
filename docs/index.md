@@ -31,7 +31,7 @@ hide:
 
     Python is a programming language that lets you work quickly and integrate systems more effectively.
 
-    [:octicons-arrow-right-24: Go Python](Python/)
+    [:octicons-arrow-right-24: Go Python](Python/index.md)
 
 -   :simple-rhinoceros:{.lg .middle .red} __Rhinoceroes__
 
@@ -39,7 +39,7 @@ hide:
 
     Rhino is the most versatile of all 3D modelers, a jack-of-all-trades used in many industries…
 
-    [:octicons-arrow-right-24: Go Rhino](Rhino)
+    [:octicons-arrow-right-24: Go Rhino](Rhino/index.md)
 
 -   :simple-blogger:{.lg .middle .orange} __Blog Something Interesting__
 
@@ -47,7 +47,7 @@ hide:
 
     Write something down is very useful. Think more and you will not fall asleep at the middle of the night.
 
-    [:octicons-arrow-right-24: Go Blog](blog/)
+    [:octicons-arrow-right-24: Go Blog](blog/index.md)
 
 </div>
 
