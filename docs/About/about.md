@@ -4,7 +4,7 @@ date: 2024-03-29 10:19:00
 authors:
     - PAlex
 hide:
-    - toc
+    # - toc
     - feedback
 ---
 <!-- termynal: {title: Music Loading...} -->

@@ -53,7 +53,7 @@ theme:
   logo: assets/img/favicon.ico
   favicon: assets/img/favicon.ico
   icon:
-    annotation: material/arrow-right-circle
+    annotation: material/plus-circle-outline
     edit: material/file-edit
     view: material/file-eye
   language: en
@@ -83,17 +83,22 @@ plugins:
 # Extensions
 markdown_extensions:
   - tables
+  - def_list
   - attr_list
   - footnotes
   - admonition
   - md_in_html
   - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.details
   - pymdownx.snippets
   - pymdownx.betterem
   - pymdownx.superfences
   - pymdownx.inlinehilite
+  - pymdownx.smartsymbols
   - toc:
       permalink: true
   - pymdownx.superfences:
@@ -113,6 +118,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
   - mdx_include:
       base_path: docs
 
