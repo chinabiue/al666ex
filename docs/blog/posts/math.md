@@ -98,7 +98,7 @@ Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种�
     | $\bigotimes$ | \bigotimes | $\biguplus$ | \biguplus |
     | $\int     $  | \int       | $\oint   $  | \oint     |
     | $\iint    $  | \iint      | $\oiint  $  | \oiint    |
-    | $\iint    $  | \iint      | $\oiint  $  | \oiiint   |
+    | $\iiint    $ | \iiint     | $\oiiint  $ | \oiiint   |
 
 ===  "示例"
     **累加**    $\sum_{k=1}^n\frac{1}{k}  \qquad  \displaystyle\sum_{k=1}^n\frac{1}{k}$
