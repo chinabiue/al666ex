@@ -6,7 +6,7 @@ authors:
     - Alex
 date: 
     created: 2022-03-11 10:05:30
-    updated: 2024-07-06 13:54:08
+    updated: 2024-07-08 22:10:29
 ---
 
 # 遇到百分百的女孩
@@ -16,13 +16,9 @@ date:
 
 1. :japanese_ogre:{.red} Haruki Murakami (born January 12, 1949, [Kyōto](https://www.britannica.com/place/Kyoto-Japan), Japan) is a Japanese novelist, short-story writer, and translator whose deeply imaginative and often [ambiguous](https://www.merriam-webster.com/dictionary/ambiguous) books became international bestsellers.
 
-四月一个晴朗的早晨，我在原宿后街同一个百分之百的女孩擦肩而过。
-
 ???+ example "__Month of may__ [^2]"
     :fontawesome-solid-1:{.red} :fontawesome-solid-2:{.orange} :material-numeric-3-box:{.yellow} :fontawesome-solid-4:{.green}<br>
     <!-- ![](../../assets/img/arcade_fire.jpg) -->
-
-
 
 !!! danger inline end "Not suprise"
     *This was sounds from ur right airpods pro, the left one is broken* (1)
@@ -37,13 +33,13 @@ date:
 
 [:material-home: Go home if you're tired (r)](https://al666ex.pages.dev){ .md-button .md-button--primary } <br><br>
 
-不讳地说，女孩算不得怎么漂亮，并无吸引人之处，衣着也不出众，脑后的头发执着地带有睡觉挤压的痕迹。年龄也已不小了- -应该快有30了。严格地说来，恐怕很难称之为女孩。然而，相距50米开外我便一眼看出：对于我来说，她是个百分之百的女孩。从看见她身姿的那一瞬间，我的胸口便如发生地鸣一般的震颤，口中如沙漠干得沙沙作响。
+四月一个晴朗的早晨，我在原宿后街同一个百分之百的女孩擦肩而过。
 
-<!-- more -->
+不讳地说，女孩算不得怎么漂亮，并无吸引人之处，衣着也不出众，脑后的头发执着地带有睡觉挤压的痕迹。年龄也已不小了- -应该快有30了。严格地说来，恐怕很难称之为女孩。然而，相距50米开外我便一眼看出：对于我来说，她是个百分之百的女孩。从看见她身姿的那一瞬间，我的胸口便如发生地鸣一般的震颤，口中如沙漠干得沙沙作响。
 
 === "1st Four"
 
-    Gonna make a record in the __month of May__
+    Gonna make a record in the __month of May__{.blue}
 
     In the month of May, in the __month of May__
 
@@ -54,7 +50,7 @@ date:
 === "Show^In^Markdown"
 
     ```markdown    
-    Gonna make a record in the __month of May__
+    Gonna make a record in the __month of May__{.blue}
 
     In the month of May, in the __month of May__
 
@@ -127,9 +123,9 @@ sequenceDiagram
 
     Used to doubt it
 
-    But now I believe it
+    ^^But now I believe it^^
 
-我想和她说话，哪怕30分钟也好。想打听她的身世，也想全盘托出自己的身世。而更重要的，是想弄清导致1981年4月一个晴朗的早晨我们在原宿后街擦肩而过这一命运的原委。里面肯定充满和平时代的古老机器般温馨的秘密。
+我想和她说话，哪怕30分钟也好。想打听她的身世，也想全盘托出自己的身世。而更重要的，是想弄清导致 __1981__{.red} 年 __4__{.red} 月一个晴朗的早晨我们在原宿后街擦肩而过这一命运的原委。里面肯定充满和平时代的古老机器:material-checkbox-multiple-blank-circle-outline:般温馨的秘密。
 
 如此谈罢，我们可以找地方吃午饭，看伍迪·爱伦的影片，再顺路到宾馆里的酒吧喝鸡尾酒什么的。弄得好，喝完说不定能同她睡上一觉。
 
@@ -297,9 +293,7 @@ $   Don't lay me down there with my arms folded tight
 
         Come on and blow the wires away
 
-        Come on and blow the wires away
-
-    :material-repeat: :octicons-x-circle-fill-12:{.red} :material-numeric-2-circle:
+        Come on and blow the wires away   __x 2__{.red}
 
     Start again in the month of May
 
@@ -307,7 +301,7 @@ $   Don't lay me down there with my arms folded tight
 
     Come on and blow the wires away
 
-    Come on and blow __the wires__{.red} :octicons-x-circle-fill-12:{.red} :material-numeric-2-circle:{.red} away
+    Come on and blow __the wires x 2__{.red} away
 
 
 
