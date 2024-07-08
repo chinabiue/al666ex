@@ -4,24 +4,25 @@ tags: python
 categories: [coding]
 authors:
     - Alex
-date: 2022-09-20 21:52:06
+date: 
+    created: 2022-09-20 21:52:06
+    updated: 2024-07-08 21:09:11
 ---
-### Python f-string
+# Python f-string
 
 本文展示如何通过f-string格式化字符串。
 
-#### Python f-string 实用小片段
+##  Python f-string 实用小片段
 Python f-string是Python字符串格式化的最新语法。从Python3.6开始可用。在Python语言中，它提供了一种更快、可读性更好、更简洁、更不易出错的字符串格式化方法。
 
-f-strings使用f前缀与花括号{}来格式化字符串。
+f-strings使用 `f` 前缀与花括号 `{}` 来格式化字符串。
 
 类型、填充或者对齐等格式指示符在冒号后指定，例如`f'{price:.3}'`，price是变量名。
 
-#### Python字符串格式化
+##  Python字符串格式化
 以下例子总结了Pyhton里可用的字符串格式化选项。
 
-*formatting_strings.py*
-```py
+```py title="formatting_strings.py" hl_lines="8"
 #!/usr/bin/python
 
 name = 'Peter'
@@ -33,25 +34,31 @@ print(f'{name} is {age} years old')
 ```
 例子使用两个变量格式化字符串。
 
-```py
-print('%s is %d years old' % (name, age))
-```
+=== "类C经典方式"
 
-* 这是最老的选项。使用百分号%和经典的格式化指示符号，比如%s和%d。
+    ```py
+    print('%s is %d years old' % (name, age))
+    ```
 
-```py
-print('{} is {} years old'.format(name, age))
-```
+    * 这是最老的选项。使用百分号%和经典的格式化指示符号，比如%s和%d。
 
-* 从Python 3.0开始,引入格式化函数以进行一些高级的格式化操作。
+=== "格式化函数"
 
+    ```py
+    print('{} is {} years old'.format(name, age))
+    ```
 
-```py
-print(f'{name} is {age} years old')
-```
+    * 从Python 3.0开始,引入格式化函数以进行一些高级的格式化操作。
 
-* Python f-strings 从Python 3.6以后可用。使用f前缀与花括号{}来格式化字符串。
+=== "f-strings"
 
+    ```py 
+    print(f'{name} is {age} years old')
+    ```
+
+    * Python f-strings 从Python 3.6以后可用。使用 $f${.red} 前缀与花括号 __{ }__{.red} 来格式化字符串。
+
+<!-- termynal-->
 ```bash
 $ python formatting_string.py
 Peter is 23 years old
@@ -61,11 +68,10 @@ Peter is 23 years old
 ```
 
 <!-- more -->
-#### Python f-string表达式
-花括号{}中可以使用表达式。
+##  Python f-string表达式
+花括号`{ }`中可以使用表达式。
 
-*expressions.py*
-```py
+```py title="expressions.py"
 #!/usr/bin/python
 
 bags = 3
@@ -80,11 +86,10 @@ $ python expressions.py
 There are total of 36 apples
 ```
 
-#### Python f-string 字典
+##  Python f-string 字典
 字典在f-strings内仍然起作用。
 
-*dicts.py*
-```py
+```py title="dicts.py"
 #!/usr/bin/python
 
 user = {'name': 'John Doe', 'occupation': 'gardener'}
@@ -98,11 +103,10 @@ $ python dicts.py
 John Doe is a gardener
 ```
 
-#### Python f-string debug
-Python 3.8 通过=符号在f-string内引入了自文档表达式。
+##  Python f-string debug
+Python 3.8 通过 `=` 符号在f-string内引入了自文档表达式。
 
-*debug.py*
-```py
+```py title="debug.py"
 #!/usr/bin/python
 
 import math
@@ -120,11 +124,10 @@ math.cos(x) = 0.6967067093471654
 math.sin(x) = 0.7173560908995228
 ```
 
-#### Python 多行 f-string
+##  Python 多行 f-string
 f-string的多行模式。
 
-*multiline.py*
-```py
+```py title="multiline.py"
 #!/usr/bin/python
 
 name = 'John Doe'
@@ -148,11 +151,10 @@ Age: 32
 Occupation: gardener
 ```
 
-#### Python f-string 调用函数
+##  Python f-string 调用函数
 f-strings内也可以调用函数。
 
-*call_function.py*
-```py
+```py title="call_function.py"
 #!/usr/bin/python
 
 def mymax(x, y):
@@ -171,11 +173,10 @@ $ python call_fun.py
 Max of 3 and 4 is 4
 ```
 
-#### Python f-string对象
+##  Python f-string对象
 Python f-string也可以接受对象；接收的对象必须在内部实现`__str__`或`__repr__`函数。
 
-*objects.py*
-```py
+```py title="objects.py"
 #!/usr/bin/python
 
 class User:
@@ -197,11 +198,10 @@ $ python objects.py
 John Doe is a gardener
 ```
 
-#### Python f-string 转义字符
+##  Python f-string 转义字符
 以下例子展示如何在f-string内转义特定字符。
 
-*escaping.py*
-```py
+```py title="escaping.py"
 #!/usr/bin/python
 
 print(f'Python uses {{}} to evaludate variables in f-strings')
@@ -215,14 +215,12 @@ Python uses {} to evaludate variables in f-strings
 This was a 'great' film
 ```
 
-#### Python f-string 格式化日期时间
+##  Python f-string 格式化日期时间
 
 以下例子格式化日期时间。
 
-*format_datetime.py*
-```py
+```py title="format_datetime.py"
 #!/usr/bin/python
-
 import datetime
 
 now = datetime.datetime.now()
@@ -236,11 +234,10 @@ $ python format_datetime.py
 2021-08-20 15:13
 ```
 
-#### Python f-string 格式化浮点数
+##  Python f-string 格式化浮点数
 浮点数带f后缀。也可以指定精度：小数点后位数。精度由点号`.`后跟着的数字决定。
 
-*format_floats.py*
-```py
+```py title="format_floats.py"
 #!/usr/bin/python
 
 val = 12.3
@@ -258,11 +255,10 @@ $ python format_floats.py
 
 从输出可以看到小数位分别为2和5位。
 
-#### Python f-string 格式化宽度
+##  Python f-string 格式化宽度
 宽度指示符设置输出的宽度。如果输出数值小于指定宽度，前面由空格或其他字符填充。
 
-*format_width.py*
-```py
+```py title="format_width.py"
 #!/usr/bin/python
 
 for x in range(1, 11):
@@ -284,11 +280,10 @@ $ python format_width.py
 10 100 1000
 ```
 
-#### Python f-string 对齐字符串
+##  Python f-string 对齐字符串
 默认的对齐方式是左对齐。可以使用 `>` 符号指定右对齐。`>`符号紧跟于冒号之后。
 
-*justify.py*
-```py
+```py title="justify.py"
 #!/usr/bin/python
 
 s1 = 'a'
@@ -311,11 +306,10 @@ $ python justify.py
       abcd
 ```
 
-#### Python f-string 数值表示法
+##  Python f-string 数值表示法
 数值有不同的表示方法，比如10进制或16进制。
 
-*format_notations.py*
-```py
+```py title="format_notations.py"
 #!/usr/bin/python
 
 a = 300
