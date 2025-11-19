@@ -101,7 +101,7 @@ Graduated from University in 2008, I was a part time gate keeper and a member of
 ---
 # Sponsors & Backers
 
-### At the end of 2024, the economic of world is very bad, lots of people didn't get hired, Also I will lose my job at that time.I **appreciate** if you can feed me something!  :fontawesome-solid-money-check-dollar:{.lg .green .middle}
+###  {--At the end of 2024, the economic of world is very bad, lots of people didn't get hired, Also I will lose my job at that time.I **appreciate** if you can feed me something!--} At the mid of 2025, I start a new journey, hope this can last for 5 or 10 years then I can prepare for retiring.  :fontawesome-solid-money-check-dollar:{.lg .green .middle}
 
 ??? danger "Thanks"
 
