@@ -1,4 +1,7 @@
 ---
+authors:
+    - Alex
+title: BLOGGGGGG!
 icon: lucide/braces
 ---
 
