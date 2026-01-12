@@ -1,5 +1,6 @@
 ---
 title: Rhino经典理论知识整理
+icon: material/clock-start
 authors:
     - Alex
 tags: Rhino

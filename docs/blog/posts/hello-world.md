@@ -1,9 +1,5 @@
 ---
 title: Hexo写博客的Hello World
-categories: [coding]
-authors:
-    - Alex
-date: 2021-12-16 20:11:18
 ---
 欢迎使用[Hexo](https://hexo.io/)! 这是我的第一篇文章。更多信息请参考[文档](https://hexo.io/docs/)。如果使用hexo中遇到任何问题，可以在[问题区](https://hexo.io/docs/troubleshooting.html)寻找答案，或者在[GitHub](https://github.com/hexojs/hexo/issues)上向我们提问。
 

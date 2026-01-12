@@ -1,9 +1,9 @@
 ---
 title: Alex The Creator
 template: home.html
-date:
-  created: 2023-04-29 19:09:07
-  updated: 2024-07-01 20:19:21
+# date:
+#   created: 2023-04-29 19:09:07
+#   updated: 2024-07-01 20:19:21
 hide:
   - navigation
   - toc
@@ -13,7 +13,7 @@ hide:
 ---
 
 <!-- There are lots of interesting things that I want to learn. -->
-# What did the Creator Create Here?
+## What did the Creator Create Here?
 
 <div class="grid cards wide" markdown>
 
@@ -101,7 +101,7 @@ Graduated from University in 2008, I was a part time gate keeper and a member of
 ---
 # Sponsors & Backers
 
-###  {--At the end of 2024, the economic of world is very bad, lots of people didn't get hired, Also I will lose my job at that time.I **appreciate** if you can feed me something!--} At the mid of 2025, I start a new journey, hope this can last for 5 or 10 years then I can prepare for retiring.  :fontawesome-solid-money-check-dollar:{.lg .green .middle}
+###  ~~At the end of 2024, the economic of world is very bad, lots of people didn't get hired, Also I will lose my job at that time.I **appreciate** if you can feed me something!~~ At the mid of 2025, I start a new journey, hope this can last for 5 or 10 years then I can prepare for retiring.  :fontawesome-solid-money-check-dollar:{.lg .green .middle}
 
 ??? danger "Thanks"
 

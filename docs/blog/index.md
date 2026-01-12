@@ -1,6 +1,7 @@
 ---
-title: Blog
+icon: lucide/braces
 ---
+
 # :material-account-cowboy-hat-outline:{.orange} THEY PLAY GAMES :material-nintendo-game-boy:{.red }
 
 <div class="grid cards" markdown>

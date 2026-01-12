@@ -1,9 +1,5 @@
 ---
 title: Windows 10 使用VIM写python的基本设置
-categories: [coding]
-authors:
-    - Alex
-date: 2022-10-16 21:01:01
 ---
 尽可能的少安装插件，使用原生vim的功能进行python小程序的方便编写。
 如果不需要自动完成括号，只需要安装一个插件:jedi-vim用于函数提示就可以了。

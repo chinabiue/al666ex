@@ -1,10 +1,5 @@
 ---
 title: 使用pathlib替换os/os.path/glob
-tags: pathlib
-categories: [python]
-authors:
-    - Alex
-date: 2022-06-21 20:19:06
 ---
 !!! tip "总结"
     从Python3.6开始，pathlib.Path 对象几乎可以在任何已经使用路径字符串的地方工作。因此，如果你使用的是Python3.6（或更高版本），我认为没有理由不使用 pathlib。

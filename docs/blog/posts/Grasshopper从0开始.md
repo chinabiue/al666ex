@@ -1,10 +1,5 @@
 ---
 title: Grasshopper从0开始
-tags: grasshopper
-categories: [rhino]
-authors:
-    - Alex
-date: 2022-02-19 14:36:58
 ---
 
 - Grasshopper命令巨多，安装几个插件以后让你真正领会一下什么叫眼花缭乱。

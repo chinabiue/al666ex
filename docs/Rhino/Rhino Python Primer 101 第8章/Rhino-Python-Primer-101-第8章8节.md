@@ -1,11 +1,12 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-02-19 13:33:40
-    updated: 2024-05-28 21:33:14
+icon: material/spider-web
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-02-19 13:33:40
+#     updated: 2024-05-28 21:33:14
 ---
 
 # 8.8 网格

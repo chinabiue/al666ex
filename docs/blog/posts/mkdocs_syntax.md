@@ -1,12 +1,5 @@
 ---
 title: 遇到百分百的女孩
-tags: mkdocs
-categories: [mkdocs]
-authors:
-    - Alex
-date: 
-    created: 2022-03-11 10:05:30
-    updated: 2024-07-08 22:10:29
 ---
 
 # 遇到百分百的女孩
@@ -89,7 +82,6 @@ date:
 
 “什么都没有做。”我说，“仅仅是擦肩而过。”
 
-
 ```mermaid
 sequenceDiagram
     autonumber
@@ -114,13 +106,14 @@ sequenceDiagram
 她由东往西走，我从西向东去，在四月里一个神清气爽的早晨。[^1]
 
 !!! example ""
-    :fontawesome-brands-pied-piper-alt:{.red} {--Month of May--}, it's a {++violent++} thing
+
+    :fontawesome-brands-pied-piper-alt:{.red} ~~Month of May~~{.red}, it's a ^^violent^^{.green} thing
 
     In the city their hearts start to sing
 
     ==Well, some people sing,==
 
-    It sounds like they're __{==screaming==}__
+    It sounds like they're __==screaming==__
 
     Used to doubt it
 
@@ -138,13 +131,13 @@ sequenceDiagram
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle .blue} __SILLY__
+- :material-clock-fast:{ .lg .middle .blue} __SILLY__
 
     ---
 
     Hello! Can you talk to me? Even for 30 minutes.
 
--   :material-wall-sconce-round-variant:{ .lg .middle .blue} __SILLY2__
+- :material-wall-sconce-round-variant:{ .lg .middle .blue} __SILLY2__
 
     ---
 
@@ -152,10 +145,9 @@ sequenceDiagram
 
 </div>
 
-
 <div class="grid cards" markdown>
 
--   :fontawesome-solid-explosion:{ .lg .middle .red} __STRAIGHT__
+- :fontawesome-solid-explosion:{ .lg .middle .red} __STRAIGHT__
   
     ---
 
@@ -202,7 +194,7 @@ sequenceDiagram
 两人坐在公园长椅上，手拉手，百谈不厌。两人已不再孤独。百分之百需求对方，百分之百已被对方需求。而百分之百需求对方和百分之百地被对方需求是何等美妙的事情啊！这已是宇宙奇迹！
 
 !!! example ""
-       
+
     Now the kids are all standing with their arms folded tight
 
     ^^Kids are all standing with their arms folded tight^^
@@ -283,7 +275,7 @@ $   Don't lay me down there with my arms folded tight
 
 你不觉得这是个令人感伤的故事么？
 
-是的，我本该这样向她搭话。 
+是的，我本该这样向她搭话。
 
 !!! example ""
 
@@ -303,8 +295,6 @@ $   Don't lay me down there with my arms folded tight
     Come on and blow the wires away
 
     Come on and blow __the wires x 2__{.red} away
-
-
 
 [^1]: April was not a good Month.
 [^2]: [Arcade Fire](https://store.arcadefire.com/products/we-standard-cd-poster-redemption)

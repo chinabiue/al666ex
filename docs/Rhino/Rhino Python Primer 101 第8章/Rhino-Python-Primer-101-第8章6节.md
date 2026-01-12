@@ -1,11 +1,12 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-01-15 11:16:23
-    updated: 2024-05-28 21:20:24
+icon: material/circle-multiple-outline
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-01-15 11:16:23
+#     updated: 2024-05-28 21:20:24
 ---
 # 8.6 圆、椭圆和弧线
 

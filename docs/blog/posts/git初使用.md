@@ -1,9 +1,5 @@
 ---
 title: git for Windows 初使用
-date: 2021-12-20 21:14:22
-authors:
-    - Alex
-categories: [coding]
 ---
 ## 1. 本地工作
 - 新建分支create new branch

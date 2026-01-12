@@ -1,12 +1,13 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-01-20 21:30:07
-    updated: 2024-07-03 20:11:43
-icon: material/book
+icon: material/ladybug
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-01-20 21:30:07
+#     updated: 2024-07-03 20:11:43
+# icon: material/book
 status: new
 ---
 # :material-book:{.red} Rev3程序勘误

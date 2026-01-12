@@ -1,25 +1,20 @@
 ---
 title: Python f-string snippets 实用小片段
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 
-    created: 2022-09-20 21:52:06
-    updated: 2024-07-08 21:09:11
 ---
 # Python f-string
 
 本文展示如何通过f-string格式化字符串。
 
-##  Python f-string 实用小片段
+## Python f-string 实用小片段
+
 Python f-string是Python字符串格式化的最新语法。从Python3.6开始可用。在Python语言中，它提供了一种更快、可读性更好、更简洁、更不易出错的字符串格式化方法。
 
 f-strings使用 `f` 前缀与花括号 `{}` 来格式化字符串。
 
 类型、填充或者对齐等格式指示符在冒号后指定，例如`f'{price:.3}'`，price是变量名。
 
-##  Python字符串格式化
+## Python字符串格式化
+
 以下例子总结了Pyhton里可用的字符串格式化选项。
 
 ```py title="formatting_strings.py" hl_lines="8"
@@ -32,6 +27,7 @@ print('%s is %d years old' % (name, age))
 print('{} is {} years old'.format(name, age))
 print(f'{name} is {age} years old')
 ```
+
 例子使用两个变量格式化字符串。
 
 === "类C经典方式"
@@ -68,7 +64,8 @@ Peter is 23 years old
 ```
 
 <!-- more -->
-##  Python f-string表达式
+## Python f-string表达式
+
 花括号`{ }`中可以使用表达式。
 
 ```py title="expressions.py"
@@ -79,6 +76,7 @@ apples_in_bag = 12
 
 print(f'There are total of {bags * apples_in_bag} apples')
 ```
+
 f-string内的表达式会自动计算。
 
 ```bash
@@ -86,7 +84,8 @@ $ python expressions.py
 There are total of 36 apples
 ```
 
-##  Python f-string 字典
+## Python f-string 字典
+
 字典在f-strings内仍然起作用。
 
 ```py title="dicts.py"
@@ -96,6 +95,7 @@ user = {'name': 'John Doe', 'occupation': 'gardener'}
 
 print(f"{user['name']} is a {user['occupation']}")
 ```
+
 f-string内的字典会自动进行取值操作。
 
 ```bash
@@ -103,7 +103,8 @@ $ python dicts.py
 John Doe is a gardener
 ```
 
-##  Python f-string debug
+## Python f-string debug
+
 Python 3.8 通过 `=` 符号在f-string内引入了自文档表达式。
 
 ```py title="debug.py"
@@ -116,6 +117,7 @@ x = 0.8
 print(f'{math.cos(x) = }')
 print(f'{math.sin(x) = }')
 ```
+
 调试模式内本例输出了sin和cos的值。
 
 ```bash
@@ -124,7 +126,8 @@ math.cos(x) = 0.6967067093471654
 math.sin(x) = 0.7173560908995228
 ```
 
-##  Python 多行 f-string
+## Python 多行 f-string
+
 f-string的多行模式。
 
 ```py title="multiline.py"
@@ -142,6 +145,7 @@ msg = (
 
 print(msg)
 ```
+
 例子展示了一个多行f-string。在圆括号内放置多行f-string；每一行字符串都以f开头。
 
 ```bash
@@ -151,7 +155,8 @@ Age: 32
 Occupation: gardener
 ```
 
-##  Python f-string 调用函数
+## Python f-string 调用函数
+
 f-strings内也可以调用函数。
 
 ```py title="call_function.py"
@@ -166,6 +171,7 @@ b = 4
 
 print(f'Max of {a} and {b} is {mymax(a, b)}')
 ```
+
 在f-string内调用了一个自定义函数。
 
 ```bash
@@ -173,7 +179,8 @@ $ python call_fun.py
 Max of 3 and 4 is 4
 ```
 
-##  Python f-string对象
+## Python f-string对象
+
 Python f-string也可以接受对象；接收的对象必须在内部实现`__str__`或`__repr__`函数。
 
 ```py title="objects.py"
@@ -191,6 +198,7 @@ u = User('John Doe', 'gardener')
 
 print(f'{u}')
 ```
+
 在f-string内会自动求值对象的字符串输出。
 
 ```bash
@@ -198,7 +206,8 @@ $ python objects.py
 John Doe is a gardener
 ```
 
-##  Python f-string 转义字符
+## Python f-string 转义字符
+
 以下例子展示如何在f-string内转义特定字符。
 
 ```py title="escaping.py"
@@ -207,6 +216,7 @@ John Doe is a gardener
 print(f'Python uses {{}} to evaludate variables in f-strings')
 print(f'This was a \'great\' film')
 ```
+
 要输出花括号，请输入两次花括号。单引号使用反斜杠转义。
 
 ```bash
@@ -215,7 +225,7 @@ Python uses {} to evaludate variables in f-strings
 This was a 'great' film
 ```
 
-##  Python f-string 格式化日期时间
+## Python f-string 格式化日期时间
 
 以下例子格式化日期时间。
 
@@ -227,6 +237,7 @@ now = datetime.datetime.now()
 
 print(f'{now:%Y-%m-%d %H:%M}')
 ```
+
 例子中打印一个格式化的日期时间。日期时间格式化指示符位于冒号:之后。
 
 ```bash
@@ -234,7 +245,8 @@ $ python format_datetime.py
 2021-08-20 15:13
 ```
 
-##  Python f-string 格式化浮点数
+## Python f-string 格式化浮点数
+
 浮点数带f后缀。也可以指定精度：小数点后位数。精度由点号`.`后跟着的数字决定。
 
 ```py title="format_floats.py"
@@ -245,6 +257,7 @@ val = 12.3
 print(f'{val:.2f}')
 print(f'{val:.5f}')
 ```
+
 例子输出一串格式化后的浮点数。
 
 ```bash
@@ -255,7 +268,8 @@ $ python format_floats.py
 
 从输出可以看到小数位分别为2和5位。
 
-##  Python f-string 格式化宽度
+## Python f-string 格式化宽度
+
 宽度指示符设置输出的宽度。如果输出数值小于指定宽度，前面由空格或其他字符填充。
 
 ```py title="format_width.py"
@@ -264,6 +278,7 @@ $ python format_floats.py
 for x in range(1, 11):
     print(f'{x:02} {x*x:3} {x*x*x:4}')
 ```
+
 本例输出3列数值，每列有指定宽度。第一列使用0填充不足2位的数据。
 
 ```bash
@@ -280,7 +295,8 @@ $ python format_width.py
 10 100 1000
 ```
 
-##  Python f-string 对齐字符串
+## Python f-string 对齐字符串
+
 默认的对齐方式是左对齐。可以使用 `>` 符号指定右对齐。`>`符号紧跟于冒号之后。
 
 ```py title="justify.py"
@@ -296,6 +312,7 @@ print(f'{s2:>10}')
 print(f'{s3:>10}')
 print(f'{s4:>10}')
 ```
+
 这里有4行不同长字符串。我们设置输出宽度为10，右对齐。
 
 ```bash
@@ -306,7 +323,8 @@ $ python justify.py
       abcd
 ```
 
-##  Python f-string 数值表示法
+## Python f-string 数值表示法
+
 数值有不同的表示方法，比如10进制或16进制。
 
 ```py title="format_notations.py"
@@ -323,6 +341,7 @@ print(f"{a:o}")
 # scientific
 print(f"{a:e}")
 ```
+
 这里输出了一个数值的3种不同进制
 
 ```bash

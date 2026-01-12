@@ -1,10 +1,5 @@
 ---
 title: VSCode-Rhino 联动写python程序的软件配置
-date: 2021-12-23 21:55:53
-tags: Rhino
-authors:
-    - Alex
-categories: [coding, rhino]
 ---
 需要以下两个操作，就能在vscode上写rhinopython：
 

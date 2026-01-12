@@ -1,11 +1,12 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-01-08 11:26:20
-    updated: 2024-05-28 20:37:20
+icon: material/chart-timeline-variant
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-01-08 11:26:20
+#     updated: 2024-05-28 20:37:20
 ---
 
 # 8.4 线段与多重直线

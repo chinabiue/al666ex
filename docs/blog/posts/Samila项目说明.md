@@ -1,10 +1,5 @@
 ---
 title: Samila项目说明
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 2022-01-12 21:38:20
 ---
 <img src="https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/logo.png" width=400 height=400>
 

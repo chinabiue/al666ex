@@ -1,10 +1,5 @@
 ---
 title: notepad++ 配置python运行环境(代码自动格式化/运行/高亮)
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 2022-08-09 10:18:25
 ---
 如果只是练习python，或者快速运行小程序片断，各种IDE就显得大材小用。配置一个notepadd++可以完成快速的任务。只需要配置3个方面的功能：
 

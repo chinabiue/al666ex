@@ -1,10 +1,5 @@
 ---
 title: cairosvg安装配置与批量转换svg to png
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 2022-02-19 11:20:33
 ---
 
 Gitee这几天发现个问题，文章里引用的SVG图片全部解析不出来。不好看不舒服。需要把SVG图片全转换成PNG图片再上传。发现cairosvg可以做这个事，安装配置不是那么简单。

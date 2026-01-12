@@ -1,11 +1,12 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-date: 
-    created: 2022-01-13 21:55:22
-    updated: 2024-05-28 20:49:29
-authors:
-    - Alex
+icon: material/texture-box
+# categories: book
+# date: 
+#     created: 2022-01-13 21:55:22
+#     updated: 2024-05-28 20:49:29
+# authors:
+#     - Alex
 ---
 # 8.5 平面
 

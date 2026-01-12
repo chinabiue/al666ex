@@ -7,7 +7,7 @@ title: Rhino学习兴趣小组!
 ---
 
 ## **入门**
-* [Rhino经典理论知识整理](https://al666ex.pages.dev/Rhino/Rhino%E7%BB%8F%E5%85%B8%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/)
+* [Rhino经典理论知识整理](Rhino经典理论知识整理.md)
 * [Level1 训练手册](https://docs.mcneel.com/rhino/6/training-level1/zh-cn/Default.htm)
 * [Level2 训练手册](https://docs.mcneel.com/rhino/6/training-level2/zh-cn/Default.htm)
 

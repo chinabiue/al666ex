@@ -1,12 +1,5 @@
 ---
 title: 自动更新 Gitee Pages
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 
-    created: 2022-01-09 10:40:26
-    updated: 2024-05-05 17:03:42
 ---
 [原文地址](https://kaffa.im/update-gitee-pages-with-playwright.html)
 !!! info

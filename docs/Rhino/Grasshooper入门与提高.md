@@ -1,12 +1,13 @@
 ---
 title: Grasshooper入门与提高
-tags: Grasshopper
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-05-15 19:12:47
-    updated: 2024-05-28 22:12:22
+icon: material/grass
+# tags: Grasshopper
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-05-15 19:12:47
+#     updated: 2024-05-28 22:12:22
 ---
 ## Grasshooper入门与提高 - From TU Delft
 

@@ -1,11 +1,12 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-03-06 20:38:53
-    updated: 2024-05-28 21:33:32
+icon: material/sphere
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-03-06 20:38:53
+#     updated: 2024-05-28 21:33:32
 ---
 # 8.9 曲面
 

@@ -1,10 +1,5 @@
 ---
 title: 生成艺术Generative art with samila
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 2022-01-12 22:24:27
 ---
 ![Power by Samila](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/20.png)
 

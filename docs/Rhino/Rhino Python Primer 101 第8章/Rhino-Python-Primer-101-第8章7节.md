@@ -1,11 +1,12 @@
 ---
 tags: Rhino-Python-Primer-101
-categories: book
-authors:
-    - Alex
-date: 
-    created: 2022-02-03 21:48:14
-    updated: 2024-05-28 21:20:50
+icon: material/vector-curve
+# categories: book
+# authors:
+#     - Alex
+# date: 
+#     created: 2022-02-03 21:48:14
+#     updated: 2024-05-28 21:20:50
 ---
 
 # 8.7 Nurbs曲线

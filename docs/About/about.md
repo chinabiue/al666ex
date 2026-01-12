@@ -23,13 +23,8 @@ $ Southernplayalisticadillacfunkymuzik
 { .card }
 </div>
 
-
 !!! note ""
 
-    This site is built by __[Material for MKDocs](https://squidfunk.github.io/mkdocs-material/)__, a theme for __[MkDocs](https://www.mkdocs.org/)__. BaseIt's very simple and focus on documentation.
-    Write your documentation in Markdown and create a professional static site in minutes – searchable, customizable, in 60+ languages, for all devices.
-
-
-
-
-
+    This site is built by __[Zensical](https://zensical.org/)__, Zensical is built by the creators of [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+    
+    Zensical creates scalable Open Source systems for technical writing that always keep you in the flow.

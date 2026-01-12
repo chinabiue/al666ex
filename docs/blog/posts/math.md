@@ -1,12 +1,5 @@
 ---
 title: Markdown 数学公式支持 in VSCode
-tags: python
-categories: [math]
-authors:
-    - Alex
-date: 
-    created: 2023-09-11 10:40:50
-    updated: 2024-06-21 22:25:00
 ---
 Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种简单的方式在 VS Code 中书写数学公式.
 

@@ -1,12 +1,13 @@
 ---
 # title: 1.2. openNURBS(tm)内核/Rhino里的物体
 tags: Rhino-Python-Primer-101
-authors:
-    - Alex
-categories: book
-date: 
-    created: 2021-12-29 20:39:25
-    updated: 2024-05-28 20:16:42
+icon: material/bee-flower
+# authors:
+#     - Alex
+# categories: book
+# date: 
+#     created: 2021-12-29 20:39:25
+#     updated: 2024-05-28 20:16:42
 ---
 # 8.2 Rhino里的物体
 

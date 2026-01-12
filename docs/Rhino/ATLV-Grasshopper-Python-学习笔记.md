@@ -6,6 +6,7 @@ authors:
     - Alex
 abbrlink: fa84
 date: 2022-04-30 08:46:30
+icon: material/grass
 ---
 Rhino网站上系统完整的对于Grasshopper的介绍比较离散。通过练习实例，边学边理解内容是比较好的方式。
 

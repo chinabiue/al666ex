@@ -1,10 +1,5 @@
 ---
 title: anaconda简单配置使用
-tags: python
-categories: [coding]
-authors:
-    - Alex
-date: 2022-08-09 10:13:09
 ---
 
 !!! info ""

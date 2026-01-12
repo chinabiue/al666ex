@@ -1,10 +1,5 @@
 ---
 title: calculus_with_python
-tags: calculus
-categories: [math]
-authors:
-    - Alex
-date: 2022-03-11 10:05:30
 ---
 
 [本书来源](https://ryancheunggit.gitbooks.io/calculus-with-python/content/)
