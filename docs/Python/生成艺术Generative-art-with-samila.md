@@ -1,6 +1,6 @@
 ---
 title: Samila生成艺术
-icon: simple/LVGL
+icon: simple/lvgl
 tags:
     - Python
     - samila

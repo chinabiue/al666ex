@@ -1,6 +1,6 @@
 ---
 title: Samila项目说明
-icon: simple/LVGL
+icon: simple/lvgl
 tags:
     - Python
     - art
