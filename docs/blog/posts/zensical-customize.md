@@ -1,5 +1,8 @@
 ---
 icon: material/format-paint
+tags:
+    - zensical
+    - customize
 ---
 
 # Zensical自定义

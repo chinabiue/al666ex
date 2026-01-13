@@ -65,9 +65,16 @@ nav = [
 
     { "Python" = [
         "Python/index.md",
-        # "Python/Python基础.md",
-        # "Python/Python进阶.md",
-        # "Python/Python在Rhino中的应用.md",
+        "Python/calculus-with-python.md",
+        "Python/anaconda简单配置使用.md",
+        "Python/notepad-配置python运行环境-代码自动格式化-运行-高亮.md",
+        "Python/python批量转换svg图片为png_cairosvg安装配置.md",
+        "Python/Python-f-string-snippets-实用用小片段.md",
+        "Python/Samila项目说明.md",
+        "Python/生成艺术Generative-art-with-samila.md",
+        "Python/使用pathlib替换os-os-path-glob.md",
+        "Python/栈的应用-python前缀表达式-中缀表达式-后缀表达式.md",
+        "Python/自动更新-Gitee-Pages.md",
     ] },
 
     { "Blog" = [
@@ -75,25 +82,16 @@ nav = [
         { "Posts" = [
             "blog/posts/Grasshopper从0开始.md",
             "blog/posts/git初使用.md",
-            "blog/posts/calculus-with-python.md",
-            "blog/posts/anaconda简单配置使用.md",
-            "blog/posts/自动更新-Gitee-Pages.md",
-            "blog/posts/栈的应用-python前缀表达式-中缀表达式-后缀表达式.md",
-            "blog/posts/使用pathlib替换os-os-path-glob.md",
-            "blog/posts/生成艺术Generative-art-with-samila.md",
             "blog/posts/Windows-10-使用VIM写python的基本设置.md",
             "blog/posts/VSCode-Rhino-联动写python程序的软件配置.md",
-            "blog/posts/Samila项目说明.md",
-            "blog/posts/python批量转换svg图片为png_cairosvg安装配置.md",
-            "blog/posts/Python-f-string-snippets-实用用小片段.md",
-            "blog/posts/notepad-配置python运行环境-代码自动格式化-运行-高亮.md",
-            "blog/posts/mkdocs_syntax.md",
             "blog/posts/math.md",
-            "blog/posts/hello-world.md",
             "blog/posts/zensical-customize.md",
         ] },
     ] },
-    { "About" = "About/about.md" },
+    { "About" = [
+        "About/about.md",
+        "About/mkdocs_syntax.md",
+    ] },
 ]
 # Zensical supports both implicit navigation and explicitly defined navigation.
 # If you decide not to define a navigation here then Zensical will simply
@@ -170,7 +168,7 @@ logo = "assets/images/favicon.ico"
 # Read more:
 # - https://zensical.org/docs/setup/language/
 #
-language = "en"
+language = "zh"
 
 # Zensical provides a number of feature toggles that change the behavior
 # of the documentation site.
@@ -356,7 +354,7 @@ toggle.name = "Switch to light mode"
 # ----------------------------------------------------------------------------
 [project.theme.icon]
 # logo = "lucide/star"
-repo = "fontawesome/brands/github"
+repo = "simple/Baserow"
 
 # ----------------------------------------------------------------------------
 # The "extra" section contains miscellaneous settings.
@@ -370,6 +368,19 @@ repo = "fontawesome/brands/github"
 [project.extra.analytics]
 provider = "google"
 property = "G-VQRYHY3Y8P"
+
+
+[project.theme.icon.tag]
+default = "lucide/hash"
+rhino = "simple/rhinoceros"
+py = "fontawesome/brands/python"
+life = "fontawesome/solid/smoking"
+
+[project.extra.tags]
+Rhino = "rhino"
+Python = "py"
+Life = "life"
+
 # Plugins
 # [project.plugins.blog]
 # post_date_format = "full"

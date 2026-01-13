@@ -3,7 +3,9 @@ title: Rhino经典理论知识整理
 icon: material/clock-start
 authors:
     - Alex
-tags: Rhino
+tags: 
+    - Rhino
+    - newbee
 categories: geometry
 date: 2022-01-23 12:23:56
 ---

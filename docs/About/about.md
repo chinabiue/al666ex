@@ -1,5 +1,9 @@
 ---
 title: About 
+icon: material/information-outline
+tags:
+    - site
+    - zensical
 date: 2024-03-29 10:19:00
 authors:
     - PAlex
@@ -8,23 +12,31 @@ hide:
     - feedback
 ---
 <!-- termynal: {title: Music Loading...} -->
+=== ":lucide-tent-tree:{.green} site"
 
-```
-$ Southernplayalisticadillacfunkymuzik
----> 100%
-```
+    This site.
 
-<div class="grid" markdown>
+    <div class="grid cards" markdown>
 
-:fontawesome-brands-internet-explorer: __[Website](https://al666ex.pages.dev/)__
-{ .card }
+    - :fontawesome-brands-internet-explorer: __[Website](https://al666ex.pages.dev/)__
 
-:simple-materialformkdocs: __[Material for MKDocs](https://squidfunk.github.io/mkdocs-material/)__
-{ .card }
-</div>
-
-!!! note ""
-
-    This site is built by __[Zensical](https://zensical.org/)__, Zensical is built by the creators of [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+    - :material-unicorn-variant:{.lg} __[Zensical](https://zensical.org/docs/)__
     
-    Zensical creates scalable Open Source systems for technical writing that always keep you in the flow.
+    </div>
+
+    !!! note ""
+
+        This site is built by __[Zensical](https://zensical.org/)__, Zensical is built by the creators of [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/).
+        
+        Zensical creates scalable Open Source systems for technical writing that always keep you in the flow.
+
+=== ":fontawesome-solid-address-card:{.green} me"
+    :lucide-equal-approximately: Who is who in the world.
+
+    Two-thousand nine, two-thousand ten
+
+    __Wanna make a record how I felt then__{.green}
+
+    ==When we stood outside in the month of May==
+
+    And watched the violent wind blow the wires away

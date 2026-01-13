@@ -1,7 +1,7 @@
 ---
 authors:
     - Alex
-title: BLOGGGGGG!
+title: BLOG!
 icon: lucide/braces
 ---
 

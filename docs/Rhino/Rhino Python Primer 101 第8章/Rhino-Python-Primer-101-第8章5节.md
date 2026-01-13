@@ -1,5 +1,7 @@
 ---
-tags: Rhino-Python-Primer-101
+tags: 
+    - Rhino
+    - Rhino-Python-Primer-101
 icon: material/texture-box
 # categories: book
 # date: 

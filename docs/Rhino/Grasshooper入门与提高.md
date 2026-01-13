@@ -1,7 +1,9 @@
 ---
 title: Grasshooper入门与提高
 icon: material/grass
-# tags: Grasshopper
+tags: 
+    - Rhino
+    - grasshopper
 # categories: book
 # authors:
 #     - Alex

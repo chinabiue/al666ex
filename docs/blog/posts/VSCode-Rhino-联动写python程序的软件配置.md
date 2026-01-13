@@ -1,5 +1,9 @@
 ---
 title: VSCode-Rhino 联动写python程序的软件配置
+icon: material/microsoft-visual-studio-code
+tags:
+    - python
+    - vscode
 ---
 需要以下两个操作，就能在vscode上写rhinopython：
 

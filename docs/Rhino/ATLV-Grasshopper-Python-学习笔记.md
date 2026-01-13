@@ -1,6 +1,8 @@
 ---
 title: ATLV Grasshopper Python 学习笔记
-tags: Grasshopper
+tags: 
+    - Rhino
+    - grasshopper
 categories: book
 authors:
     - Alex

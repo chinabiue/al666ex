@@ -1,5 +1,9 @@
 ---
 title: Markdown 数学公式支持 in VSCode
+icon: lucide/sigma
+tags:
+    - math
+    - vscode
 ---
 Markdown 的数学公式吸纳了大部分的 Latex 语法, 你可以以一种简单的方式在 VS Code 中书写数学公式.
 

@@ -1,5 +1,7 @@
 ---
-tags: Rhino-Python-Primer-101
+tags: 
+    - Rhino
+    - Rhino-Python-Primer-101
 icon: material/vector-curve
 # categories: book
 # authors:

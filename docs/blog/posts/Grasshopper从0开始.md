@@ -1,5 +1,9 @@
 ---
 title: Grasshopper从0开始
+icon: lucide/rocket
+tags:
+  - Rhino
+  - newbee
 ---
 
 - Grasshopper命令巨多，安装几个插件以后让你真正领会一下什么叫眼花缭乱。

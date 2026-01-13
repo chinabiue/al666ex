@@ -4,6 +4,8 @@
 authors:
     - Alex
 title: Rhino学习兴趣小组!
+tags:
+    - Rhino
 ---
 
 ## **入门**

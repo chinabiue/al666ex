@@ -1,6 +1,8 @@
 ---
 # title: 1.2. openNURBS(tm)内核/Rhino里的物体
-tags: Rhino-Python-Primer-101
+tags: 
+    - Rhino
+    - Rhino-Python-Primer-101
 icon: material/bee-flower
 # authors:
 #     - Alex
