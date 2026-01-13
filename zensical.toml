@@ -354,7 +354,7 @@ toggle.name = "Switch to light mode"
 # ----------------------------------------------------------------------------
 [project.theme.icon]
 # logo = "lucide/star"
-repo = "simple/Baserow"
+repo = "simple/baserow"
 
 # ----------------------------------------------------------------------------
 # The "extra" section contains miscellaneous settings.

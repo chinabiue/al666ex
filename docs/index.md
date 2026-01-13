@@ -1,5 +1,5 @@
 ---
-title: Alex The Creator
+title: Home
 template: home.html
 # date:
 #   created: 2023-04-29 19:09:07
