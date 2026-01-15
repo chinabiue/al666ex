@@ -89,7 +89,7 @@ nav = [
         ] },
     ] },
     { "About" = [
-        "About/about.md",
+        "About/index.md",
         "About/mkdocs_syntax.md",
     ] },
 ]
@@ -354,7 +354,8 @@ toggle.name = "Switch to light mode"
 # ----------------------------------------------------------------------------
 [project.theme.icon]
 # logo = "lucide/star"
-repo = "simple/baserow"
+# repo = "simple/matternet"
+repo = "lucide/grid-2x2"
 
 # ----------------------------------------------------------------------------
 # The "extra" section contains miscellaneous settings.
@@ -433,6 +434,10 @@ custom_fences = [
     { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
 ]
 
+# smartsymbols
+[project.markdown_extensions.pymdownx.smartsymbols]
+# pymdownx.smartsymbols
+
 # Content Tabs
 [project.markdown_extensions.pymdownx.tabbed]
 alternate_style = true
@@ -443,3 +448,6 @@ alternate_style = true
 # math
 [project.markdown_extensions.pymdownx.arithmatex]
 generic = true
+
+# tables
+[project.markdown_extensions.tables]

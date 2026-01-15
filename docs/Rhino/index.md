@@ -3,6 +3,7 @@
 #   - navigation
 authors:
     - Alex
+icon: simple/rhinoceros
 title: Rhino学习兴趣小组!
 tags:
     - Rhino

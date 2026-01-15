@@ -1,6 +1,7 @@
 ---
 title: Home
 template: home.html
+icon: simple/anta
 # date:
 #   created: 2023-04-29 19:09:07
 #   updated: 2024-07-01 20:19:21

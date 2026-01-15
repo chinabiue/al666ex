@@ -1,4 +1,8 @@
 ---
+tags:
+    - Python
+    - book
+icon: simple/python
 categories: [python]
 authors:
     - Alex

@@ -4,9 +4,9 @@ icon: material/information-outline
 tags:
     - site
     - zensical
-date: 2024-03-29 10:19:00
-authors:
-    - PAlex
+# date: 2024-03-29 10:19:00
+# authors:
+#     - PAlex
 hide:
     # - toc
     - feedback
@@ -18,9 +18,9 @@ hide:
 
     <div class="grid cards" markdown>
 
-    - :fontawesome-brands-internet-explorer: __[Website](https://al666ex.pages.dev/)__
+    - :fontawesome-brands-internet-explorer: __[Website 本小站](https://al666ex.pages.dev/)__
 
-    - :material-unicorn-variant:{.lg} __[Zensical](https://zensical.org/docs/)__
+    - :material-unicorn-variant:{.lg} __[Zensical 禅西卡](https://zensical.org/docs/)__
     
     </div>
 
