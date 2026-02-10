@@ -274,7 +274,6 @@ $   If I die in the month of May
 $   Let the wind take my body away, yeah
 $   I wish I may, I wish I might
 $   Don't lay me down there with my arms folded tight
----> 100%
 ```
 
 你不觉得这是个令人感伤的故事么？

@@ -9,4 +9,4 @@ pymdown-extensions==10.19.1
 pyyaml==6.0.3
 rcslice==1.1.0
 stepslist==0.7.5
-zensical==0.0.15
+zensical==0.0.21

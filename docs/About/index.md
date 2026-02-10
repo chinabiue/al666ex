@@ -18,7 +18,7 @@ hide:
 
     <div class="grid cards" markdown>
 
-    - :fontawesome-brands-internet-explorer: __[Website 本小站](https://al666ex.pages.dev/)__
+    - :fontawesome-brands-internet-explorer: __[Website Copy](https://al666ex.vercel.app/)__
 
     - :material-unicorn-variant:{.lg} __[Zensical 禅西卡](https://zensical.org/docs/)__
     
@@ -31,7 +31,7 @@ hide:
         Zensical creates scalable Open Source systems for technical writing that always keep you in the flow.
 
 === ":fontawesome-solid-address-card:{.green} me"
-    :lucide-equal-approximately: Who is who in the world.
+    :lucide-equal-approximately: Who is who in the world.:lucide-equal-approximately:
 
     Two-thousand nine, two-thousand ten
 
