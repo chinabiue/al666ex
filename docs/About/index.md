@@ -12,7 +12,7 @@ hide:
     - feedback
 ---
 <!-- termynal: {title: Music Loading...} -->
-=== ":lucide-tent-tree:{.green} site"
+=== ":lucide-tent-tree:{.red} site"
 
     This site.
 
@@ -30,7 +30,7 @@ hide:
         
         Zensical creates scalable Open Source systems for technical writing that always keep you in the flow.
 
-=== ":fontawesome-solid-address-card:{.green} me"
+=== ":fontawesome-solid-address-card:{.blue} me"
     :lucide-equal-approximately: Who is who in the world.:lucide-equal-approximately:
 
     Two-thousand nine, two-thousand ten
