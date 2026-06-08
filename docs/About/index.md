@@ -31,7 +31,7 @@ hide:
         Zensical creates scalable Open Source systems for technical writing that always keep you in the flow.
 
 === ":fontawesome-solid-address-card:{.blue} me"
-    :lucide-equal-approximately: Who is who in the world.:lucide-equal-approximately:
+    :lucide-equal-approximately:{.orange} Who is who in the world.:lucide-equal-approximately:{.orange}
 
     Two-thousand nine, two-thousand ten
 
@@ -39,4 +39,4 @@ hide:
 
     ==When we stood outside in the month of May==
 
-    And watched the violent wind blow the wires away
+    And watched the violent wind :lucide-equal-approximately:{.orange} :lucide-equal-approximately:{.orange} blow the wires away

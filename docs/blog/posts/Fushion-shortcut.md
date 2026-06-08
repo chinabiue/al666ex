@@ -1,5 +1,6 @@
 ---
 icon: simple/framer
+comments: true
 tags:
     - Fusion
     - shortcut
@@ -34,27 +35,28 @@ date: 2026-03-17 21:33:25
 
     _把鼠标放置于中文上助记_
 
-    | ==F==                                   | ==U==                                         | ==S==                            | ==I==                                          | ==O==                                          | ==N==                                                            | 快                                                      | 捷                                                 | 键                                             | 位                                     |
-    | --------------------------------------- | --------------------------------------------- | -------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------- | -------------------------------------- |
-    | ++q++                                   | ++w++                                         | ++e++                            | ++r++                                          | ++t++                                          | ++y++                                                            | ++u++                                                   | ++i++                                              | ++o++                                          | ++p++                                  |
-    | __偏移__{.red title="offset,Q和O接近" } | __线圆角__{.red title="W,两个尖尖角给削圆了"} | __延伸__{.red title="Extend"}    | __中心矩形__{.red title="Rectangle"}           | __修剪__{.red title="Trim"}                    | __完成草图__{.red title="Yes,完成了"}                            | __样条曲线__{.red title="U的形状是非均匀有理B样条曲线"} | __圆柱体__{.blue title="I形似圆柱体"}              | __环形阵列__{.blue title="O本身就是环形阵列"}  | __投影__{.red title="Project"}         |
-    | ++a++                                   | ++s++                                         | ++d++                            | ++f++                                          | ++g++                                          | ++h++                                                            | ++j++                                                   | ++k++                                              | ++l++                                          | ++semicolon++                          |
-    | __直线__{.red title="没有理由，方便" }  | __搜索__                                      | __尺寸__{.red title="Dimension"} | __推拉__  {.red title="强记，体圆角可以用F推"} | __主视角__{.green title="Ground View原点视图"} | __过孔__{.blue title="Hole"}                                     | __装配连接__{.blue title="Joint"}                       | __中心圆弧__{.red title="K的的形状像一个中心圆弧"} | __矩形阵列__{.blue title="可以理解为二维List"} | __物理材料__{.blue title="多用就记住"} |
-    | ++z++                                   | ++x++                                         | ++c++                            | ++v++                                          | ++b++                                          | ++n++                                                            | ++m++                                                   | ++comma++                                          | ++period++                                     | ++slash++                              |
-    | __全部显示__{.green title="Zoom" }      | __构造线__{.red title="两条相交的线"}         | __中心圆__{.red title="Circle"}  | __移动__{.blue title="moVe"}                   | __布尔操作__{.blue title="Bool"}               | __外观__{.blue title="Nature，可以考虑换一个更好记更通用的功能"} | __实体镜像__{.blue title="Mirror"}                      | __断开__{.red title="逗号就是断点"}                | __点__{.red title=".就是一个点"}               | __移除__{.blue title="强行记住"}       |
+    | ==F==                                   | ==U==                                         | ==S==                            | ==I==                                                           | ==O==                                          | ==N==                                                            | 快                                                      | 捷                                                 | 键                                             | 位                                     |
+    |-----------------------------------------|-----------------------------------------------|----------------------------------|-----------------------------------------------------------------|------------------------------------------------|------------------------------------------------------------------|---------------------------------------------------------|----------------------------------------------------|------------------------------------------------|----------------------------------------|
+    | ++q++                                   | ++w++                                         | ++e++                            | ++r++                                                           | ++t++                                          | ++y++                                                            | ++u++                                                   | ++i++                                              | ++o++                                          | ++p++                                  |
+    | __偏移__{.red title="offset,Q和O接近" } | __线圆角__{.red title="W,两个尖尖角给削圆了"} | __延伸__{.red title="Extend"}    | __中心矩形__{.red title="Rectangle"}                            | __修剪__{.red title="Trim"}                    | __完成草图__{.red title="Yes,完成了"}                            | __样条曲线__{.red title="U的形状是非均匀有理B样条曲线"} | __圆柱体__{.blue title="I形似圆柱体"}              | __环形阵列__{.blue title="O本身就是环形阵列"}  | __投影__{.red title="Project"}         |
+    | ++a++                                   | ++s++                                         | ++d++                            | ++f++                                                           | ++g++                                          | ++h++                                                            | ++j++                                                   | ++k++                                              | ++l++                                          | ++semicolon++                          |
+    | __直线__{.red title="没有理由，方便" }  | __搜索__                                      | __尺寸__{.red title="Dimension"} | __推拉__  {.red title="Fillet，体圆角可以用F推,还有整体推平面"} | __主视角__{.green title="Ground View原点视图"} | __过孔__{.blue title="Hole"}                                     | __装配连接__{.blue title="Joint"}                       | __中心圆弧__{.red title="K的的形状像一个中心圆弧"} | __矩形阵列__{.blue title="可以理解为二维List"} | __物理材料__{.blue title="多用就记住"} |
+    | ++z++                                   | ++x++                                         | ++c++                            | ++v++                                                           | ++b++                                          | ++n++                                                            | ++m++                                                   | ++comma++                                          | ++period++                                     | ++slash++                              |
+    | __全部显示__{.green title="Zoom" }      | __构造线__{.red title="两条相交的线"}         | __中心圆__{.red title="Circle"}  | __移动__{.blue title="moVe"}                                    | __布尔操作__{.blue title="Bool"}               | __外观__{.blue title="Nature，可以考虑换一个更好记更通用的功能"} | __实体镜像__{.blue title="Mirror"}                      | __断开__{.red title="逗号就是断点"}                | __点__{.red title=".就是一个点"}               | __移除__{.blue title="强行记住"}       |
 
-    |       ==F== | ==U==                                     |         ==S== | ==I==                                         |          ==O== | ==N==                 |          快 | 捷                                  |
-    | ----------: | ----------------------------------------- | ------------: | --------------------------------------------- | -------------: | --------------------- | ----------: | ----------------------------------- |
-    | ++shift+1++ | __多视图__                                |   ++shift+t++ | 约束：__相切__{.red title="Tangle"}           | ++ctrl+space++ | __刷新__{.green}      | ++shift+s++ | __截面分析__{.blue title="Section"} |
-    | ++shift+a++ | __草图镜像__{.red title="使用方便"}       |   ++shift+e++ | 约束：__重合__{.red title="Equal"}            |    ++shift+b++ | __两点矩形__{.red}    | ++shift+i++ | __相交__{.red title="Interface"}    |
-    | ++shift+f++ | __新建草图__{.red title="经常使用的命令"} |   ++shift+v++ | 约束：__垂直__{.red title="Vertical"}         |    ++shift+c++ | __新建零部件__{.blue} | ++shift+w++ | __文本__{.red title="Wenben"}       |
-    | ++shift+d++ | __测量__{.blue title="Dimension"}         |   ++shift+p++ | 约束：__平行__{.red title="Parallel"}         |        ++f1++: | __TopView__{.green}   |             |                                     |
-    | ++shift+r++ | __干涉__ {.blue title="inteRfeRe"}        |   ++shift+m++ | 约束：__中点__{.red title="Midpoint"}         |         ++f3++ | __FrontView__{.green} |             |                                     |
-    | ++shift+n++ | __显示颜色__{.blue title="和N对应"}       |   ++shift+g++ | 约束：__对称__{.red title="使用方便symmetry"} |         ++f4++ | __RightView__{.green} |             |                                     |
-    |   ++grave++ | __更改参数__{.red title="定义用户参数"}   | ++backslash++ | 约束：__固定__{.red title="固定强记"}         |         ++f6++ | __全局缩放__          |             |                                     |
+    |       ==F== | ==U==                                     |       ==S== | ==I==                                         |         ==O== | ==N==                                 |          快 | 捷                                  |
+    |------------:|-------------------------------------------|------------:|-----------------------------------------------|--------------:|---------------------------------------|------------:|-------------------------------------|
+    | ++shift+1++ | __多视图__                                | ++shift+t++ | 约束：__相切__{.red title="Tangle"}           | ++backslash++ | 约束：__固定__{.red title="固定强记"} | ++shift+s++ | __截面分析__{.blue title="Section"} |
+    | ++shift+a++ | __草图镜像__{.red title="使用方便"}       | ++shift+e++ | 约束：__重合__{.red title="Equal"}            |   ++shift+b++ | __两点矩形__{.red}                    | ++shift+i++ | __相交__{.red title="Interface"}    |
+    | ++shift+f++ | __新建草图__{.red title="经常使用的命令"} | ++shift+v++ | 约束：__垂直__{.red title="Vertical"}         |   ++shift+c++ | __新建零部件__{.blue}                 | ++shift+w++ | __文本__{.red title="Wenben"}       |
+    | ++shift+d++ | __测量__{.blue title="Dimension"}         | ++shift+p++ | 约束：__平行__{.red title="Parallel"}         |       ++f1++: | __TopView__{.green}                   |             |                                     |
+    | ++shift+r++ | __干涉__ {.blue title="inteRfeRe"}        | ++shift+m++ | 约束：__中点__{.red title="Midpoint"}         |        ++f3++ | __FrontView__{.green}                 |             |                                     |
+    | ++shift+n++ | __显示颜色__{.blue title="和N对应"}       | ++shift+g++ | 约束：__对称__{.red title="使用方便symmetry"} |        ++f4++ | __RightView__{.green}                 |             |                                     |
+    |   ++grave++ | __更改参数__{.red title="定义用户参数"}   | ++shift+q++ | 约束：__共线__{.red title="QQQQ"}             |        ++f6++ | __全局缩放__                          |             |                                     |
 
 
-
+    那没有设置快捷键的怎么办？全部钉在上面的菜单栏那里。这样基本上84%的命令都能快速访问到。
+    
     红色为草图相关命令，蓝色为3D模式下命令
 
     分配规则为怎么方便怎么设置，尽量容易记住，左手区域分配给使用率高的命令。
@@ -79,7 +81,16 @@ date: 2026-03-17 21:33:25
 
         ![alt text](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/fusion/image-3.png){ width=500 }
 
-    __使用自制的自启动python addin达到特殊目的的快捷键__：
+        __比较值得设置的三个菜单项目__{.red}
+
+        - VisibilityToggleCmd   显示/隐藏
+        - ShowAllComponentsCmd  显示所有零件
+        - ShowAllBodiesCmd      显示所有实体
+
+        ![alt text](https://cdn.jsdelivr.net/gh/chinabiue/img@latest/giteepages/fusion/hide.png){ width=500 }
+
+
+    __使用自制的自启动python Add-in达到特殊目的的快捷键__：
 
     - ++g++ 回到主视角，和点击右上角小房子 :material-home-outline:{.lg .red} 达到同样的效果，直接回到主视角，超级方便。
 

@@ -1,6 +1,6 @@
 ---
 title: Grasshopper从0开始
-icon: lucide/rocket
+icon: fontawesome/solid/locust
 tags:
   - Rhino
   - newbee
