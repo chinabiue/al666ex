@@ -89,6 +89,10 @@ nav = [
             "blog/posts/Fushion-shortcut.md",
         ] },
     ] },
+    { "Viet" = [
+        "Viet/index.md",
+        "Viet/basic.md",
+    ] },
     { "About" = [
         "About/index.md",
         "About/mkdocs_syntax.md",
